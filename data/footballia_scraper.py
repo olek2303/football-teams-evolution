@@ -83,7 +83,7 @@ def main():
     team_name = "fc-barcelona"
 
     match_links_file_name = team_name + "_match_links.txt"
-    output_csv = "files/" + team_name + "match_data.csv"
+    output_csv = "files/" + team_name + "_match_data.csv"
     with open(match_links_file_name, "r") as f:
         urls_to_scrape = f.read().splitlines()
 
