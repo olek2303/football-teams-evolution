@@ -1,3 +1,5 @@
+import random
+import time
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
@@ -77,28 +79,31 @@ def scrape_footballia_match(url):
 
     return match_data
 
+def main():
+    team_name = "fc-barcelona"
 
-sample_url = "https://footballia.eu/matches/rcd-mallorca-fc-barcelona-liga-1-division-2023-2024"
+    match_links_file_name = team_name + "_match_links.txt"
+    output_csv = "files/" + team_name + "match_data.csv"
+    with open(match_links_file_name, "r") as f:
+        urls_to_scrape = f.read().splitlines()
 
-data = scrape_footballia_match(sample_url)
+    all_matches_data = []
 
-if data and data['home_players']:
-    print("\n--- results ---")
-    print(f"match: {data['home_team']} vs {data['away_team']}")
+    for url in urls_to_scrape:
+        data = scrape_footballia_match(url)  # Twoja funkcja
+        if data:
+            all_matches_data.append(data)
 
-    formatted_data = {
-        'match_url': [data['match_url']],
-        'home_team': [data['home_team']],
-        'away_team': [data['away_team']],
-        'home_players': [data['home_players']],
-        'away_players': [data['away_players']],
-        'result': [data['result']],
-        'goal_scorers_home': [data['goal_scorers_home']],
-        'goal_scorers_away': [data['goal_scorers_away']]
-    }
+        time.sleep(random.uniform(1.5, 3.5))
 
-    df = pd.DataFrame(formatted_data)
-    df.to_csv("./files/example_match_data.csv", index=False)
+    if all_matches_data:
+        df = pd.DataFrame(all_matches_data)
+        df.to_csv(output_csv, index=False)
 
-else:
-    print("error scraping match data")
+
+    else:
+        print("No data found!")
+
+if __name__ == '__main__':
+    main()
+
