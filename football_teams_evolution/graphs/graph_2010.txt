@@ -1,0 +1,1997 @@
+# Player co-occurrence graph for 2010
+# Format: player1	player2	weight	team
+Adrian San Miguel	Alexis Mac Allister	1	Liverpool
+Adrian San Miguel	Alisson Becker	1	Liverpool
+Adrian San Miguel	Andrew Robertson	1	Liverpool
+Adrian San Miguel	Daniel Sturridge	1	Liverpool
+Adrian San Miguel	Darwin Nunez	1	Liverpool
+Adrian San Miguel	Diogo Jota	1	Liverpool
+Adrian San Miguel	Dominik Szoboszlai	1	Liverpool
+Adrian San Miguel	Fabinho	1	Liverpool
+Adrian San Miguel	Fernando Torres	1	Liverpool
+Adrian San Miguel	Gini Wijnaldum	1	Liverpool
+Adrian San Miguel	Ibrahima Konaté	1	Liverpool
+Adrian San Miguel	James Milner	1	Liverpool
+Adrian San Miguel	Jamie Carragher	1	Liverpool
+Adrian San Miguel	Joe Gomez	1	Liverpool
+Adrian San Miguel	Joel Matip	1	Liverpool
+Adrian San Miguel	Luis Diaz	1	Liverpool
+Adrian San Miguel	Martin Skrtel	1	Liverpool
+Adrian San Miguel	Mohamed Salah	1	Liverpool
+Adrian San Miguel	Roberto Firmino	1	Liverpool
+Adrian San Miguel	Sami Hyypia	1	Liverpool
+Adrian San Miguel	Steven Gerrard	1	Liverpool
+Adrian San Miguel	Thiago Alcantara	1	Liverpool
+Adrian San Miguel	Trent Alexander-Arnold	1	Liverpool
+Adrian San Miguel	Virgil van Dijk	1	Liverpool
+Adrian San Miguel	Xabi Alonso	1	Liverpool
+Alexis Mac Allister	Alisson Becker	1	Liverpool
+Alexis Mac Allister	Andrew Robertson	1	Liverpool
+Alexis Mac Allister	Daniel Sturridge	1	Liverpool
+Alexis Mac Allister	Darwin Nunez	1	Liverpool
+Alexis Mac Allister	Diogo Jota	1	Liverpool
+Alexis Mac Allister	Dominik Szoboszlai	1	Liverpool
+Alexis Mac Allister	Fabinho	1	Liverpool
+Alexis Mac Allister	Fernando Torres	1	Liverpool
+Alexis Mac Allister	Gini Wijnaldum	1	Liverpool
+Alexis Mac Allister	Ibrahima Konaté	1	Liverpool
+Alexis Mac Allister	James Milner	1	Liverpool
+Alexis Mac Allister	Jamie Carragher	1	Liverpool
+Alexis Mac Allister	Joe Gomez	1	Liverpool
+Alexis Mac Allister	Joel Matip	1	Liverpool
+Alexis Mac Allister	Luis Diaz	1	Liverpool
+Alexis Mac Allister	Martin Skrtel	1	Liverpool
+Alexis Mac Allister	Mohamed Salah	1	Liverpool
+Alexis Mac Allister	Roberto Firmino	1	Liverpool
+Alexis Mac Allister	Sami Hyypia	1	Liverpool
+Alexis Mac Allister	Steven Gerrard	1	Liverpool
+Alexis Mac Allister	Thiago Alcantara	1	Liverpool
+Alexis Mac Allister	Trent Alexander-Arnold	1	Liverpool
+Alexis Mac Allister	Virgil van Dijk	1	Liverpool
+Alexis Mac Allister	Xabi Alonso	1	Liverpool
+Alisson Becker	Andrew Robertson	1	Liverpool
+Alisson Becker	Daniel Sturridge	1	Liverpool
+Alisson Becker	Darwin Nunez	1	Liverpool
+Alisson Becker	Diogo Jota	1	Liverpool
+Alisson Becker	Dominik Szoboszlai	1	Liverpool
+Alisson Becker	Fabinho	1	Liverpool
+Alisson Becker	Fernando Torres	1	Liverpool
+Alisson Becker	Gini Wijnaldum	1	Liverpool
+Alisson Becker	Ibrahima Konaté	1	Liverpool
+Alisson Becker	James Milner	1	Liverpool
+Alisson Becker	Jamie Carragher	1	Liverpool
+Alisson Becker	Joe Gomez	1	Liverpool
+Alisson Becker	Joel Matip	1	Liverpool
+Alisson Becker	Luis Diaz	1	Liverpool
+Alisson Becker	Martin Skrtel	1	Liverpool
+Alisson Becker	Mohamed Salah	1	Liverpool
+Alisson Becker	Roberto Firmino	1	Liverpool
+Alisson Becker	Sami Hyypia	1	Liverpool
+Alisson Becker	Steven Gerrard	1	Liverpool
+Alisson Becker	Thiago Alcantara	1	Liverpool
+Alisson Becker	Trent Alexander-Arnold	1	Liverpool
+Alisson Becker	Virgil van Dijk	1	Liverpool
+Alisson Becker	Xabi Alonso	1	Liverpool
+Andrew Robertson	Daniel Sturridge	1	Liverpool
+Andrew Robertson	Darwin Nunez	1	Liverpool
+Andrew Robertson	Diogo Jota	1	Liverpool
+Andrew Robertson	Dominik Szoboszlai	1	Liverpool
+Andrew Robertson	Fabinho	1	Liverpool
+Andrew Robertson	Fernando Torres	1	Liverpool
+Andrew Robertson	Gini Wijnaldum	1	Liverpool
+Andrew Robertson	Ibrahima Konaté	1	Liverpool
+Andrew Robertson	James Milner	1	Liverpool
+Andrew Robertson	Jamie Carragher	1	Liverpool
+Andrew Robertson	Joe Gomez	1	Liverpool
+Andrew Robertson	Joel Matip	1	Liverpool
+Andrew Robertson	Luis Diaz	1	Liverpool
+Andrew Robertson	Martin Skrtel	1	Liverpool
+Andrew Robertson	Mohamed Salah	1	Liverpool
+Andrew Robertson	Roberto Firmino	1	Liverpool
+Andrew Robertson	Sami Hyypia	1	Liverpool
+Andrew Robertson	Steven Gerrard	1	Liverpool
+Andrew Robertson	Thiago Alcantara	1	Liverpool
+Andrew Robertson	Trent Alexander-Arnold	1	Liverpool
+Andrew Robertson	Virgil van Dijk	1	Liverpool
+Andrew Robertson	Xabi Alonso	1	Liverpool
+Daniel Sturridge	Darwin Nunez	1	Liverpool
+Daniel Sturridge	Diogo Jota	1	Liverpool
+Daniel Sturridge	Dominik Szoboszlai	1	Liverpool
+Daniel Sturridge	Fabinho	1	Liverpool
+Daniel Sturridge	Fernando Torres	1	Liverpool
+Daniel Sturridge	Gini Wijnaldum	1	Liverpool
+Daniel Sturridge	Ibrahima Konaté	1	Liverpool
+Daniel Sturridge	James Milner	1	Liverpool
+Daniel Sturridge	Jamie Carragher	1	Liverpool
+Daniel Sturridge	Joe Gomez	1	Liverpool
+Daniel Sturridge	Joel Matip	1	Liverpool
+Daniel Sturridge	Luis Diaz	1	Liverpool
+Daniel Sturridge	Martin Skrtel	1	Liverpool
+Daniel Sturridge	Mohamed Salah	1	Liverpool
+Daniel Sturridge	Roberto Firmino	1	Liverpool
+Daniel Sturridge	Sami Hyypia	1	Liverpool
+Daniel Sturridge	Steven Gerrard	1	Liverpool
+Daniel Sturridge	Thiago Alcantara	1	Liverpool
+Daniel Sturridge	Trent Alexander-Arnold	1	Liverpool
+Daniel Sturridge	Virgil van Dijk	1	Liverpool
+Daniel Sturridge	Xabi Alonso	1	Liverpool
+Darwin Nunez	Diogo Jota	1	Liverpool
+Darwin Nunez	Dominik Szoboszlai	1	Liverpool
+Darwin Nunez	Fabinho	1	Liverpool
+Darwin Nunez	Fernando Torres	1	Liverpool
+Darwin Nunez	Gini Wijnaldum	1	Liverpool
+Darwin Nunez	Ibrahima Konaté	1	Liverpool
+Darwin Nunez	James Milner	1	Liverpool
+Darwin Nunez	Jamie Carragher	1	Liverpool
+Darwin Nunez	Joe Gomez	1	Liverpool
+Darwin Nunez	Joel Matip	1	Liverpool
+Darwin Nunez	Luis Diaz	1	Liverpool
+Darwin Nunez	Martin Skrtel	1	Liverpool
+Darwin Nunez	Mohamed Salah	1	Liverpool
+Darwin Nunez	Roberto Firmino	1	Liverpool
+Darwin Nunez	Sami Hyypia	1	Liverpool
+Darwin Nunez	Steven Gerrard	1	Liverpool
+Darwin Nunez	Thiago Alcantara	1	Liverpool
+Darwin Nunez	Trent Alexander-Arnold	1	Liverpool
+Darwin Nunez	Virgil van Dijk	1	Liverpool
+Darwin Nunez	Xabi Alonso	1	Liverpool
+Diogo Jota	Dominik Szoboszlai	1	Liverpool
+Diogo Jota	Fabinho	1	Liverpool
+Diogo Jota	Fernando Torres	1	Liverpool
+Diogo Jota	Gini Wijnaldum	1	Liverpool
+Diogo Jota	Ibrahima Konaté	1	Liverpool
+Diogo Jota	James Milner	1	Liverpool
+Diogo Jota	Jamie Carragher	1	Liverpool
+Diogo Jota	Joe Gomez	1	Liverpool
+Diogo Jota	Joel Matip	1	Liverpool
+Diogo Jota	Luis Diaz	1	Liverpool
+Diogo Jota	Martin Skrtel	1	Liverpool
+Diogo Jota	Mohamed Salah	1	Liverpool
+Diogo Jota	Roberto Firmino	1	Liverpool
+Diogo Jota	Sami Hyypia	1	Liverpool
+Diogo Jota	Steven Gerrard	1	Liverpool
+Diogo Jota	Thiago Alcantara	1	Liverpool
+Diogo Jota	Trent Alexander-Arnold	1	Liverpool
+Diogo Jota	Virgil van Dijk	1	Liverpool
+Diogo Jota	Xabi Alonso	1	Liverpool
+Dominik Szoboszlai	Fabinho	1	Liverpool
+Dominik Szoboszlai	Fernando Torres	1	Liverpool
+Dominik Szoboszlai	Gini Wijnaldum	1	Liverpool
+Dominik Szoboszlai	Ibrahima Konaté	1	Liverpool
+Dominik Szoboszlai	James Milner	1	Liverpool
+Dominik Szoboszlai	Jamie Carragher	1	Liverpool
+Dominik Szoboszlai	Joe Gomez	1	Liverpool
+Dominik Szoboszlai	Joel Matip	1	Liverpool
+Dominik Szoboszlai	Luis Diaz	1	Liverpool
+Dominik Szoboszlai	Martin Skrtel	1	Liverpool
+Dominik Szoboszlai	Mohamed Salah	1	Liverpool
+Dominik Szoboszlai	Roberto Firmino	1	Liverpool
+Dominik Szoboszlai	Sami Hyypia	1	Liverpool
+Dominik Szoboszlai	Steven Gerrard	1	Liverpool
+Dominik Szoboszlai	Thiago Alcantara	1	Liverpool
+Dominik Szoboszlai	Trent Alexander-Arnold	1	Liverpool
+Dominik Szoboszlai	Virgil van Dijk	1	Liverpool
+Dominik Szoboszlai	Xabi Alonso	1	Liverpool
+Fabinho	Fernando Torres	1	Liverpool
+Fabinho	Gini Wijnaldum	1	Liverpool
+Fabinho	Ibrahima Konaté	1	Liverpool
+Fabinho	James Milner	1	Liverpool
+Fabinho	Jamie Carragher	1	Liverpool
+Fabinho	Joe Gomez	1	Liverpool
+Fabinho	Joel Matip	1	Liverpool
+Fabinho	Luis Diaz	1	Liverpool
+Fabinho	Martin Skrtel	1	Liverpool
+Fabinho	Mohamed Salah	1	Liverpool
+Fabinho	Roberto Firmino	1	Liverpool
+Fabinho	Sami Hyypia	1	Liverpool
+Fabinho	Steven Gerrard	1	Liverpool
+Fabinho	Thiago Alcantara	1	Liverpool
+Fabinho	Trent Alexander-Arnold	1	Liverpool
+Fabinho	Virgil van Dijk	1	Liverpool
+Fabinho	Xabi Alonso	1	Liverpool
+Fernando Torres	Gini Wijnaldum	1	Liverpool
+Fernando Torres	Ibrahima Konaté	1	Liverpool
+Fernando Torres	James Milner	1	Liverpool
+Fernando Torres	Jamie Carragher	1	Liverpool
+Fernando Torres	Joe Gomez	1	Liverpool
+Fernando Torres	Joel Matip	1	Liverpool
+Fernando Torres	Luis Diaz	1	Liverpool
+Fernando Torres	Martin Skrtel	1	Liverpool
+Fernando Torres	Mohamed Salah	1	Liverpool
+Fernando Torres	Roberto Firmino	1	Liverpool
+Fernando Torres	Sami Hyypia	1	Liverpool
+Fernando Torres	Steven Gerrard	1	Liverpool
+Fernando Torres	Thiago Alcantara	1	Liverpool
+Fernando Torres	Trent Alexander-Arnold	1	Liverpool
+Fernando Torres	Virgil van Dijk	1	Liverpool
+Fernando Torres	Xabi Alonso	1	Liverpool
+Gini Wijnaldum	Ibrahima Konaté	1	Liverpool
+Gini Wijnaldum	James Milner	1	Liverpool
+Gini Wijnaldum	Jamie Carragher	1	Liverpool
+Gini Wijnaldum	Joe Gomez	1	Liverpool
+Gini Wijnaldum	Joel Matip	1	Liverpool
+Gini Wijnaldum	Luis Diaz	1	Liverpool
+Gini Wijnaldum	Martin Skrtel	1	Liverpool
+Gini Wijnaldum	Mohamed Salah	1	Liverpool
+Gini Wijnaldum	Roberto Firmino	1	Liverpool
+Gini Wijnaldum	Sami Hyypia	1	Liverpool
+Gini Wijnaldum	Steven Gerrard	1	Liverpool
+Gini Wijnaldum	Thiago Alcantara	1	Liverpool
+Gini Wijnaldum	Trent Alexander-Arnold	1	Liverpool
+Gini Wijnaldum	Virgil van Dijk	1	Liverpool
+Gini Wijnaldum	Xabi Alonso	1	Liverpool
+Ibrahima Konaté	James Milner	1	Liverpool
+Ibrahima Konaté	Jamie Carragher	1	Liverpool
+Ibrahima Konaté	Joe Gomez	1	Liverpool
+Ibrahima Konaté	Joel Matip	1	Liverpool
+Ibrahima Konaté	Luis Diaz	1	Liverpool
+Ibrahima Konaté	Martin Skrtel	1	Liverpool
+Ibrahima Konaté	Mohamed Salah	1	Liverpool
+Ibrahima Konaté	Roberto Firmino	1	Liverpool
+Ibrahima Konaté	Sami Hyypia	1	Liverpool
+Ibrahima Konaté	Steven Gerrard	1	Liverpool
+Ibrahima Konaté	Thiago Alcantara	1	Liverpool
+Ibrahima Konaté	Trent Alexander-Arnold	1	Liverpool
+Ibrahima Konaté	Virgil van Dijk	1	Liverpool
+Ibrahima Konaté	Xabi Alonso	1	Liverpool
+James Milner	Jamie Carragher	1	Liverpool
+James Milner	Joe Gomez	1	Liverpool
+James Milner	Joel Matip	1	Liverpool
+James Milner	Luis Diaz	1	Liverpool
+James Milner	Martin Skrtel	1	Liverpool
+James Milner	Mohamed Salah	1	Liverpool
+James Milner	Roberto Firmino	1	Liverpool
+James Milner	Sami Hyypia	1	Liverpool
+James Milner	Steven Gerrard	1	Liverpool
+James Milner	Thiago Alcantara	1	Liverpool
+James Milner	Trent Alexander-Arnold	1	Liverpool
+James Milner	Virgil van Dijk	1	Liverpool
+James Milner	Xabi Alonso	1	Liverpool
+Jamie Carragher	Joe Gomez	1	Liverpool
+Jamie Carragher	Joel Matip	1	Liverpool
+Jamie Carragher	Luis Diaz	1	Liverpool
+Jamie Carragher	Martin Skrtel	1	Liverpool
+Jamie Carragher	Mohamed Salah	1	Liverpool
+Jamie Carragher	Roberto Firmino	1	Liverpool
+Jamie Carragher	Sami Hyypia	1	Liverpool
+Jamie Carragher	Steven Gerrard	1	Liverpool
+Jamie Carragher	Thiago Alcantara	1	Liverpool
+Jamie Carragher	Trent Alexander-Arnold	1	Liverpool
+Jamie Carragher	Virgil van Dijk	1	Liverpool
+Jamie Carragher	Xabi Alonso	1	Liverpool
+Joe Gomez	Joel Matip	1	Liverpool
+Joe Gomez	Luis Diaz	1	Liverpool
+Joe Gomez	Martin Skrtel	1	Liverpool
+Joe Gomez	Mohamed Salah	1	Liverpool
+Joe Gomez	Roberto Firmino	1	Liverpool
+Joe Gomez	Sami Hyypia	1	Liverpool
+Joe Gomez	Steven Gerrard	1	Liverpool
+Joe Gomez	Thiago Alcantara	1	Liverpool
+Joe Gomez	Trent Alexander-Arnold	1	Liverpool
+Joe Gomez	Virgil van Dijk	1	Liverpool
+Joe Gomez	Xabi Alonso	1	Liverpool
+Joel Matip	Luis Diaz	1	Liverpool
+Joel Matip	Martin Skrtel	1	Liverpool
+Joel Matip	Mohamed Salah	1	Liverpool
+Joel Matip	Roberto Firmino	1	Liverpool
+Joel Matip	Sami Hyypia	1	Liverpool
+Joel Matip	Steven Gerrard	1	Liverpool
+Joel Matip	Thiago Alcantara	1	Liverpool
+Joel Matip	Trent Alexander-Arnold	1	Liverpool
+Joel Matip	Virgil van Dijk	1	Liverpool
+Joel Matip	Xabi Alonso	1	Liverpool
+Luis Diaz	Martin Skrtel	1	Liverpool
+Luis Diaz	Mohamed Salah	1	Liverpool
+Luis Diaz	Roberto Firmino	1	Liverpool
+Luis Diaz	Sami Hyypia	1	Liverpool
+Luis Diaz	Steven Gerrard	1	Liverpool
+Luis Diaz	Thiago Alcantara	1	Liverpool
+Luis Diaz	Trent Alexander-Arnold	1	Liverpool
+Luis Diaz	Virgil van Dijk	1	Liverpool
+Luis Diaz	Xabi Alonso	1	Liverpool
+Martin Skrtel	Mohamed Salah	1	Liverpool
+Martin Skrtel	Roberto Firmino	1	Liverpool
+Martin Skrtel	Sami Hyypia	1	Liverpool
+Martin Skrtel	Steven Gerrard	1	Liverpool
+Martin Skrtel	Thiago Alcantara	1	Liverpool
+Martin Skrtel	Trent Alexander-Arnold	1	Liverpool
+Martin Skrtel	Virgil van Dijk	1	Liverpool
+Martin Skrtel	Xabi Alonso	1	Liverpool
+Mohamed Salah	Roberto Firmino	1	Liverpool
+Mohamed Salah	Sami Hyypia	1	Liverpool
+Mohamed Salah	Steven Gerrard	1	Liverpool
+Mohamed Salah	Thiago Alcantara	1	Liverpool
+Mohamed Salah	Trent Alexander-Arnold	1	Liverpool
+Mohamed Salah	Virgil van Dijk	1	Liverpool
+Mohamed Salah	Xabi Alonso	1	Liverpool
+Roberto Firmino	Sami Hyypia	1	Liverpool
+Roberto Firmino	Steven Gerrard	1	Liverpool
+Roberto Firmino	Thiago Alcantara	1	Liverpool
+Roberto Firmino	Trent Alexander-Arnold	1	Liverpool
+Roberto Firmino	Virgil van Dijk	1	Liverpool
+Roberto Firmino	Xabi Alonso	1	Liverpool
+Sami Hyypia	Steven Gerrard	1	Liverpool
+Sami Hyypia	Thiago Alcantara	1	Liverpool
+Sami Hyypia	Trent Alexander-Arnold	1	Liverpool
+Sami Hyypia	Virgil van Dijk	1	Liverpool
+Sami Hyypia	Xabi Alonso	1	Liverpool
+Steven Gerrard	Thiago Alcantara	1	Liverpool
+Steven Gerrard	Trent Alexander-Arnold	1	Liverpool
+Steven Gerrard	Virgil van Dijk	1	Liverpool
+Steven Gerrard	Xabi Alonso	1	Liverpool
+Thiago Alcantara	Trent Alexander-Arnold	1	Liverpool
+Thiago Alcantara	Virgil van Dijk	1	Liverpool
+Thiago Alcantara	Xabi Alonso	1	Liverpool
+Trent Alexander-Arnold	Virgil van Dijk	1	Liverpool
+Trent Alexander-Arnold	Xabi Alonso	1	Liverpool
+Virgil van Dijk	Xabi Alonso	1	Liverpool
+Alphonso Davies	Arjen Robben	1	Bayern Munich
+Alphonso Davies	Bastian Schweinsteiger	1	Bayern Munich
+Alphonso Davies	David Alaba	1	Bayern Munich
+Alphonso Davies	Dayot Upamecano	1	Bayern Munich
+Alphonso Davies	Eric Maxim Choupo-Moting	1	Bayern Munich
+Alphonso Davies	Franck Ribery	1	Bayern Munich
+Alphonso Davies	Harry Kane	1	Bayern Munich
+Alphonso Davies	Jamal Musiala	1	Bayern Munich
+Alphonso Davies	Jerome Boateng	1	Bayern Munich
+Alphonso Davies	Joshua Kimmich	1	Bayern Munich
+Alphonso Davies	Kingsley Coman	1	Bayern Munich
+Alphonso Davies	Leon Goretzka	1	Bayern Munich
+Alphonso Davies	Leroy Sane	1	Bayern Munich
+Alphonso Davies	Mario Mandzukic	1	Bayern Munich
+Alphonso Davies	Mats Hummels	1	Bayern Munich
+Alphonso Davies	Matthijs de Ligt	1	Bayern Munich
+Alphonso Davies	Oliver Kahn	1	Bayern Munich
+Alphonso Davies	Philipp Lahm	1	Bayern Munich
+Alphonso Davies	Rafinha	1	Bayern Munich
+Alphonso Davies	Robert Lewandowski	1	Bayern Munich
+Alphonso Davies	Serge Gnabry	1	Bayern Munich
+Alphonso Davies	Sven Ulreich	1	Bayern Munich
+Alphonso Davies	Thomas Muller	2	Bayern Munich
+Arjen Robben	Bastian Schweinsteiger	1	Bayern Munich
+Arjen Robben	David Alaba	1	Bayern Munich
+Arjen Robben	Dayot Upamecano	1	Bayern Munich
+Arjen Robben	Eric Maxim Choupo-Moting	1	Bayern Munich
+Arjen Robben	Franck Ribery	1	Bayern Munich
+Arjen Robben	Harry Kane	1	Bayern Munich
+Arjen Robben	Jamal Musiala	1	Bayern Munich
+Arjen Robben	Jerome Boateng	1	Bayern Munich
+Arjen Robben	Joshua Kimmich	1	Bayern Munich
+Arjen Robben	Kingsley Coman	1	Bayern Munich
+Arjen Robben	Leon Goretzka	1	Bayern Munich
+Arjen Robben	Leroy Sane	1	Bayern Munich
+Arjen Robben	Mario Mandzukic	1	Bayern Munich
+Arjen Robben	Mats Hummels	1	Bayern Munich
+Arjen Robben	Matthijs de Ligt	1	Bayern Munich
+Arjen Robben	Oliver Kahn	1	Bayern Munich
+Arjen Robben	Philipp Lahm	1	Bayern Munich
+Arjen Robben	Rafinha	1	Bayern Munich
+Arjen Robben	Robert Lewandowski	1	Bayern Munich
+Arjen Robben	Serge Gnabry	1	Bayern Munich
+Arjen Robben	Sven Ulreich	1	Bayern Munich
+Arjen Robben	Thomas Muller	2	Bayern Munich
+Bastian Schweinsteiger	David Alaba	1	Bayern Munich
+Bastian Schweinsteiger	Dayot Upamecano	1	Bayern Munich
+Bastian Schweinsteiger	Eric Maxim Choupo-Moting	1	Bayern Munich
+Bastian Schweinsteiger	Franck Ribery	1	Bayern Munich
+Bastian Schweinsteiger	Harry Kane	1	Bayern Munich
+Bastian Schweinsteiger	Jamal Musiala	1	Bayern Munich
+Bastian Schweinsteiger	Jerome Boateng	1	Bayern Munich
+Bastian Schweinsteiger	Joshua Kimmich	1	Bayern Munich
+Bastian Schweinsteiger	Kingsley Coman	1	Bayern Munich
+Bastian Schweinsteiger	Leon Goretzka	1	Bayern Munich
+Bastian Schweinsteiger	Leroy Sane	1	Bayern Munich
+Bastian Schweinsteiger	Mario Mandzukic	1	Bayern Munich
+Bastian Schweinsteiger	Mats Hummels	1	Bayern Munich
+Bastian Schweinsteiger	Matthijs de Ligt	1	Bayern Munich
+Bastian Schweinsteiger	Oliver Kahn	1	Bayern Munich
+Bastian Schweinsteiger	Philipp Lahm	1	Bayern Munich
+Bastian Schweinsteiger	Rafinha	1	Bayern Munich
+Bastian Schweinsteiger	Robert Lewandowski	1	Bayern Munich
+Bastian Schweinsteiger	Serge Gnabry	1	Bayern Munich
+Bastian Schweinsteiger	Sven Ulreich	1	Bayern Munich
+Bastian Schweinsteiger	Thomas Muller	2	Bayern Munich
+David Alaba	Dayot Upamecano	1	Bayern Munich
+David Alaba	Eric Maxim Choupo-Moting	1	Bayern Munich
+David Alaba	Franck Ribery	1	Bayern Munich
+David Alaba	Harry Kane	1	Bayern Munich
+David Alaba	Jamal Musiala	1	Bayern Munich
+David Alaba	Jerome Boateng	1	Bayern Munich
+David Alaba	Joshua Kimmich	1	Bayern Munich
+David Alaba	Kingsley Coman	1	Bayern Munich
+David Alaba	Leon Goretzka	1	Bayern Munich
+David Alaba	Leroy Sane	1	Bayern Munich
+David Alaba	Mario Mandzukic	1	Bayern Munich
+David Alaba	Mats Hummels	1	Bayern Munich
+David Alaba	Matthijs de Ligt	1	Bayern Munich
+David Alaba	Oliver Kahn	1	Bayern Munich
+David Alaba	Philipp Lahm	1	Bayern Munich
+David Alaba	Rafinha	1	Bayern Munich
+David Alaba	Robert Lewandowski	1	Bayern Munich
+David Alaba	Serge Gnabry	1	Bayern Munich
+David Alaba	Sven Ulreich	1	Bayern Munich
+David Alaba	Thomas Muller	2	Bayern Munich
+Dayot Upamecano	Eric Maxim Choupo-Moting	1	Bayern Munich
+Dayot Upamecano	Franck Ribery	1	Bayern Munich
+Dayot Upamecano	Harry Kane	1	Bayern Munich
+Dayot Upamecano	Jamal Musiala	1	Bayern Munich
+Dayot Upamecano	Jerome Boateng	1	Bayern Munich
+Dayot Upamecano	Joshua Kimmich	1	Bayern Munich
+Dayot Upamecano	Kingsley Coman	1	Bayern Munich
+Dayot Upamecano	Leon Goretzka	1	Bayern Munich
+Dayot Upamecano	Leroy Sane	1	Bayern Munich
+Dayot Upamecano	Mario Mandzukic	1	Bayern Munich
+Dayot Upamecano	Mats Hummels	1	Bayern Munich
+Dayot Upamecano	Matthijs de Ligt	1	Bayern Munich
+Dayot Upamecano	Oliver Kahn	1	Bayern Munich
+Dayot Upamecano	Philipp Lahm	1	Bayern Munich
+Dayot Upamecano	Rafinha	1	Bayern Munich
+Dayot Upamecano	Robert Lewandowski	1	Bayern Munich
+Dayot Upamecano	Serge Gnabry	1	Bayern Munich
+Dayot Upamecano	Sven Ulreich	1	Bayern Munich
+Dayot Upamecano	Thomas Muller	2	Bayern Munich
+Eric Maxim Choupo-Moting	Franck Ribery	1	Bayern Munich
+Eric Maxim Choupo-Moting	Harry Kane	1	Bayern Munich
+Eric Maxim Choupo-Moting	Jamal Musiala	1	Bayern Munich
+Eric Maxim Choupo-Moting	Jerome Boateng	1	Bayern Munich
+Eric Maxim Choupo-Moting	Joshua Kimmich	1	Bayern Munich
+Eric Maxim Choupo-Moting	Kingsley Coman	1	Bayern Munich
+Eric Maxim Choupo-Moting	Leon Goretzka	1	Bayern Munich
+Eric Maxim Choupo-Moting	Leroy Sane	1	Bayern Munich
+Eric Maxim Choupo-Moting	Mario Mandzukic	1	Bayern Munich
+Eric Maxim Choupo-Moting	Mats Hummels	1	Bayern Munich
+Eric Maxim Choupo-Moting	Matthijs de Ligt	1	Bayern Munich
+Eric Maxim Choupo-Moting	Oliver Kahn	1	Bayern Munich
+Eric Maxim Choupo-Moting	Philipp Lahm	1	Bayern Munich
+Eric Maxim Choupo-Moting	Rafinha	1	Bayern Munich
+Eric Maxim Choupo-Moting	Robert Lewandowski	1	Bayern Munich
+Eric Maxim Choupo-Moting	Serge Gnabry	1	Bayern Munich
+Eric Maxim Choupo-Moting	Sven Ulreich	1	Bayern Munich
+Eric Maxim Choupo-Moting	Thomas Muller	2	Bayern Munich
+Franck Ribery	Harry Kane	1	Bayern Munich
+Franck Ribery	Jamal Musiala	1	Bayern Munich
+Franck Ribery	Jerome Boateng	1	Bayern Munich
+Franck Ribery	Joshua Kimmich	1	Bayern Munich
+Franck Ribery	Kingsley Coman	1	Bayern Munich
+Franck Ribery	Leon Goretzka	1	Bayern Munich
+Franck Ribery	Leroy Sane	1	Bayern Munich
+Franck Ribery	Mario Mandzukic	1	Bayern Munich
+Franck Ribery	Mats Hummels	1	Bayern Munich
+Franck Ribery	Matthijs de Ligt	1	Bayern Munich
+Franck Ribery	Oliver Kahn	1	Bayern Munich
+Franck Ribery	Philipp Lahm	1	Bayern Munich
+Franck Ribery	Rafinha	1	Bayern Munich
+Franck Ribery	Robert Lewandowski	1	Bayern Munich
+Franck Ribery	Serge Gnabry	1	Bayern Munich
+Franck Ribery	Sven Ulreich	1	Bayern Munich
+Franck Ribery	Thomas Muller	2	Bayern Munich
+Harry Kane	Jamal Musiala	1	Bayern Munich
+Harry Kane	Jerome Boateng	1	Bayern Munich
+Harry Kane	Joshua Kimmich	1	Bayern Munich
+Harry Kane	Kingsley Coman	1	Bayern Munich
+Harry Kane	Leon Goretzka	1	Bayern Munich
+Harry Kane	Leroy Sane	1	Bayern Munich
+Harry Kane	Mario Mandzukic	1	Bayern Munich
+Harry Kane	Mats Hummels	1	Bayern Munich
+Harry Kane	Matthijs de Ligt	1	Bayern Munich
+Harry Kane	Oliver Kahn	1	Bayern Munich
+Harry Kane	Philipp Lahm	1	Bayern Munich
+Harry Kane	Rafinha	1	Bayern Munich
+Harry Kane	Robert Lewandowski	1	Bayern Munich
+Harry Kane	Serge Gnabry	1	Bayern Munich
+Harry Kane	Sven Ulreich	1	Bayern Munich
+Harry Kane	Thomas Muller	2	Bayern Munich
+Jamal Musiala	Jerome Boateng	1	Bayern Munich
+Jamal Musiala	Joshua Kimmich	1	Bayern Munich
+Jamal Musiala	Kingsley Coman	1	Bayern Munich
+Jamal Musiala	Leon Goretzka	1	Bayern Munich
+Jamal Musiala	Leroy Sane	1	Bayern Munich
+Jamal Musiala	Mario Mandzukic	1	Bayern Munich
+Jamal Musiala	Mats Hummels	1	Bayern Munich
+Jamal Musiala	Matthijs de Ligt	1	Bayern Munich
+Jamal Musiala	Oliver Kahn	1	Bayern Munich
+Jamal Musiala	Philipp Lahm	1	Bayern Munich
+Jamal Musiala	Rafinha	1	Bayern Munich
+Jamal Musiala	Robert Lewandowski	1	Bayern Munich
+Jamal Musiala	Serge Gnabry	1	Bayern Munich
+Jamal Musiala	Sven Ulreich	1	Bayern Munich
+Jamal Musiala	Thomas Muller	2	Bayern Munich
+Jerome Boateng	Joshua Kimmich	1	Bayern Munich
+Jerome Boateng	Kingsley Coman	1	Bayern Munich
+Jerome Boateng	Leon Goretzka	1	Bayern Munich
+Jerome Boateng	Leroy Sane	1	Bayern Munich
+Jerome Boateng	Mario Mandzukic	1	Bayern Munich
+Jerome Boateng	Mats Hummels	1	Bayern Munich
+Jerome Boateng	Matthijs de Ligt	1	Bayern Munich
+Jerome Boateng	Oliver Kahn	1	Bayern Munich
+Jerome Boateng	Philipp Lahm	1	Bayern Munich
+Jerome Boateng	Rafinha	1	Bayern Munich
+Jerome Boateng	Robert Lewandowski	1	Bayern Munich
+Jerome Boateng	Serge Gnabry	1	Bayern Munich
+Jerome Boateng	Sven Ulreich	1	Bayern Munich
+Jerome Boateng	Thomas Muller	2	Bayern Munich
+Joshua Kimmich	Kingsley Coman	1	Bayern Munich
+Joshua Kimmich	Leon Goretzka	1	Bayern Munich
+Joshua Kimmich	Leroy Sane	1	Bayern Munich
+Joshua Kimmich	Mario Mandzukic	1	Bayern Munich
+Joshua Kimmich	Mats Hummels	1	Bayern Munich
+Joshua Kimmich	Matthijs de Ligt	1	Bayern Munich
+Joshua Kimmich	Oliver Kahn	1	Bayern Munich
+Joshua Kimmich	Philipp Lahm	1	Bayern Munich
+Joshua Kimmich	Rafinha	1	Bayern Munich
+Joshua Kimmich	Robert Lewandowski	1	Bayern Munich
+Joshua Kimmich	Serge Gnabry	1	Bayern Munich
+Joshua Kimmich	Sven Ulreich	1	Bayern Munich
+Joshua Kimmich	Thomas Muller	2	Bayern Munich
+Kingsley Coman	Leon Goretzka	1	Bayern Munich
+Kingsley Coman	Leroy Sane	1	Bayern Munich
+Kingsley Coman	Mario Mandzukic	1	Bayern Munich
+Kingsley Coman	Mats Hummels	1	Bayern Munich
+Kingsley Coman	Matthijs de Ligt	1	Bayern Munich
+Kingsley Coman	Oliver Kahn	1	Bayern Munich
+Kingsley Coman	Philipp Lahm	1	Bayern Munich
+Kingsley Coman	Rafinha	1	Bayern Munich
+Kingsley Coman	Robert Lewandowski	1	Bayern Munich
+Kingsley Coman	Serge Gnabry	1	Bayern Munich
+Kingsley Coman	Sven Ulreich	1	Bayern Munich
+Kingsley Coman	Thomas Muller	2	Bayern Munich
+Leon Goretzka	Leroy Sane	1	Bayern Munich
+Leon Goretzka	Mario Mandzukic	1	Bayern Munich
+Leon Goretzka	Mats Hummels	1	Bayern Munich
+Leon Goretzka	Matthijs de Ligt	1	Bayern Munich
+Leon Goretzka	Oliver Kahn	1	Bayern Munich
+Leon Goretzka	Philipp Lahm	1	Bayern Munich
+Leon Goretzka	Rafinha	1	Bayern Munich
+Leon Goretzka	Robert Lewandowski	1	Bayern Munich
+Leon Goretzka	Serge Gnabry	1	Bayern Munich
+Leon Goretzka	Sven Ulreich	1	Bayern Munich
+Leon Goretzka	Thomas Muller	2	Bayern Munich
+Leroy Sane	Mario Mandzukic	1	Bayern Munich
+Leroy Sane	Mats Hummels	1	Bayern Munich
+Leroy Sane	Matthijs de Ligt	1	Bayern Munich
+Leroy Sane	Oliver Kahn	1	Bayern Munich
+Leroy Sane	Philipp Lahm	1	Bayern Munich
+Leroy Sane	Rafinha	1	Bayern Munich
+Leroy Sane	Robert Lewandowski	1	Bayern Munich
+Leroy Sane	Serge Gnabry	1	Bayern Munich
+Leroy Sane	Sven Ulreich	1	Bayern Munich
+Leroy Sane	Thomas Muller	2	Bayern Munich
+Mario Mandzukic	Mats Hummels	1	Bayern Munich
+Mario Mandzukic	Matthijs de Ligt	1	Bayern Munich
+Mario Mandzukic	Oliver Kahn	1	Bayern Munich
+Mario Mandzukic	Philipp Lahm	1	Bayern Munich
+Mario Mandzukic	Rafinha	1	Bayern Munich
+Mario Mandzukic	Robert Lewandowski	1	Bayern Munich
+Mario Mandzukic	Serge Gnabry	1	Bayern Munich
+Mario Mandzukic	Sven Ulreich	1	Bayern Munich
+Mario Mandzukic	Thomas Muller	2	Bayern Munich
+Mats Hummels	Matthijs de Ligt	1	Bayern Munich
+Mats Hummels	Oliver Kahn	1	Bayern Munich
+Mats Hummels	Philipp Lahm	1	Bayern Munich
+Mats Hummels	Rafinha	1	Bayern Munich
+Mats Hummels	Robert Lewandowski	1	Bayern Munich
+Mats Hummels	Serge Gnabry	1	Bayern Munich
+Mats Hummels	Sven Ulreich	1	Bayern Munich
+Mats Hummels	Thomas Muller	2	Bayern Munich
+Matthijs de Ligt	Oliver Kahn	1	Bayern Munich
+Matthijs de Ligt	Philipp Lahm	1	Bayern Munich
+Matthijs de Ligt	Rafinha	1	Bayern Munich
+Matthijs de Ligt	Robert Lewandowski	1	Bayern Munich
+Matthijs de Ligt	Serge Gnabry	1	Bayern Munich
+Matthijs de Ligt	Sven Ulreich	1	Bayern Munich
+Matthijs de Ligt	Thomas Muller	2	Bayern Munich
+Oliver Kahn	Philipp Lahm	1	Bayern Munich
+Oliver Kahn	Rafinha	1	Bayern Munich
+Oliver Kahn	Robert Lewandowski	1	Bayern Munich
+Oliver Kahn	Serge Gnabry	1	Bayern Munich
+Oliver Kahn	Sven Ulreich	1	Bayern Munich
+Oliver Kahn	Thomas Muller	2	Bayern Munich
+Philipp Lahm	Rafinha	1	Bayern Munich
+Philipp Lahm	Robert Lewandowski	1	Bayern Munich
+Philipp Lahm	Serge Gnabry	1	Bayern Munich
+Philipp Lahm	Sven Ulreich	1	Bayern Munich
+Philipp Lahm	Thomas Muller	2	Bayern Munich
+Rafinha	Robert Lewandowski	1	Bayern Munich
+Rafinha	Serge Gnabry	1	Bayern Munich
+Rafinha	Sven Ulreich	1	Bayern Munich
+Rafinha	Thomas Muller	2	Bayern Munich
+Robert Lewandowski	Serge Gnabry	1	Bayern Munich
+Robert Lewandowski	Sven Ulreich	1	Bayern Munich
+Robert Lewandowski	Thomas Muller	2	Bayern Munich
+Serge Gnabry	Sven Ulreich	1	Bayern Munich
+Serge Gnabry	Thomas Muller	2	Bayern Munich
+Sven Ulreich	Thomas Muller	2	Bayern Munich
+Thomas Muller	Thomas Muller	1	Bayern Munich
+David Alaba	Toni Kroos	1	Real Madrid
+Artur Boruc	Artur Jędrzejczyk	1	Legia Warszawa
+Artur Boruc	Bartosz Bereszyński	1	Legia Warszawa
+Artur Boruc	Bartosz Kapustka	1	Legia Warszawa
+Artur Boruc	Blaz Kramer	1	Legia Warszawa
+Artur Boruc	Carlitos	1	Legia Warszawa
+Artur Boruc	Ernest Muçi	1	Legia Warszawa
+Artur Boruc	Jakub Rzeźniczak	1	Legia Warszawa
+Artur Boruc	Josue	1	Legia Warszawa
+Artur Boruc	Kacper Tobiasz	1	Legia Warszawa
+Artur Boruc	Krzysztof Mączyński	1	Legia Warszawa
+Artur Boruc	Luquinhas	1	Legia Warszawa
+Artur Boruc	Maik Nawrocki	1	Legia Warszawa
+Artur Boruc	Marc Gual	1	Legia Warszawa
+Artur Boruc	Michał Pazdan	1	Legia Warszawa
+Artur Boruc	Miroslav Radović	1	Legia Warszawa
+Artur Boruc	Nemanja Nikolić	1	Legia Warszawa
+Artur Boruc	Radosław Cierzniak	1	Legia Warszawa
+Artur Boruc	Tomasz Brzyski	1	Legia Warszawa
+Artur Boruc	Tomasz Jodłowiec	1	Legia Warszawa
+Artur Boruc	Vadis Odjidja-Ofoe	1	Legia Warszawa
+Artur Boruc	Yuri Ribeiro	1	Legia Warszawa
+Artur Jędrzejczyk	Bartosz Bereszyński	1	Legia Warszawa
+Artur Jędrzejczyk	Bartosz Kapustka	1	Legia Warszawa
+Artur Jędrzejczyk	Blaz Kramer	1	Legia Warszawa
+Artur Jędrzejczyk	Carlitos	1	Legia Warszawa
+Artur Jędrzejczyk	Ernest Muçi	1	Legia Warszawa
+Artur Jędrzejczyk	Jakub Rzeźniczak	1	Legia Warszawa
+Artur Jędrzejczyk	Josue	1	Legia Warszawa
+Artur Jędrzejczyk	Kacper Tobiasz	1	Legia Warszawa
+Artur Jędrzejczyk	Krzysztof Mączyński	1	Legia Warszawa
+Artur Jędrzejczyk	Luquinhas	1	Legia Warszawa
+Artur Jędrzejczyk	Maik Nawrocki	1	Legia Warszawa
+Artur Jędrzejczyk	Marc Gual	1	Legia Warszawa
+Artur Jędrzejczyk	Michał Pazdan	1	Legia Warszawa
+Artur Jędrzejczyk	Miroslav Radović	1	Legia Warszawa
+Artur Jędrzejczyk	Nemanja Nikolić	1	Legia Warszawa
+Artur Jędrzejczyk	Radosław Cierzniak	1	Legia Warszawa
+Artur Jędrzejczyk	Tomasz Brzyski	1	Legia Warszawa
+Artur Jędrzejczyk	Tomasz Jodłowiec	1	Legia Warszawa
+Artur Jędrzejczyk	Vadis Odjidja-Ofoe	1	Legia Warszawa
+Artur Jędrzejczyk	Yuri Ribeiro	1	Legia Warszawa
+Bartosz Bereszyński	Bartosz Kapustka	1	Legia Warszawa
+Bartosz Bereszyński	Blaz Kramer	1	Legia Warszawa
+Bartosz Bereszyński	Carlitos	1	Legia Warszawa
+Bartosz Bereszyński	Ernest Muçi	1	Legia Warszawa
+Bartosz Bereszyński	Jakub Rzeźniczak	1	Legia Warszawa
+Bartosz Bereszyński	Josue	1	Legia Warszawa
+Bartosz Bereszyński	Kacper Tobiasz	1	Legia Warszawa
+Bartosz Bereszyński	Krzysztof Mączyński	1	Legia Warszawa
+Bartosz Bereszyński	Luquinhas	1	Legia Warszawa
+Bartosz Bereszyński	Maik Nawrocki	1	Legia Warszawa
+Bartosz Bereszyński	Marc Gual	1	Legia Warszawa
+Bartosz Bereszyński	Michał Pazdan	1	Legia Warszawa
+Bartosz Bereszyński	Miroslav Radović	1	Legia Warszawa
+Bartosz Bereszyński	Nemanja Nikolić	1	Legia Warszawa
+Bartosz Bereszyński	Radosław Cierzniak	1	Legia Warszawa
+Bartosz Bereszyński	Tomasz Brzyski	1	Legia Warszawa
+Bartosz Bereszyński	Tomasz Jodłowiec	1	Legia Warszawa
+Bartosz Bereszyński	Vadis Odjidja-Ofoe	1	Legia Warszawa
+Bartosz Bereszyński	Yuri Ribeiro	1	Legia Warszawa
+Bartosz Kapustka	Blaz Kramer	1	Legia Warszawa
+Bartosz Kapustka	Carlitos	1	Legia Warszawa
+Bartosz Kapustka	Ernest Muçi	1	Legia Warszawa
+Bartosz Kapustka	Jakub Rzeźniczak	1	Legia Warszawa
+Bartosz Kapustka	Josue	1	Legia Warszawa
+Bartosz Kapustka	Kacper Tobiasz	1	Legia Warszawa
+Bartosz Kapustka	Krzysztof Mączyński	1	Legia Warszawa
+Bartosz Kapustka	Luquinhas	1	Legia Warszawa
+Bartosz Kapustka	Maik Nawrocki	1	Legia Warszawa
+Bartosz Kapustka	Marc Gual	1	Legia Warszawa
+Bartosz Kapustka	Michał Pazdan	1	Legia Warszawa
+Bartosz Kapustka	Miroslav Radović	1	Legia Warszawa
+Bartosz Kapustka	Nemanja Nikolić	1	Legia Warszawa
+Bartosz Kapustka	Radosław Cierzniak	1	Legia Warszawa
+Bartosz Kapustka	Tomasz Brzyski	1	Legia Warszawa
+Bartosz Kapustka	Tomasz Jodłowiec	1	Legia Warszawa
+Bartosz Kapustka	Vadis Odjidja-Ofoe	1	Legia Warszawa
+Bartosz Kapustka	Yuri Ribeiro	1	Legia Warszawa
+Blaz Kramer	Carlitos	1	Legia Warszawa
+Blaz Kramer	Ernest Muçi	1	Legia Warszawa
+Blaz Kramer	Jakub Rzeźniczak	1	Legia Warszawa
+Blaz Kramer	Josue	1	Legia Warszawa
+Blaz Kramer	Kacper Tobiasz	1	Legia Warszawa
+Blaz Kramer	Krzysztof Mączyński	1	Legia Warszawa
+Blaz Kramer	Luquinhas	1	Legia Warszawa
+Blaz Kramer	Maik Nawrocki	1	Legia Warszawa
+Blaz Kramer	Marc Gual	1	Legia Warszawa
+Blaz Kramer	Michał Pazdan	1	Legia Warszawa
+Blaz Kramer	Miroslav Radović	1	Legia Warszawa
+Blaz Kramer	Nemanja Nikolić	1	Legia Warszawa
+Blaz Kramer	Radosław Cierzniak	1	Legia Warszawa
+Blaz Kramer	Tomasz Brzyski	1	Legia Warszawa
+Blaz Kramer	Tomasz Jodłowiec	1	Legia Warszawa
+Blaz Kramer	Vadis Odjidja-Ofoe	1	Legia Warszawa
+Blaz Kramer	Yuri Ribeiro	1	Legia Warszawa
+Carlitos	Ernest Muçi	1	Legia Warszawa
+Carlitos	Jakub Rzeźniczak	1	Legia Warszawa
+Carlitos	Josue	1	Legia Warszawa
+Carlitos	Kacper Tobiasz	1	Legia Warszawa
+Carlitos	Krzysztof Mączyński	1	Legia Warszawa
+Carlitos	Luquinhas	1	Legia Warszawa
+Carlitos	Maik Nawrocki	1	Legia Warszawa
+Carlitos	Marc Gual	1	Legia Warszawa
+Carlitos	Michał Pazdan	1	Legia Warszawa
+Carlitos	Miroslav Radović	1	Legia Warszawa
+Carlitos	Nemanja Nikolić	1	Legia Warszawa
+Carlitos	Radosław Cierzniak	1	Legia Warszawa
+Carlitos	Tomasz Brzyski	1	Legia Warszawa
+Carlitos	Tomasz Jodłowiec	1	Legia Warszawa
+Carlitos	Vadis Odjidja-Ofoe	1	Legia Warszawa
+Carlitos	Yuri Ribeiro	1	Legia Warszawa
+Ernest Muçi	Jakub Rzeźniczak	1	Legia Warszawa
+Ernest Muçi	Josue	1	Legia Warszawa
+Ernest Muçi	Kacper Tobiasz	1	Legia Warszawa
+Ernest Muçi	Krzysztof Mączyński	1	Legia Warszawa
+Ernest Muçi	Luquinhas	1	Legia Warszawa
+Ernest Muçi	Maik Nawrocki	1	Legia Warszawa
+Ernest Muçi	Marc Gual	1	Legia Warszawa
+Ernest Muçi	Michał Pazdan	1	Legia Warszawa
+Ernest Muçi	Miroslav Radović	1	Legia Warszawa
+Ernest Muçi	Nemanja Nikolić	1	Legia Warszawa
+Ernest Muçi	Radosław Cierzniak	1	Legia Warszawa
+Ernest Muçi	Tomasz Brzyski	1	Legia Warszawa
+Ernest Muçi	Tomasz Jodłowiec	1	Legia Warszawa
+Ernest Muçi	Vadis Odjidja-Ofoe	1	Legia Warszawa
+Ernest Muçi	Yuri Ribeiro	1	Legia Warszawa
+Jakub Rzeźniczak	Josue	1	Legia Warszawa
+Jakub Rzeźniczak	Kacper Tobiasz	1	Legia Warszawa
+Jakub Rzeźniczak	Krzysztof Mączyński	1	Legia Warszawa
+Jakub Rzeźniczak	Luquinhas	1	Legia Warszawa
+Jakub Rzeźniczak	Maik Nawrocki	1	Legia Warszawa
+Jakub Rzeźniczak	Marc Gual	1	Legia Warszawa
+Jakub Rzeźniczak	Michał Pazdan	1	Legia Warszawa
+Jakub Rzeźniczak	Miroslav Radović	1	Legia Warszawa
+Jakub Rzeźniczak	Nemanja Nikolić	1	Legia Warszawa
+Jakub Rzeźniczak	Radosław Cierzniak	1	Legia Warszawa
+Jakub Rzeźniczak	Tomasz Brzyski	1	Legia Warszawa
+Jakub Rzeźniczak	Tomasz Jodłowiec	1	Legia Warszawa
+Jakub Rzeźniczak	Vadis Odjidja-Ofoe	1	Legia Warszawa
+Jakub Rzeźniczak	Yuri Ribeiro	1	Legia Warszawa
+Josue	Kacper Tobiasz	1	Legia Warszawa
+Josue	Krzysztof Mączyński	1	Legia Warszawa
+Josue	Luquinhas	1	Legia Warszawa
+Josue	Maik Nawrocki	1	Legia Warszawa
+Josue	Marc Gual	1	Legia Warszawa
+Josue	Michał Pazdan	1	Legia Warszawa
+Josue	Miroslav Radović	1	Legia Warszawa
+Josue	Nemanja Nikolić	1	Legia Warszawa
+Josue	Radosław Cierzniak	1	Legia Warszawa
+Josue	Tomasz Brzyski	1	Legia Warszawa
+Josue	Tomasz Jodłowiec	1	Legia Warszawa
+Josue	Vadis Odjidja-Ofoe	1	Legia Warszawa
+Josue	Yuri Ribeiro	1	Legia Warszawa
+Kacper Tobiasz	Krzysztof Mączyński	1	Legia Warszawa
+Kacper Tobiasz	Luquinhas	1	Legia Warszawa
+Kacper Tobiasz	Maik Nawrocki	1	Legia Warszawa
+Kacper Tobiasz	Marc Gual	1	Legia Warszawa
+Kacper Tobiasz	Michał Pazdan	1	Legia Warszawa
+Kacper Tobiasz	Miroslav Radović	1	Legia Warszawa
+Kacper Tobiasz	Nemanja Nikolić	1	Legia Warszawa
+Kacper Tobiasz	Radosław Cierzniak	1	Legia Warszawa
+Kacper Tobiasz	Tomasz Brzyski	1	Legia Warszawa
+Kacper Tobiasz	Tomasz Jodłowiec	1	Legia Warszawa
+Kacper Tobiasz	Vadis Odjidja-Ofoe	1	Legia Warszawa
+Kacper Tobiasz	Yuri Ribeiro	1	Legia Warszawa
+Krzysztof Mączyński	Luquinhas	1	Legia Warszawa
+Krzysztof Mączyński	Maik Nawrocki	1	Legia Warszawa
+Krzysztof Mączyński	Marc Gual	1	Legia Warszawa
+Krzysztof Mączyński	Michał Pazdan	1	Legia Warszawa
+Krzysztof Mączyński	Miroslav Radović	1	Legia Warszawa
+Krzysztof Mączyński	Nemanja Nikolić	1	Legia Warszawa
+Krzysztof Mączyński	Radosław Cierzniak	1	Legia Warszawa
+Krzysztof Mączyński	Tomasz Brzyski	1	Legia Warszawa
+Krzysztof Mączyński	Tomasz Jodłowiec	1	Legia Warszawa
+Krzysztof Mączyński	Vadis Odjidja-Ofoe	1	Legia Warszawa
+Krzysztof Mączyński	Yuri Ribeiro	1	Legia Warszawa
+Luquinhas	Maik Nawrocki	1	Legia Warszawa
+Luquinhas	Marc Gual	1	Legia Warszawa
+Luquinhas	Michał Pazdan	1	Legia Warszawa
+Luquinhas	Miroslav Radović	1	Legia Warszawa
+Luquinhas	Nemanja Nikolić	1	Legia Warszawa
+Luquinhas	Radosław Cierzniak	1	Legia Warszawa
+Luquinhas	Tomasz Brzyski	1	Legia Warszawa
+Luquinhas	Tomasz Jodłowiec	1	Legia Warszawa
+Luquinhas	Vadis Odjidja-Ofoe	1	Legia Warszawa
+Luquinhas	Yuri Ribeiro	1	Legia Warszawa
+Maik Nawrocki	Marc Gual	1	Legia Warszawa
+Maik Nawrocki	Michał Pazdan	1	Legia Warszawa
+Maik Nawrocki	Miroslav Radović	1	Legia Warszawa
+Maik Nawrocki	Nemanja Nikolić	1	Legia Warszawa
+Maik Nawrocki	Radosław Cierzniak	1	Legia Warszawa
+Maik Nawrocki	Tomasz Brzyski	1	Legia Warszawa
+Maik Nawrocki	Tomasz Jodłowiec	1	Legia Warszawa
+Maik Nawrocki	Vadis Odjidja-Ofoe	1	Legia Warszawa
+Maik Nawrocki	Yuri Ribeiro	1	Legia Warszawa
+Marc Gual	Michał Pazdan	1	Legia Warszawa
+Marc Gual	Miroslav Radović	1	Legia Warszawa
+Marc Gual	Nemanja Nikolić	1	Legia Warszawa
+Marc Gual	Radosław Cierzniak	1	Legia Warszawa
+Marc Gual	Tomasz Brzyski	1	Legia Warszawa
+Marc Gual	Tomasz Jodłowiec	1	Legia Warszawa
+Marc Gual	Vadis Odjidja-Ofoe	1	Legia Warszawa
+Marc Gual	Yuri Ribeiro	1	Legia Warszawa
+Michał Pazdan	Miroslav Radović	1	Legia Warszawa
+Michał Pazdan	Nemanja Nikolić	1	Legia Warszawa
+Michał Pazdan	Radosław Cierzniak	1	Legia Warszawa
+Michał Pazdan	Tomasz Brzyski	1	Legia Warszawa
+Michał Pazdan	Tomasz Jodłowiec	1	Legia Warszawa
+Michał Pazdan	Vadis Odjidja-Ofoe	1	Legia Warszawa
+Michał Pazdan	Yuri Ribeiro	1	Legia Warszawa
+Miroslav Radović	Nemanja Nikolić	1	Legia Warszawa
+Miroslav Radović	Radosław Cierzniak	1	Legia Warszawa
+Miroslav Radović	Tomasz Brzyski	1	Legia Warszawa
+Miroslav Radović	Tomasz Jodłowiec	1	Legia Warszawa
+Miroslav Radović	Vadis Odjidja-Ofoe	1	Legia Warszawa
+Miroslav Radović	Yuri Ribeiro	1	Legia Warszawa
+Nemanja Nikolić	Radosław Cierzniak	1	Legia Warszawa
+Nemanja Nikolić	Tomasz Brzyski	1	Legia Warszawa
+Nemanja Nikolić	Tomasz Jodłowiec	1	Legia Warszawa
+Nemanja Nikolić	Vadis Odjidja-Ofoe	1	Legia Warszawa
+Nemanja Nikolić	Yuri Ribeiro	1	Legia Warszawa
+Radosław Cierzniak	Tomasz Brzyski	1	Legia Warszawa
+Radosław Cierzniak	Tomasz Jodłowiec	1	Legia Warszawa
+Radosław Cierzniak	Vadis Odjidja-Ofoe	1	Legia Warszawa
+Radosław Cierzniak	Yuri Ribeiro	1	Legia Warszawa
+Tomasz Brzyski	Tomasz Jodłowiec	1	Legia Warszawa
+Tomasz Brzyski	Vadis Odjidja-Ofoe	1	Legia Warszawa
+Tomasz Brzyski	Yuri Ribeiro	1	Legia Warszawa
+Tomasz Jodłowiec	Vadis Odjidja-Ofoe	1	Legia Warszawa
+Tomasz Jodłowiec	Yuri Ribeiro	1	Legia Warszawa
+Vadis Odjidja-Ofoe	Yuri Ribeiro	1	Legia Warszawa
+Alessandro Nesta	Andrea Pirlo	1	AC Milan
+Alessandro Nesta	Andriy Shevchenko	1	AC Milan
+Alessandro Nesta	Brahim Diaz	1	AC Milan
+Alessandro Nesta	Cafu	1	AC Milan
+Alessandro Nesta	Christian Pulisic	1	AC Milan
+Alessandro Nesta	Clarence Seedorf	1	AC Milan
+Alessandro Nesta	Davide Calabria	1	AC Milan
+Alessandro Nesta	Fikayo Tomori	1	AC Milan
+Alessandro Nesta	Filippo Inzaghi	1	AC Milan
+Alessandro Nesta	Gennaro Gattuso	1	AC Milan
+Alessandro Nesta	Gianluigi Donnarumma	1	AC Milan
+Alessandro Nesta	Ismael Bennacer	1	AC Milan
+Alessandro Nesta	Kaka	1	AC Milan
+Alessandro Nesta	Mike Maignan	1	AC Milan
+Alessandro Nesta	Olivier Giroud	1	AC Milan
+Alessandro Nesta	Paolo Maldini	1	AC Milan
+Alessandro Nesta	Rafael Leao	1	AC Milan
+Alessandro Nesta	Samuel Chukwueze	1	AC Milan
+Alessandro Nesta	Sandro Tonali	1	AC Milan
+Alessandro Nesta	Simon Kjær	1	AC Milan
+Alessandro Nesta	Theo Hernandez	1	AC Milan
+Alessandro Nesta	Zlatan Ibrahimović	1	AC Milan
+Andrea Pirlo	Andriy Shevchenko	1	AC Milan
+Andrea Pirlo	Brahim Diaz	1	AC Milan
+Andrea Pirlo	Cafu	1	AC Milan
+Andrea Pirlo	Christian Pulisic	1	AC Milan
+Andrea Pirlo	Clarence Seedorf	1	AC Milan
+Andrea Pirlo	Davide Calabria	1	AC Milan
+Andrea Pirlo	Fikayo Tomori	1	AC Milan
+Andrea Pirlo	Filippo Inzaghi	1	AC Milan
+Andrea Pirlo	Gennaro Gattuso	1	AC Milan
+Andrea Pirlo	Gianluigi Donnarumma	1	AC Milan
+Andrea Pirlo	Ismael Bennacer	1	AC Milan
+Andrea Pirlo	Kaka	1	AC Milan
+Andrea Pirlo	Mike Maignan	1	AC Milan
+Andrea Pirlo	Olivier Giroud	1	AC Milan
+Andrea Pirlo	Paolo Maldini	1	AC Milan
+Andrea Pirlo	Rafael Leao	1	AC Milan
+Andrea Pirlo	Samuel Chukwueze	1	AC Milan
+Andrea Pirlo	Sandro Tonali	1	AC Milan
+Andrea Pirlo	Simon Kjær	1	AC Milan
+Andrea Pirlo	Theo Hernandez	1	AC Milan
+Andrea Pirlo	Zlatan Ibrahimović	1	AC Milan
+Andriy Shevchenko	Brahim Diaz	1	AC Milan
+Andriy Shevchenko	Cafu	1	AC Milan
+Andriy Shevchenko	Christian Pulisic	1	AC Milan
+Andriy Shevchenko	Clarence Seedorf	1	AC Milan
+Andriy Shevchenko	Davide Calabria	1	AC Milan
+Andriy Shevchenko	Fikayo Tomori	1	AC Milan
+Andriy Shevchenko	Filippo Inzaghi	1	AC Milan
+Andriy Shevchenko	Gennaro Gattuso	1	AC Milan
+Andriy Shevchenko	Gianluigi Donnarumma	1	AC Milan
+Andriy Shevchenko	Ismael Bennacer	1	AC Milan
+Andriy Shevchenko	Kaka	1	AC Milan
+Andriy Shevchenko	Mike Maignan	1	AC Milan
+Andriy Shevchenko	Olivier Giroud	1	AC Milan
+Andriy Shevchenko	Paolo Maldini	1	AC Milan
+Andriy Shevchenko	Rafael Leao	1	AC Milan
+Andriy Shevchenko	Samuel Chukwueze	1	AC Milan
+Andriy Shevchenko	Sandro Tonali	1	AC Milan
+Andriy Shevchenko	Simon Kjær	1	AC Milan
+Andriy Shevchenko	Theo Hernandez	1	AC Milan
+Andriy Shevchenko	Zlatan Ibrahimović	1	AC Milan
+Brahim Diaz	Cafu	1	AC Milan
+Brahim Diaz	Christian Pulisic	1	AC Milan
+Brahim Diaz	Clarence Seedorf	1	AC Milan
+Brahim Diaz	Davide Calabria	1	AC Milan
+Brahim Diaz	Fikayo Tomori	1	AC Milan
+Brahim Diaz	Filippo Inzaghi	1	AC Milan
+Brahim Diaz	Gennaro Gattuso	1	AC Milan
+Brahim Diaz	Gianluigi Donnarumma	1	AC Milan
+Brahim Diaz	Ismael Bennacer	1	AC Milan
+Brahim Diaz	Kaka	1	AC Milan
+Brahim Diaz	Mike Maignan	1	AC Milan
+Brahim Diaz	Olivier Giroud	1	AC Milan
+Brahim Diaz	Paolo Maldini	1	AC Milan
+Brahim Diaz	Rafael Leao	1	AC Milan
+Brahim Diaz	Samuel Chukwueze	1	AC Milan
+Brahim Diaz	Sandro Tonali	1	AC Milan
+Brahim Diaz	Simon Kjær	1	AC Milan
+Brahim Diaz	Theo Hernandez	1	AC Milan
+Brahim Diaz	Zlatan Ibrahimović	1	AC Milan
+Cafu	Christian Pulisic	1	AC Milan
+Cafu	Clarence Seedorf	1	AC Milan
+Cafu	Davide Calabria	1	AC Milan
+Cafu	Fikayo Tomori	1	AC Milan
+Cafu	Filippo Inzaghi	1	AC Milan
+Cafu	Gennaro Gattuso	1	AC Milan
+Cafu	Gianluigi Donnarumma	1	AC Milan
+Cafu	Ismael Bennacer	1	AC Milan
+Cafu	Kaka	1	AC Milan
+Cafu	Mike Maignan	1	AC Milan
+Cafu	Olivier Giroud	1	AC Milan
+Cafu	Paolo Maldini	1	AC Milan
+Cafu	Rafael Leao	1	AC Milan
+Cafu	Samuel Chukwueze	1	AC Milan
+Cafu	Sandro Tonali	1	AC Milan
+Cafu	Simon Kjær	1	AC Milan
+Cafu	Theo Hernandez	1	AC Milan
+Cafu	Zlatan Ibrahimović	1	AC Milan
+Christian Pulisic	Clarence Seedorf	1	AC Milan
+Christian Pulisic	Davide Calabria	1	AC Milan
+Christian Pulisic	Fikayo Tomori	1	AC Milan
+Christian Pulisic	Filippo Inzaghi	1	AC Milan
+Christian Pulisic	Gennaro Gattuso	1	AC Milan
+Christian Pulisic	Gianluigi Donnarumma	1	AC Milan
+Christian Pulisic	Ismael Bennacer	1	AC Milan
+Christian Pulisic	Kaka	1	AC Milan
+Christian Pulisic	Mike Maignan	1	AC Milan
+Christian Pulisic	Olivier Giroud	1	AC Milan
+Christian Pulisic	Paolo Maldini	1	AC Milan
+Christian Pulisic	Rafael Leao	1	AC Milan
+Christian Pulisic	Samuel Chukwueze	1	AC Milan
+Christian Pulisic	Sandro Tonali	1	AC Milan
+Christian Pulisic	Simon Kjær	1	AC Milan
+Christian Pulisic	Theo Hernandez	1	AC Milan
+Christian Pulisic	Zlatan Ibrahimović	1	AC Milan
+Clarence Seedorf	Davide Calabria	1	AC Milan
+Clarence Seedorf	Fikayo Tomori	1	AC Milan
+Clarence Seedorf	Filippo Inzaghi	1	AC Milan
+Clarence Seedorf	Gennaro Gattuso	1	AC Milan
+Clarence Seedorf	Gianluigi Donnarumma	1	AC Milan
+Clarence Seedorf	Ismael Bennacer	1	AC Milan
+Clarence Seedorf	Kaka	1	AC Milan
+Clarence Seedorf	Mike Maignan	1	AC Milan
+Clarence Seedorf	Olivier Giroud	1	AC Milan
+Clarence Seedorf	Paolo Maldini	1	AC Milan
+Clarence Seedorf	Rafael Leao	1	AC Milan
+Clarence Seedorf	Samuel Chukwueze	1	AC Milan
+Clarence Seedorf	Sandro Tonali	1	AC Milan
+Clarence Seedorf	Simon Kjær	1	AC Milan
+Clarence Seedorf	Theo Hernandez	1	AC Milan
+Clarence Seedorf	Zlatan Ibrahimović	1	AC Milan
+Davide Calabria	Fikayo Tomori	1	AC Milan
+Davide Calabria	Filippo Inzaghi	1	AC Milan
+Davide Calabria	Gennaro Gattuso	1	AC Milan
+Davide Calabria	Gianluigi Donnarumma	1	AC Milan
+Davide Calabria	Ismael Bennacer	1	AC Milan
+Davide Calabria	Kaka	1	AC Milan
+Davide Calabria	Mike Maignan	1	AC Milan
+Davide Calabria	Olivier Giroud	1	AC Milan
+Davide Calabria	Paolo Maldini	1	AC Milan
+Davide Calabria	Rafael Leao	1	AC Milan
+Davide Calabria	Samuel Chukwueze	1	AC Milan
+Davide Calabria	Sandro Tonali	1	AC Milan
+Davide Calabria	Simon Kjær	1	AC Milan
+Davide Calabria	Theo Hernandez	1	AC Milan
+Davide Calabria	Zlatan Ibrahimović	1	AC Milan
+Fikayo Tomori	Filippo Inzaghi	1	AC Milan
+Fikayo Tomori	Gennaro Gattuso	1	AC Milan
+Fikayo Tomori	Gianluigi Donnarumma	1	AC Milan
+Fikayo Tomori	Ismael Bennacer	1	AC Milan
+Fikayo Tomori	Kaka	1	AC Milan
+Fikayo Tomori	Mike Maignan	1	AC Milan
+Fikayo Tomori	Olivier Giroud	1	AC Milan
+Fikayo Tomori	Paolo Maldini	1	AC Milan
+Fikayo Tomori	Rafael Leao	1	AC Milan
+Fikayo Tomori	Samuel Chukwueze	1	AC Milan
+Fikayo Tomori	Sandro Tonali	1	AC Milan
+Fikayo Tomori	Simon Kjær	1	AC Milan
+Fikayo Tomori	Theo Hernandez	1	AC Milan
+Fikayo Tomori	Zlatan Ibrahimović	1	AC Milan
+Filippo Inzaghi	Gennaro Gattuso	1	AC Milan
+Filippo Inzaghi	Gianluigi Donnarumma	1	AC Milan
+Filippo Inzaghi	Ismael Bennacer	1	AC Milan
+Filippo Inzaghi	Kaka	1	AC Milan
+Filippo Inzaghi	Mike Maignan	1	AC Milan
+Filippo Inzaghi	Olivier Giroud	1	AC Milan
+Filippo Inzaghi	Paolo Maldini	1	AC Milan
+Filippo Inzaghi	Rafael Leao	1	AC Milan
+Filippo Inzaghi	Samuel Chukwueze	1	AC Milan
+Filippo Inzaghi	Sandro Tonali	1	AC Milan
+Filippo Inzaghi	Simon Kjær	1	AC Milan
+Filippo Inzaghi	Theo Hernandez	1	AC Milan
+Filippo Inzaghi	Zlatan Ibrahimović	1	AC Milan
+Gennaro Gattuso	Gianluigi Donnarumma	1	AC Milan
+Gennaro Gattuso	Ismael Bennacer	1	AC Milan
+Gennaro Gattuso	Kaka	1	AC Milan
+Gennaro Gattuso	Mike Maignan	1	AC Milan
+Gennaro Gattuso	Olivier Giroud	1	AC Milan
+Gennaro Gattuso	Paolo Maldini	1	AC Milan
+Gennaro Gattuso	Rafael Leao	1	AC Milan
+Gennaro Gattuso	Samuel Chukwueze	1	AC Milan
+Gennaro Gattuso	Sandro Tonali	1	AC Milan
+Gennaro Gattuso	Simon Kjær	1	AC Milan
+Gennaro Gattuso	Theo Hernandez	1	AC Milan
+Gennaro Gattuso	Zlatan Ibrahimović	1	AC Milan
+Gianluigi Donnarumma	Ismael Bennacer	1	AC Milan
+Gianluigi Donnarumma	Kaka	1	AC Milan
+Gianluigi Donnarumma	Mike Maignan	1	AC Milan
+Gianluigi Donnarumma	Olivier Giroud	1	AC Milan
+Gianluigi Donnarumma	Paolo Maldini	1	AC Milan
+Gianluigi Donnarumma	Rafael Leao	1	AC Milan
+Gianluigi Donnarumma	Samuel Chukwueze	1	AC Milan
+Gianluigi Donnarumma	Sandro Tonali	1	AC Milan
+Gianluigi Donnarumma	Simon Kjær	1	AC Milan
+Gianluigi Donnarumma	Theo Hernandez	1	AC Milan
+Gianluigi Donnarumma	Zlatan Ibrahimović	1	AC Milan
+Ismael Bennacer	Kaka	1	AC Milan
+Ismael Bennacer	Mike Maignan	1	AC Milan
+Ismael Bennacer	Olivier Giroud	1	AC Milan
+Ismael Bennacer	Paolo Maldini	1	AC Milan
+Ismael Bennacer	Rafael Leao	1	AC Milan
+Ismael Bennacer	Samuel Chukwueze	1	AC Milan
+Ismael Bennacer	Sandro Tonali	1	AC Milan
+Ismael Bennacer	Simon Kjær	1	AC Milan
+Ismael Bennacer	Theo Hernandez	1	AC Milan
+Ismael Bennacer	Zlatan Ibrahimović	1	AC Milan
+Kaka	Mike Maignan	1	AC Milan
+Kaka	Olivier Giroud	1	AC Milan
+Kaka	Paolo Maldini	1	AC Milan
+Kaka	Rafael Leao	1	AC Milan
+Kaka	Samuel Chukwueze	1	AC Milan
+Kaka	Sandro Tonali	1	AC Milan
+Kaka	Simon Kjær	1	AC Milan
+Kaka	Theo Hernandez	1	AC Milan
+Kaka	Zlatan Ibrahimović	1	AC Milan
+Mike Maignan	Olivier Giroud	1	AC Milan
+Mike Maignan	Paolo Maldini	1	AC Milan
+Mike Maignan	Rafael Leao	1	AC Milan
+Mike Maignan	Samuel Chukwueze	1	AC Milan
+Mike Maignan	Sandro Tonali	1	AC Milan
+Mike Maignan	Simon Kjær	1	AC Milan
+Mike Maignan	Theo Hernandez	1	AC Milan
+Mike Maignan	Zlatan Ibrahimović	1	AC Milan
+Olivier Giroud	Paolo Maldini	1	AC Milan
+Olivier Giroud	Rafael Leao	1	AC Milan
+Olivier Giroud	Samuel Chukwueze	1	AC Milan
+Olivier Giroud	Sandro Tonali	1	AC Milan
+Olivier Giroud	Simon Kjær	1	AC Milan
+Olivier Giroud	Theo Hernandez	1	AC Milan
+Olivier Giroud	Zlatan Ibrahimović	1	AC Milan
+Paolo Maldini	Rafael Leao	1	AC Milan
+Paolo Maldini	Samuel Chukwueze	1	AC Milan
+Paolo Maldini	Sandro Tonali	1	AC Milan
+Paolo Maldini	Simon Kjær	1	AC Milan
+Paolo Maldini	Theo Hernandez	1	AC Milan
+Paolo Maldini	Zlatan Ibrahimović	1	AC Milan
+Rafael Leao	Samuel Chukwueze	1	AC Milan
+Rafael Leao	Sandro Tonali	1	AC Milan
+Rafael Leao	Simon Kjær	1	AC Milan
+Rafael Leao	Theo Hernandez	1	AC Milan
+Rafael Leao	Zlatan Ibrahimović	1	AC Milan
+Samuel Chukwueze	Sandro Tonali	1	AC Milan
+Samuel Chukwueze	Simon Kjær	1	AC Milan
+Samuel Chukwueze	Theo Hernandez	1	AC Milan
+Samuel Chukwueze	Zlatan Ibrahimović	1	AC Milan
+Sandro Tonali	Simon Kjær	1	AC Milan
+Sandro Tonali	Theo Hernandez	1	AC Milan
+Sandro Tonali	Zlatan Ibrahimović	1	AC Milan
+Simon Kjær	Theo Hernandez	1	AC Milan
+Simon Kjær	Zlatan Ibrahimović	1	AC Milan
+Theo Hernandez	Zlatan Ibrahimović	1	AC Milan
+Bryan Cristante	Cafu	1	AS Roma
+Bryan Cristante	Chris Smalling	1	AS Roma
+Bryan Cristante	Daniele De Rossi	1	AS Roma
+Bryan Cristante	Edin Dzeko	1	AS Roma
+Bryan Cristante	Francesco Totti	1	AS Roma
+Bryan Cristante	Gabriel Batistuta	1	AS Roma
+Bryan Cristante	Gianluca Mancini	1	AS Roma
+Bryan Cristante	John Arne Riise	1	AS Roma
+Bryan Cristante	Leonardo Spinazzola	1	AS Roma
+Bryan Cristante	Lorenzo Pellegrini	1	AS Roma
+Bryan Cristante	Mile Svilar	1	AS Roma
+Bryan Cristante	Nicolo Zaniolo	1	AS Roma
+Bryan Cristante	Paulo Dybala	1	AS Roma
+Bryan Cristante	Roger Ibanez	1	AS Roma
+Bryan Cristante	Romelu Lukaku	1	AS Roma
+Bryan Cristante	Rui Patricio	1	AS Roma
+Bryan Cristante	Stephan El Shaarawy	1	AS Roma
+Bryan Cristante	Tammy Abraham	1	AS Roma
+Cafu	Chris Smalling	1	AS Roma
+Cafu	Daniele De Rossi	1	AS Roma
+Cafu	Edin Dzeko	1	AS Roma
+Cafu	Francesco Totti	1	AS Roma
+Cafu	Gabriel Batistuta	1	AS Roma
+Cafu	Gianluca Mancini	1	AS Roma
+Cafu	John Arne Riise	1	AS Roma
+Cafu	Leonardo Spinazzola	1	AS Roma
+Cafu	Lorenzo Pellegrini	1	AS Roma
+Cafu	Mile Svilar	1	AS Roma
+Cafu	Nicolo Zaniolo	1	AS Roma
+Cafu	Paulo Dybala	1	AS Roma
+Cafu	Roger Ibanez	1	AS Roma
+Cafu	Romelu Lukaku	1	AS Roma
+Cafu	Rui Patricio	1	AS Roma
+Cafu	Stephan El Shaarawy	1	AS Roma
+Cafu	Tammy Abraham	1	AS Roma
+Chris Smalling	Daniele De Rossi	1	AS Roma
+Chris Smalling	Edin Dzeko	1	AS Roma
+Chris Smalling	Francesco Totti	1	AS Roma
+Chris Smalling	Gabriel Batistuta	1	AS Roma
+Chris Smalling	Gianluca Mancini	1	AS Roma
+Chris Smalling	John Arne Riise	1	AS Roma
+Chris Smalling	Leonardo Spinazzola	1	AS Roma
+Chris Smalling	Lorenzo Pellegrini	1	AS Roma
+Chris Smalling	Mile Svilar	1	AS Roma
+Chris Smalling	Nicolo Zaniolo	1	AS Roma
+Chris Smalling	Paulo Dybala	1	AS Roma
+Chris Smalling	Roger Ibanez	1	AS Roma
+Chris Smalling	Romelu Lukaku	1	AS Roma
+Chris Smalling	Rui Patricio	1	AS Roma
+Chris Smalling	Stephan El Shaarawy	1	AS Roma
+Chris Smalling	Tammy Abraham	1	AS Roma
+Daniele De Rossi	Edin Dzeko	1	AS Roma
+Daniele De Rossi	Francesco Totti	1	AS Roma
+Daniele De Rossi	Gabriel Batistuta	1	AS Roma
+Daniele De Rossi	Gianluca Mancini	1	AS Roma
+Daniele De Rossi	John Arne Riise	1	AS Roma
+Daniele De Rossi	Leonardo Spinazzola	1	AS Roma
+Daniele De Rossi	Lorenzo Pellegrini	1	AS Roma
+Daniele De Rossi	Mile Svilar	1	AS Roma
+Daniele De Rossi	Nicolo Zaniolo	1	AS Roma
+Daniele De Rossi	Paulo Dybala	1	AS Roma
+Daniele De Rossi	Roger Ibanez	1	AS Roma
+Daniele De Rossi	Romelu Lukaku	1	AS Roma
+Daniele De Rossi	Rui Patricio	1	AS Roma
+Daniele De Rossi	Stephan El Shaarawy	1	AS Roma
+Daniele De Rossi	Tammy Abraham	1	AS Roma
+Edin Dzeko	Francesco Totti	1	AS Roma
+Edin Dzeko	Gabriel Batistuta	1	AS Roma
+Edin Dzeko	Gianluca Mancini	1	AS Roma
+Edin Dzeko	John Arne Riise	1	AS Roma
+Edin Dzeko	Leonardo Spinazzola	1	AS Roma
+Edin Dzeko	Lorenzo Pellegrini	1	AS Roma
+Edin Dzeko	Mile Svilar	1	AS Roma
+Edin Dzeko	Nicolo Zaniolo	1	AS Roma
+Edin Dzeko	Paulo Dybala	1	AS Roma
+Edin Dzeko	Roger Ibanez	1	AS Roma
+Edin Dzeko	Romelu Lukaku	1	AS Roma
+Edin Dzeko	Rui Patricio	1	AS Roma
+Edin Dzeko	Stephan El Shaarawy	1	AS Roma
+Edin Dzeko	Tammy Abraham	1	AS Roma
+Francesco Totti	Gabriel Batistuta	1	AS Roma
+Francesco Totti	Gianluca Mancini	1	AS Roma
+Francesco Totti	John Arne Riise	1	AS Roma
+Francesco Totti	Leonardo Spinazzola	1	AS Roma
+Francesco Totti	Lorenzo Pellegrini	1	AS Roma
+Francesco Totti	Mile Svilar	1	AS Roma
+Francesco Totti	Nicolo Zaniolo	1	AS Roma
+Francesco Totti	Paulo Dybala	1	AS Roma
+Francesco Totti	Roger Ibanez	1	AS Roma
+Francesco Totti	Romelu Lukaku	1	AS Roma
+Francesco Totti	Rui Patricio	1	AS Roma
+Francesco Totti	Stephan El Shaarawy	1	AS Roma
+Francesco Totti	Tammy Abraham	1	AS Roma
+Gabriel Batistuta	Gianluca Mancini	1	AS Roma
+Gabriel Batistuta	John Arne Riise	1	AS Roma
+Gabriel Batistuta	Leonardo Spinazzola	1	AS Roma
+Gabriel Batistuta	Lorenzo Pellegrini	1	AS Roma
+Gabriel Batistuta	Mile Svilar	1	AS Roma
+Gabriel Batistuta	Nicolo Zaniolo	1	AS Roma
+Gabriel Batistuta	Paulo Dybala	1	AS Roma
+Gabriel Batistuta	Roger Ibanez	1	AS Roma
+Gabriel Batistuta	Romelu Lukaku	1	AS Roma
+Gabriel Batistuta	Rui Patricio	1	AS Roma
+Gabriel Batistuta	Stephan El Shaarawy	1	AS Roma
+Gabriel Batistuta	Tammy Abraham	1	AS Roma
+Gianluca Mancini	John Arne Riise	1	AS Roma
+Gianluca Mancini	Leonardo Spinazzola	1	AS Roma
+Gianluca Mancini	Lorenzo Pellegrini	1	AS Roma
+Gianluca Mancini	Mile Svilar	1	AS Roma
+Gianluca Mancini	Nicolo Zaniolo	1	AS Roma
+Gianluca Mancini	Paulo Dybala	1	AS Roma
+Gianluca Mancini	Roger Ibanez	1	AS Roma
+Gianluca Mancini	Romelu Lukaku	1	AS Roma
+Gianluca Mancini	Rui Patricio	1	AS Roma
+Gianluca Mancini	Stephan El Shaarawy	1	AS Roma
+Gianluca Mancini	Tammy Abraham	1	AS Roma
+John Arne Riise	Leonardo Spinazzola	1	AS Roma
+John Arne Riise	Lorenzo Pellegrini	1	AS Roma
+John Arne Riise	Mile Svilar	1	AS Roma
+John Arne Riise	Nicolo Zaniolo	1	AS Roma
+John Arne Riise	Paulo Dybala	1	AS Roma
+John Arne Riise	Roger Ibanez	1	AS Roma
+John Arne Riise	Romelu Lukaku	1	AS Roma
+John Arne Riise	Rui Patricio	1	AS Roma
+John Arne Riise	Stephan El Shaarawy	1	AS Roma
+John Arne Riise	Tammy Abraham	1	AS Roma
+Leonardo Spinazzola	Lorenzo Pellegrini	1	AS Roma
+Leonardo Spinazzola	Mile Svilar	1	AS Roma
+Leonardo Spinazzola	Nicolo Zaniolo	1	AS Roma
+Leonardo Spinazzola	Paulo Dybala	1	AS Roma
+Leonardo Spinazzola	Roger Ibanez	1	AS Roma
+Leonardo Spinazzola	Romelu Lukaku	1	AS Roma
+Leonardo Spinazzola	Rui Patricio	1	AS Roma
+Leonardo Spinazzola	Stephan El Shaarawy	1	AS Roma
+Leonardo Spinazzola	Tammy Abraham	1	AS Roma
+Lorenzo Pellegrini	Mile Svilar	1	AS Roma
+Lorenzo Pellegrini	Nicolo Zaniolo	1	AS Roma
+Lorenzo Pellegrini	Paulo Dybala	1	AS Roma
+Lorenzo Pellegrini	Roger Ibanez	1	AS Roma
+Lorenzo Pellegrini	Romelu Lukaku	1	AS Roma
+Lorenzo Pellegrini	Rui Patricio	1	AS Roma
+Lorenzo Pellegrini	Stephan El Shaarawy	1	AS Roma
+Lorenzo Pellegrini	Tammy Abraham	1	AS Roma
+Mile Svilar	Nicolo Zaniolo	1	AS Roma
+Mile Svilar	Paulo Dybala	1	AS Roma
+Mile Svilar	Roger Ibanez	1	AS Roma
+Mile Svilar	Romelu Lukaku	1	AS Roma
+Mile Svilar	Rui Patricio	1	AS Roma
+Mile Svilar	Stephan El Shaarawy	1	AS Roma
+Mile Svilar	Tammy Abraham	1	AS Roma
+Nicolo Zaniolo	Paulo Dybala	1	AS Roma
+Nicolo Zaniolo	Roger Ibanez	1	AS Roma
+Nicolo Zaniolo	Romelu Lukaku	1	AS Roma
+Nicolo Zaniolo	Rui Patricio	1	AS Roma
+Nicolo Zaniolo	Stephan El Shaarawy	1	AS Roma
+Nicolo Zaniolo	Tammy Abraham	1	AS Roma
+Paulo Dybala	Roger Ibanez	1	AS Roma
+Paulo Dybala	Romelu Lukaku	1	AS Roma
+Paulo Dybala	Rui Patricio	1	AS Roma
+Paulo Dybala	Stephan El Shaarawy	1	AS Roma
+Paulo Dybala	Tammy Abraham	1	AS Roma
+Roger Ibanez	Romelu Lukaku	1	AS Roma
+Roger Ibanez	Rui Patricio	1	AS Roma
+Roger Ibanez	Stephan El Shaarawy	1	AS Roma
+Roger Ibanez	Tammy Abraham	1	AS Roma
+Romelu Lukaku	Rui Patricio	1	AS Roma
+Romelu Lukaku	Stephan El Shaarawy	1	AS Roma
+Romelu Lukaku	Tammy Abraham	1	AS Roma
+Rui Patricio	Stephan El Shaarawy	1	AS Roma
+Rui Patricio	Tammy Abraham	1	AS Roma
+Stephan El Shaarawy	Tammy Abraham	1	AS Roma
+Antonio Rudiger	Casemiro	1	Real Madrid
+Antonio Rudiger	Claude Makelele	1	Real Madrid
+Antonio Rudiger	Cristiano Ronaldo	1	Real Madrid
+Antonio Rudiger	Dani Carvajal	1	Real Madrid
+Antonio Rudiger	David Alaba	1	Real Madrid
+Antonio Rudiger	Eduardo Camavinga	1	Real Madrid
+Antonio Rudiger	Federico Valverde	1	Real Madrid
+Antonio Rudiger	Ferland Mendy	1	Real Madrid
+Antonio Rudiger	Gareth Bale	1	Real Madrid
+Antonio Rudiger	Iker Casillas	1	Real Madrid
+Antonio Rudiger	Jude Bellingham	1	Real Madrid
+Antonio Rudiger	Karim Benzema	1	Real Madrid
+Antonio Rudiger	Kylian Mbappe	1	Real Madrid
+Antonio Rudiger	Luka Modric	1	Real Madrid
+Antonio Rudiger	Marcelo	1	Real Madrid
+Antonio Rudiger	Raphael Varane	1	Real Madrid
+Antonio Rudiger	Raul	1	Real Madrid
+Antonio Rudiger	Sergio Ramos	1	Real Madrid
+Antonio Rudiger	Thibaut Courtois	1	Real Madrid
+Antonio Rudiger	Toni Kroos	1	Real Madrid
+Antonio Rudiger	Zinedine Zidane	1	Real Madrid
+Casemiro	Claude Makelele	1	Real Madrid
+Casemiro	Cristiano Ronaldo	1	Real Madrid
+Casemiro	Cristiano Ronaldo	1	Manchester United
+Casemiro	Dani Carvajal	1	Real Madrid
+Casemiro	David Alaba	1	Real Madrid
+Casemiro	Eduardo Camavinga	1	Real Madrid
+Casemiro	Federico Valverde	1	Real Madrid
+Casemiro	Ferland Mendy	1	Real Madrid
+Casemiro	Gareth Bale	1	Real Madrid
+Casemiro	Iker Casillas	1	Real Madrid
+Casemiro	Jude Bellingham	1	Real Madrid
+Casemiro	Karim Benzema	1	Real Madrid
+Casemiro	Kylian Mbappe	1	Real Madrid
+Casemiro	Luka Modric	1	Real Madrid
+Casemiro	Marcelo	1	Real Madrid
+Casemiro	Raphael Varane	1	Real Madrid
+Casemiro	Raul	1	Real Madrid
+Casemiro	Sergio Ramos	1	Real Madrid
+Casemiro	Thibaut Courtois	1	Real Madrid
+Casemiro	Toni Kroos	1	Real Madrid
+Casemiro	Zinedine Zidane	1	Real Madrid
+Claude Makelele	Cristiano Ronaldo	1	Real Madrid
+Claude Makelele	Dani Carvajal	1	Real Madrid
+Claude Makelele	David Alaba	1	Real Madrid
+Claude Makelele	Eduardo Camavinga	1	Real Madrid
+Claude Makelele	Federico Valverde	1	Real Madrid
+Claude Makelele	Ferland Mendy	1	Real Madrid
+Claude Makelele	Gareth Bale	1	Real Madrid
+Claude Makelele	Iker Casillas	1	Real Madrid
+Claude Makelele	Jude Bellingham	1	Real Madrid
+Claude Makelele	Karim Benzema	1	Real Madrid
+Claude Makelele	Kylian Mbappe	1	Real Madrid
+Claude Makelele	Luka Modric	1	Real Madrid
+Claude Makelele	Marcelo	1	Real Madrid
+Claude Makelele	Raphael Varane	1	Real Madrid
+Claude Makelele	Raul	1	Real Madrid
+Claude Makelele	Sergio Ramos	1	Real Madrid
+Claude Makelele	Thibaut Courtois	1	Real Madrid
+Claude Makelele	Toni Kroos	1	Real Madrid
+Claude Makelele	Zinedine Zidane	1	Real Madrid
+Cristiano Ronaldo	Dani Carvajal	1	Real Madrid
+Cristiano Ronaldo	David Alaba	1	Real Madrid
+Cristiano Ronaldo	Eduardo Camavinga	1	Real Madrid
+Cristiano Ronaldo	Federico Valverde	1	Real Madrid
+Cristiano Ronaldo	Ferland Mendy	1	Real Madrid
+Cristiano Ronaldo	Gareth Bale	1	Real Madrid
+Cristiano Ronaldo	Iker Casillas	1	Real Madrid
+Cristiano Ronaldo	Jude Bellingham	1	Real Madrid
+Cristiano Ronaldo	Karim Benzema	1	Real Madrid
+Cristiano Ronaldo	Kylian Mbappe	1	Real Madrid
+Cristiano Ronaldo	Luka Modric	1	Real Madrid
+Cristiano Ronaldo	Marcelo	1	Real Madrid
+Cristiano Ronaldo	Raphael Varane	1	Real Madrid
+Cristiano Ronaldo	Raul	1	Real Madrid
+Cristiano Ronaldo	Sergio Ramos	1	Real Madrid
+Cristiano Ronaldo	Thibaut Courtois	1	Real Madrid
+Cristiano Ronaldo	Toni Kroos	1	Real Madrid
+Cristiano Ronaldo	Zinedine Zidane	1	Real Madrid
+Dani Carvajal	David Alaba	1	Real Madrid
+Dani Carvajal	Eduardo Camavinga	1	Real Madrid
+Dani Carvajal	Federico Valverde	1	Real Madrid
+Dani Carvajal	Ferland Mendy	1	Real Madrid
+Dani Carvajal	Gareth Bale	1	Real Madrid
+Dani Carvajal	Iker Casillas	1	Real Madrid
+Dani Carvajal	Jude Bellingham	1	Real Madrid
+Dani Carvajal	Karim Benzema	1	Real Madrid
+Dani Carvajal	Kylian Mbappe	1	Real Madrid
+Dani Carvajal	Luka Modric	1	Real Madrid
+Dani Carvajal	Marcelo	1	Real Madrid
+Dani Carvajal	Raphael Varane	1	Real Madrid
+Dani Carvajal	Raul	1	Real Madrid
+Dani Carvajal	Sergio Ramos	1	Real Madrid
+Dani Carvajal	Thibaut Courtois	1	Real Madrid
+Dani Carvajal	Toni Kroos	1	Real Madrid
+Dani Carvajal	Zinedine Zidane	1	Real Madrid
+David Alaba	Eduardo Camavinga	1	Real Madrid
+David Alaba	Federico Valverde	1	Real Madrid
+David Alaba	Ferland Mendy	1	Real Madrid
+David Alaba	Gareth Bale	1	Real Madrid
+David Alaba	Iker Casillas	1	Real Madrid
+David Alaba	Jude Bellingham	1	Real Madrid
+David Alaba	Karim Benzema	1	Real Madrid
+David Alaba	Kylian Mbappe	1	Real Madrid
+David Alaba	Luka Modric	1	Real Madrid
+David Alaba	Marcelo	1	Real Madrid
+David Alaba	Raphael Varane	1	Real Madrid
+David Alaba	Raul	1	Real Madrid
+David Alaba	Sergio Ramos	1	Real Madrid
+David Alaba	Thibaut Courtois	1	Real Madrid
+David Alaba	Zinedine Zidane	1	Real Madrid
+Eduardo Camavinga	Federico Valverde	1	Real Madrid
+Eduardo Camavinga	Ferland Mendy	1	Real Madrid
+Eduardo Camavinga	Gareth Bale	1	Real Madrid
+Eduardo Camavinga	Iker Casillas	1	Real Madrid
+Eduardo Camavinga	Jude Bellingham	1	Real Madrid
+Eduardo Camavinga	Karim Benzema	1	Real Madrid
+Eduardo Camavinga	Kylian Mbappe	1	Real Madrid
+Eduardo Camavinga	Luka Modric	1	Real Madrid
+Eduardo Camavinga	Marcelo	1	Real Madrid
+Eduardo Camavinga	Raphael Varane	1	Real Madrid
+Eduardo Camavinga	Raul	1	Real Madrid
+Eduardo Camavinga	Sergio Ramos	1	Real Madrid
+Eduardo Camavinga	Thibaut Courtois	1	Real Madrid
+Eduardo Camavinga	Toni Kroos	1	Real Madrid
+Eduardo Camavinga	Zinedine Zidane	1	Real Madrid
+Federico Valverde	Ferland Mendy	1	Real Madrid
+Federico Valverde	Gareth Bale	1	Real Madrid
+Federico Valverde	Iker Casillas	1	Real Madrid
+Federico Valverde	Jude Bellingham	1	Real Madrid
+Federico Valverde	Karim Benzema	1	Real Madrid
+Federico Valverde	Kylian Mbappe	1	Real Madrid
+Federico Valverde	Luka Modric	1	Real Madrid
+Federico Valverde	Marcelo	1	Real Madrid
+Federico Valverde	Raphael Varane	1	Real Madrid
+Federico Valverde	Raul	1	Real Madrid
+Federico Valverde	Sergio Ramos	1	Real Madrid
+Federico Valverde	Thibaut Courtois	1	Real Madrid
+Federico Valverde	Toni Kroos	1	Real Madrid
+Federico Valverde	Zinedine Zidane	1	Real Madrid
+Ferland Mendy	Gareth Bale	1	Real Madrid
+Ferland Mendy	Iker Casillas	1	Real Madrid
+Ferland Mendy	Jude Bellingham	1	Real Madrid
+Ferland Mendy	Karim Benzema	1	Real Madrid
+Ferland Mendy	Kylian Mbappe	1	Real Madrid
+Ferland Mendy	Luka Modric	1	Real Madrid
+Ferland Mendy	Marcelo	1	Real Madrid
+Ferland Mendy	Raphael Varane	1	Real Madrid
+Ferland Mendy	Raul	1	Real Madrid
+Ferland Mendy	Sergio Ramos	1	Real Madrid
+Ferland Mendy	Thibaut Courtois	1	Real Madrid
+Ferland Mendy	Toni Kroos	1	Real Madrid
+Ferland Mendy	Zinedine Zidane	1	Real Madrid
+Gareth Bale	Iker Casillas	1	Real Madrid
+Gareth Bale	Jude Bellingham	1	Real Madrid
+Gareth Bale	Karim Benzema	1	Real Madrid
+Gareth Bale	Kylian Mbappe	1	Real Madrid
+Gareth Bale	Luka Modric	1	Real Madrid
+Gareth Bale	Marcelo	1	Real Madrid
+Gareth Bale	Raphael Varane	1	Real Madrid
+Gareth Bale	Raul	1	Real Madrid
+Gareth Bale	Sergio Ramos	1	Real Madrid
+Gareth Bale	Thibaut Courtois	1	Real Madrid
+Gareth Bale	Toni Kroos	1	Real Madrid
+Gareth Bale	Zinedine Zidane	1	Real Madrid
+Iker Casillas	Jude Bellingham	1	Real Madrid
+Iker Casillas	Karim Benzema	1	Real Madrid
+Iker Casillas	Kylian Mbappe	1	Real Madrid
+Iker Casillas	Luka Modric	1	Real Madrid
+Iker Casillas	Marcelo	1	Real Madrid
+Iker Casillas	Raphael Varane	1	Real Madrid
+Iker Casillas	Raul	1	Real Madrid
+Iker Casillas	Sergio Ramos	1	Real Madrid
+Iker Casillas	Thibaut Courtois	1	Real Madrid
+Iker Casillas	Toni Kroos	1	Real Madrid
+Iker Casillas	Zinedine Zidane	1	Real Madrid
+Jude Bellingham	Karim Benzema	1	Real Madrid
+Jude Bellingham	Kylian Mbappe	1	Real Madrid
+Jude Bellingham	Luka Modric	1	Real Madrid
+Jude Bellingham	Marcelo	1	Real Madrid
+Jude Bellingham	Raphael Varane	1	Real Madrid
+Jude Bellingham	Raul	1	Real Madrid
+Jude Bellingham	Sergio Ramos	1	Real Madrid
+Jude Bellingham	Thibaut Courtois	1	Real Madrid
+Jude Bellingham	Toni Kroos	1	Real Madrid
+Jude Bellingham	Zinedine Zidane	1	Real Madrid
+Karim Benzema	Kylian Mbappe	1	Real Madrid
+Karim Benzema	Luka Modric	1	Real Madrid
+Karim Benzema	Marcelo	1	Real Madrid
+Karim Benzema	Raphael Varane	1	Real Madrid
+Karim Benzema	Raul	1	Real Madrid
+Karim Benzema	Sergio Ramos	1	Real Madrid
+Karim Benzema	Thibaut Courtois	1	Real Madrid
+Karim Benzema	Toni Kroos	1	Real Madrid
+Karim Benzema	Zinedine Zidane	1	Real Madrid
+Kylian Mbappe	Luka Modric	1	Real Madrid
+Kylian Mbappe	Marcelo	1	Real Madrid
+Kylian Mbappe	Raphael Varane	1	Real Madrid
+Kylian Mbappe	Raul	1	Real Madrid
+Kylian Mbappe	Sergio Ramos	1	Real Madrid
+Kylian Mbappe	Thibaut Courtois	1	Real Madrid
+Kylian Mbappe	Toni Kroos	1	Real Madrid
+Kylian Mbappe	Zinedine Zidane	1	Real Madrid
+Luka Modric	Marcelo	1	Real Madrid
+Luka Modric	Raphael Varane	1	Real Madrid
+Luka Modric	Raul	1	Real Madrid
+Luka Modric	Sergio Ramos	1	Real Madrid
+Luka Modric	Thibaut Courtois	1	Real Madrid
+Luka Modric	Toni Kroos	1	Real Madrid
+Luka Modric	Zinedine Zidane	1	Real Madrid
+Marcelo	Raphael Varane	1	Real Madrid
+Marcelo	Raul	1	Real Madrid
+Marcelo	Sergio Ramos	1	Real Madrid
+Marcelo	Thibaut Courtois	1	Real Madrid
+Marcelo	Toni Kroos	1	Real Madrid
+Marcelo	Zinedine Zidane	1	Real Madrid
+Raphael Varane	Raul	1	Real Madrid
+Raphael Varane	Sergio Ramos	1	Real Madrid
+Raphael Varane	Thibaut Courtois	1	Real Madrid
+Raphael Varane	Toni Kroos	1	Real Madrid
+Raphael Varane	Zinedine Zidane	1	Real Madrid
+Raul	Sergio Ramos	1	Real Madrid
+Raul	Thibaut Courtois	1	Real Madrid
+Raul	Toni Kroos	1	Real Madrid
+Raul	Zinedine Zidane	1	Real Madrid
+Sergio Ramos	Thibaut Courtois	1	Real Madrid
+Sergio Ramos	Toni Kroos	1	Real Madrid
+Sergio Ramos	Zinedine Zidane	1	Real Madrid
+Thibaut Courtois	Toni Kroos	1	Real Madrid
+Thibaut Courtois	Zinedine Zidane	1	Real Madrid
+Toni Kroos	Zinedine Zidane	1	Real Madrid
+Alejandro Balde	Andres Iniesta	1	Barcelona
+Alejandro Balde	Carles Puyol	1	Barcelona
+Alejandro Balde	Dani Alves	1	Barcelona
+Alejandro Balde	Frenkie de Jong	1	Barcelona
+Alejandro Balde	Gavi	1	Barcelona
+Alejandro Balde	Gerard Pique	1	Barcelona
+Alejandro Balde	Ilkay Gundogan	1	Barcelona
+Alejandro Balde	Inaki Pena	1	Barcelona
+Alejandro Balde	Jordi Alba	1	Barcelona
+Alejandro Balde	Jules Kounde	1	Barcelona
+Alejandro Balde	Lamine Yamal	1	Barcelona
+Alejandro Balde	Lionel Messi	1	Barcelona
+Alejandro Balde	Luis Suarez	1	Barcelona
+Alejandro Balde	Marc-Andre ter Stegen	1	Barcelona
+Alejandro Balde	Neymar	1	Barcelona
+Alejandro Balde	Pedri	1	Barcelona
+Alejandro Balde	Raphinha	1	Barcelona
+Alejandro Balde	Robert Lewandowski	1	Barcelona
+Alejandro Balde	Ronald Araujo	1	Barcelona
+Alejandro Balde	Samuel Eto'o	1	Barcelona
+Alejandro Balde	Sergio Busquets	1	Barcelona
+Alejandro Balde	Victor Valdes	1	Barcelona
+Alejandro Balde	Xavi Hernandez	1	Barcelona
+Andres Iniesta	Carles Puyol	1	Barcelona
+Andres Iniesta	Dani Alves	1	Barcelona
+Andres Iniesta	Frenkie de Jong	1	Barcelona
+Andres Iniesta	Gavi	1	Barcelona
+Andres Iniesta	Gerard Pique	1	Barcelona
+Andres Iniesta	Ilkay Gundogan	1	Barcelona
+Andres Iniesta	Inaki Pena	1	Barcelona
+Andres Iniesta	Jordi Alba	1	Barcelona
+Andres Iniesta	Jules Kounde	1	Barcelona
+Andres Iniesta	Lamine Yamal	1	Barcelona
+Andres Iniesta	Lionel Messi	1	Barcelona
+Andres Iniesta	Luis Suarez	1	Barcelona
+Andres Iniesta	Marc-Andre ter Stegen	1	Barcelona
+Andres Iniesta	Neymar	1	Barcelona
+Andres Iniesta	Pedri	1	Barcelona
+Andres Iniesta	Raphinha	1	Barcelona
+Andres Iniesta	Robert Lewandowski	1	Barcelona
+Andres Iniesta	Ronald Araujo	1	Barcelona
+Andres Iniesta	Samuel Eto'o	1	Barcelona
+Andres Iniesta	Sergio Busquets	1	Barcelona
+Andres Iniesta	Victor Valdes	1	Barcelona
+Andres Iniesta	Xavi Hernandez	1	Barcelona
+Carles Puyol	Dani Alves	1	Barcelona
+Carles Puyol	Frenkie de Jong	1	Barcelona
+Carles Puyol	Gavi	1	Barcelona
+Carles Puyol	Gerard Pique	1	Barcelona
+Carles Puyol	Ilkay Gundogan	1	Barcelona
+Carles Puyol	Inaki Pena	1	Barcelona
+Carles Puyol	Jordi Alba	1	Barcelona
+Carles Puyol	Jules Kounde	1	Barcelona
+Carles Puyol	Lamine Yamal	1	Barcelona
+Carles Puyol	Lionel Messi	1	Barcelona
+Carles Puyol	Luis Suarez	1	Barcelona
+Carles Puyol	Marc-Andre ter Stegen	1	Barcelona
+Carles Puyol	Neymar	1	Barcelona
+Carles Puyol	Pedri	1	Barcelona
+Carles Puyol	Raphinha	1	Barcelona
+Carles Puyol	Robert Lewandowski	1	Barcelona
+Carles Puyol	Ronald Araujo	1	Barcelona
+Carles Puyol	Samuel Eto'o	1	Barcelona
+Carles Puyol	Sergio Busquets	1	Barcelona
+Carles Puyol	Victor Valdes	1	Barcelona
+Carles Puyol	Xavi Hernandez	1	Barcelona
+Dani Alves	Frenkie de Jong	1	Barcelona
+Dani Alves	Gavi	1	Barcelona
+Dani Alves	Gerard Pique	1	Barcelona
+Dani Alves	Ilkay Gundogan	1	Barcelona
+Dani Alves	Inaki Pena	1	Barcelona
+Dani Alves	Jordi Alba	1	Barcelona
+Dani Alves	Jules Kounde	1	Barcelona
+Dani Alves	Lamine Yamal	1	Barcelona
+Dani Alves	Lionel Messi	1	Barcelona
+Dani Alves	Luis Suarez	1	Barcelona
+Dani Alves	Marc-Andre ter Stegen	1	Barcelona
+Dani Alves	Neymar	1	Barcelona
+Dani Alves	Pedri	1	Barcelona
+Dani Alves	Raphinha	1	Barcelona
+Dani Alves	Robert Lewandowski	1	Barcelona
+Dani Alves	Ronald Araujo	1	Barcelona
+Dani Alves	Samuel Eto'o	1	Barcelona
+Dani Alves	Sergio Busquets	1	Barcelona
+Dani Alves	Victor Valdes	1	Barcelona
+Dani Alves	Xavi Hernandez	1	Barcelona
+Frenkie de Jong	Gavi	1	Barcelona
+Frenkie de Jong	Gerard Pique	1	Barcelona
+Frenkie de Jong	Ilkay Gundogan	1	Barcelona
+Frenkie de Jong	Inaki Pena	1	Barcelona
+Frenkie de Jong	Jordi Alba	1	Barcelona
+Frenkie de Jong	Jules Kounde	1	Barcelona
+Frenkie de Jong	Lamine Yamal	1	Barcelona
+Frenkie de Jong	Lionel Messi	1	Barcelona
+Frenkie de Jong	Luis Suarez	1	Barcelona
+Frenkie de Jong	Marc-Andre ter Stegen	1	Barcelona
+Frenkie de Jong	Neymar	1	Barcelona
+Frenkie de Jong	Pedri	1	Barcelona
+Frenkie de Jong	Raphinha	1	Barcelona
+Frenkie de Jong	Robert Lewandowski	1	Barcelona
+Frenkie de Jong	Ronald Araujo	1	Barcelona
+Frenkie de Jong	Samuel Eto'o	1	Barcelona
+Frenkie de Jong	Sergio Busquets	1	Barcelona
+Frenkie de Jong	Victor Valdes	1	Barcelona
+Frenkie de Jong	Xavi Hernandez	1	Barcelona
+Gavi	Gerard Pique	1	Barcelona
+Gavi	Ilkay Gundogan	1	Barcelona
+Gavi	Inaki Pena	1	Barcelona
+Gavi	Jordi Alba	1	Barcelona
+Gavi	Jules Kounde	1	Barcelona
+Gavi	Lamine Yamal	1	Barcelona
+Gavi	Lionel Messi	1	Barcelona
+Gavi	Luis Suarez	1	Barcelona
+Gavi	Marc-Andre ter Stegen	1	Barcelona
+Gavi	Neymar	1	Barcelona
+Gavi	Pedri	1	Barcelona
+Gavi	Raphinha	1	Barcelona
+Gavi	Robert Lewandowski	1	Barcelona
+Gavi	Ronald Araujo	1	Barcelona
+Gavi	Samuel Eto'o	1	Barcelona
+Gavi	Sergio Busquets	1	Barcelona
+Gavi	Victor Valdes	1	Barcelona
+Gavi	Xavi Hernandez	1	Barcelona
+Gerard Pique	Ilkay Gundogan	1	Barcelona
+Gerard Pique	Inaki Pena	1	Barcelona
+Gerard Pique	Jordi Alba	1	Barcelona
+Gerard Pique	Jules Kounde	1	Barcelona
+Gerard Pique	Lamine Yamal	1	Barcelona
+Gerard Pique	Lionel Messi	1	Barcelona
+Gerard Pique	Luis Suarez	1	Barcelona
+Gerard Pique	Marc-Andre ter Stegen	1	Barcelona
+Gerard Pique	Neymar	1	Barcelona
+Gerard Pique	Pedri	1	Barcelona
+Gerard Pique	Raphinha	1	Barcelona
+Gerard Pique	Robert Lewandowski	1	Barcelona
+Gerard Pique	Ronald Araujo	1	Barcelona
+Gerard Pique	Samuel Eto'o	1	Barcelona
+Gerard Pique	Sergio Busquets	1	Barcelona
+Gerard Pique	Victor Valdes	1	Barcelona
+Gerard Pique	Xavi Hernandez	1	Barcelona
+Ilkay Gundogan	Inaki Pena	1	Barcelona
+Ilkay Gundogan	Jordi Alba	1	Barcelona
+Ilkay Gundogan	Jules Kounde	1	Barcelona
+Ilkay Gundogan	Lamine Yamal	1	Barcelona
+Ilkay Gundogan	Lionel Messi	1	Barcelona
+Ilkay Gundogan	Luis Suarez	1	Barcelona
+Ilkay Gundogan	Marc-Andre ter Stegen	1	Barcelona
+Ilkay Gundogan	Neymar	1	Barcelona
+Ilkay Gundogan	Pedri	1	Barcelona
+Ilkay Gundogan	Raphinha	1	Barcelona
+Ilkay Gundogan	Robert Lewandowski	1	Barcelona
+Ilkay Gundogan	Ronald Araujo	1	Barcelona
+Ilkay Gundogan	Samuel Eto'o	1	Barcelona
+Ilkay Gundogan	Sergio Busquets	1	Barcelona
+Ilkay Gundogan	Victor Valdes	1	Barcelona
+Ilkay Gundogan	Xavi Hernandez	1	Barcelona
+Inaki Pena	Jordi Alba	1	Barcelona
+Inaki Pena	Jules Kounde	1	Barcelona
+Inaki Pena	Lamine Yamal	1	Barcelona
+Inaki Pena	Lionel Messi	1	Barcelona
+Inaki Pena	Luis Suarez	1	Barcelona
+Inaki Pena	Marc-Andre ter Stegen	1	Barcelona
+Inaki Pena	Neymar	1	Barcelona
+Inaki Pena	Pedri	1	Barcelona
+Inaki Pena	Raphinha	1	Barcelona
+Inaki Pena	Robert Lewandowski	1	Barcelona
+Inaki Pena	Ronald Araujo	1	Barcelona
+Inaki Pena	Samuel Eto'o	1	Barcelona
+Inaki Pena	Sergio Busquets	1	Barcelona
+Inaki Pena	Victor Valdes	1	Barcelona
+Inaki Pena	Xavi Hernandez	1	Barcelona
+Jordi Alba	Jules Kounde	1	Barcelona
+Jordi Alba	Lamine Yamal	1	Barcelona
+Jordi Alba	Lionel Messi	1	Barcelona
+Jordi Alba	Luis Suarez	1	Barcelona
+Jordi Alba	Marc-Andre ter Stegen	1	Barcelona
+Jordi Alba	Neymar	1	Barcelona
+Jordi Alba	Pedri	1	Barcelona
+Jordi Alba	Raphinha	1	Barcelona
+Jordi Alba	Robert Lewandowski	1	Barcelona
+Jordi Alba	Ronald Araujo	1	Barcelona
+Jordi Alba	Samuel Eto'o	1	Barcelona
+Jordi Alba	Sergio Busquets	1	Barcelona
+Jordi Alba	Victor Valdes	1	Barcelona
+Jordi Alba	Xavi Hernandez	1	Barcelona
+Jules Kounde	Lamine Yamal	1	Barcelona
+Jules Kounde	Lionel Messi	1	Barcelona
+Jules Kounde	Luis Suarez	1	Barcelona
+Jules Kounde	Marc-Andre ter Stegen	1	Barcelona
+Jules Kounde	Neymar	1	Barcelona
+Jules Kounde	Pedri	1	Barcelona
+Jules Kounde	Raphinha	1	Barcelona
+Jules Kounde	Robert Lewandowski	1	Barcelona
+Jules Kounde	Ronald Araujo	1	Barcelona
+Jules Kounde	Samuel Eto'o	1	Barcelona
+Jules Kounde	Sergio Busquets	1	Barcelona
+Jules Kounde	Victor Valdes	1	Barcelona
+Jules Kounde	Xavi Hernandez	1	Barcelona
+Lamine Yamal	Lionel Messi	1	Barcelona
+Lamine Yamal	Luis Suarez	1	Barcelona
+Lamine Yamal	Marc-Andre ter Stegen	1	Barcelona
+Lamine Yamal	Neymar	1	Barcelona
+Lamine Yamal	Pedri	1	Barcelona
+Lamine Yamal	Raphinha	1	Barcelona
+Lamine Yamal	Robert Lewandowski	1	Barcelona
+Lamine Yamal	Ronald Araujo	1	Barcelona
+Lamine Yamal	Samuel Eto'o	1	Barcelona
+Lamine Yamal	Sergio Busquets	1	Barcelona
+Lamine Yamal	Victor Valdes	1	Barcelona
+Lamine Yamal	Xavi Hernandez	1	Barcelona
+Lionel Messi	Luis Suarez	1	Barcelona
+Lionel Messi	Marc-Andre ter Stegen	1	Barcelona
+Lionel Messi	Neymar	1	Barcelona
+Lionel Messi	Pedri	1	Barcelona
+Lionel Messi	Raphinha	1	Barcelona
+Lionel Messi	Robert Lewandowski	1	Barcelona
+Lionel Messi	Ronald Araujo	1	Barcelona
+Lionel Messi	Samuel Eto'o	1	Barcelona
+Lionel Messi	Sergio Busquets	1	Barcelona
+Lionel Messi	Victor Valdes	1	Barcelona
+Lionel Messi	Xavi Hernandez	1	Barcelona
+Luis Suarez	Marc-Andre ter Stegen	1	Barcelona
+Luis Suarez	Neymar	1	Barcelona
+Luis Suarez	Pedri	1	Barcelona
+Luis Suarez	Raphinha	1	Barcelona
+Luis Suarez	Robert Lewandowski	1	Barcelona
+Luis Suarez	Ronald Araujo	1	Barcelona
+Luis Suarez	Samuel Eto'o	1	Barcelona
+Luis Suarez	Sergio Busquets	1	Barcelona
+Luis Suarez	Victor Valdes	1	Barcelona
+Luis Suarez	Xavi Hernandez	1	Barcelona
+Marc-Andre ter Stegen	Neymar	1	Barcelona
+Marc-Andre ter Stegen	Pedri	1	Barcelona
+Marc-Andre ter Stegen	Raphinha	1	Barcelona
+Marc-Andre ter Stegen	Robert Lewandowski	1	Barcelona
+Marc-Andre ter Stegen	Ronald Araujo	1	Barcelona
+Marc-Andre ter Stegen	Samuel Eto'o	1	Barcelona
+Marc-Andre ter Stegen	Sergio Busquets	1	Barcelona
+Marc-Andre ter Stegen	Victor Valdes	1	Barcelona
+Marc-Andre ter Stegen	Xavi Hernandez	1	Barcelona
+Neymar	Pedri	1	Barcelona
+Neymar	Raphinha	1	Barcelona
+Neymar	Robert Lewandowski	1	Barcelona
+Neymar	Ronald Araujo	1	Barcelona
+Neymar	Samuel Eto'o	1	Barcelona
+Neymar	Sergio Busquets	1	Barcelona
+Neymar	Victor Valdes	1	Barcelona
+Neymar	Xavi Hernandez	1	Barcelona
+Pedri	Raphinha	1	Barcelona
+Pedri	Robert Lewandowski	1	Barcelona
+Pedri	Ronald Araujo	1	Barcelona
+Pedri	Samuel Eto'o	1	Barcelona
+Pedri	Sergio Busquets	1	Barcelona
+Pedri	Victor Valdes	1	Barcelona
+Pedri	Xavi Hernandez	1	Barcelona
+Raphinha	Robert Lewandowski	1	Barcelona
+Raphinha	Ronald Araujo	1	Barcelona
+Raphinha	Samuel Eto'o	1	Barcelona
+Raphinha	Sergio Busquets	1	Barcelona
+Raphinha	Victor Valdes	1	Barcelona
+Raphinha	Xavi Hernandez	1	Barcelona
+Robert Lewandowski	Ronald Araujo	1	Barcelona
+Robert Lewandowski	Samuel Eto'o	1	Barcelona
+Robert Lewandowski	Sergio Busquets	1	Barcelona
+Robert Lewandowski	Victor Valdes	1	Barcelona
+Robert Lewandowski	Xavi Hernandez	1	Barcelona
+Ronald Araujo	Samuel Eto'o	1	Barcelona
+Ronald Araujo	Sergio Busquets	1	Barcelona
+Ronald Araujo	Victor Valdes	1	Barcelona
+Ronald Araujo	Xavi Hernandez	1	Barcelona
+Samuel Eto'o	Sergio Busquets	1	Barcelona
+Samuel Eto'o	Victor Valdes	1	Barcelona
+Samuel Eto'o	Xavi Hernandez	1	Barcelona
+Sergio Busquets	Victor Valdes	1	Barcelona
+Sergio Busquets	Xavi Hernandez	1	Barcelona
+Victor Valdes	Xavi Hernandez	1	Barcelona
+Andre Onana	Anthony Martial	1	Manchester United
+Andre Onana	Bruno Fernandes	1	Manchester United
+Andre Onana	Casemiro	1	Manchester United
+Andre Onana	Christian Eriksen	1	Manchester United
+Andre Onana	Cristiano Ronaldo	1	Manchester United
+Andre Onana	David Beckham	1	Manchester United
+Andre Onana	David de Gea	1	Manchester United
+Andre Onana	Eric Cantona	1	Manchester United
+Andre Onana	Gary Neville	1	Manchester United
+Andre Onana	Harry Maguire	1	Manchester United
+Andre Onana	Lisandro Martinez	1	Manchester United
+Andre Onana	Luke Shaw	1	Manchester United
+Andre Onana	Nemanja Vidic	1	Manchester United
+Andre Onana	Patrice Evra	1	Manchester United
+Andre Onana	Paul Scholes	1	Manchester United
+Andre Onana	Peter Schmeichel	1	Manchester United
+Andre Onana	Rio Ferdinand	1	Manchester United
+Andre Onana	Roy Keane	1	Manchester United
+Andre Onana	Ruud van Nistelrooy	1	Manchester United
+Andre Onana	Ryan Giggs	1	Manchester United
+Andre Onana	Wayne Rooney	1	Manchester United
+Anthony Martial	Bruno Fernandes	1	Manchester United
+Anthony Martial	Casemiro	1	Manchester United
+Anthony Martial	Christian Eriksen	1	Manchester United
+Anthony Martial	Cristiano Ronaldo	1	Manchester United
+Anthony Martial	David Beckham	1	Manchester United
+Anthony Martial	David de Gea	1	Manchester United
+Anthony Martial	Eric Cantona	1	Manchester United
+Anthony Martial	Gary Neville	1	Manchester United
+Anthony Martial	Harry Maguire	1	Manchester United
+Anthony Martial	Lisandro Martinez	1	Manchester United
+Anthony Martial	Luke Shaw	1	Manchester United
+Anthony Martial	Nemanja Vidic	1	Manchester United
+Anthony Martial	Patrice Evra	1	Manchester United
+Anthony Martial	Paul Scholes	1	Manchester United
+Anthony Martial	Peter Schmeichel	1	Manchester United
+Anthony Martial	Rio Ferdinand	1	Manchester United
+Anthony Martial	Roy Keane	1	Manchester United
+Anthony Martial	Ruud van Nistelrooy	1	Manchester United
+Anthony Martial	Ryan Giggs	1	Manchester United
+Anthony Martial	Wayne Rooney	1	Manchester United
+Bruno Fernandes	Casemiro	1	Manchester United
+Bruno Fernandes	Christian Eriksen	1	Manchester United
+Bruno Fernandes	Cristiano Ronaldo	1	Manchester United
+Bruno Fernandes	David Beckham	1	Manchester United
+Bruno Fernandes	David de Gea	1	Manchester United
+Bruno Fernandes	Eric Cantona	1	Manchester United
+Bruno Fernandes	Gary Neville	1	Manchester United
+Bruno Fernandes	Harry Maguire	1	Manchester United
+Bruno Fernandes	Lisandro Martinez	1	Manchester United
+Bruno Fernandes	Luke Shaw	1	Manchester United
+Bruno Fernandes	Nemanja Vidic	1	Manchester United
+Bruno Fernandes	Patrice Evra	1	Manchester United
+Bruno Fernandes	Paul Scholes	1	Manchester United
+Bruno Fernandes	Peter Schmeichel	1	Manchester United
+Bruno Fernandes	Rio Ferdinand	1	Manchester United
+Bruno Fernandes	Roy Keane	1	Manchester United
+Bruno Fernandes	Ruud van Nistelrooy	1	Manchester United
+Bruno Fernandes	Ryan Giggs	1	Manchester United
+Bruno Fernandes	Wayne Rooney	1	Manchester United
+Casemiro	Christian Eriksen	1	Manchester United
+Casemiro	David Beckham	1	Manchester United
+Casemiro	David de Gea	1	Manchester United
+Casemiro	Eric Cantona	1	Manchester United
+Casemiro	Gary Neville	1	Manchester United
+Casemiro	Harry Maguire	1	Manchester United
+Casemiro	Lisandro Martinez	1	Manchester United
+Casemiro	Luke Shaw	1	Manchester United
+Casemiro	Nemanja Vidic	1	Manchester United
+Casemiro	Patrice Evra	1	Manchester United
+Casemiro	Paul Scholes	1	Manchester United
+Casemiro	Peter Schmeichel	1	Manchester United
+Casemiro	Rio Ferdinand	1	Manchester United
+Casemiro	Roy Keane	1	Manchester United
+Casemiro	Ruud van Nistelrooy	1	Manchester United
+Casemiro	Ryan Giggs	1	Manchester United
+Casemiro	Wayne Rooney	1	Manchester United
+Christian Eriksen	Cristiano Ronaldo	1	Manchester United
+Christian Eriksen	David Beckham	1	Manchester United
+Christian Eriksen	David de Gea	1	Manchester United
+Christian Eriksen	Eric Cantona	1	Manchester United
+Christian Eriksen	Gary Neville	1	Manchester United
+Christian Eriksen	Harry Maguire	1	Manchester United
+Christian Eriksen	Lisandro Martinez	1	Manchester United
+Christian Eriksen	Luke Shaw	1	Manchester United
+Christian Eriksen	Nemanja Vidic	1	Manchester United
+Christian Eriksen	Patrice Evra	1	Manchester United
+Christian Eriksen	Paul Scholes	1	Manchester United
+Christian Eriksen	Peter Schmeichel	1	Manchester United
+Christian Eriksen	Rio Ferdinand	1	Manchester United
+Christian Eriksen	Roy Keane	1	Manchester United
+Christian Eriksen	Ruud van Nistelrooy	1	Manchester United
+Christian Eriksen	Ryan Giggs	1	Manchester United
+Christian Eriksen	Wayne Rooney	1	Manchester United
+Cristiano Ronaldo	David Beckham	1	Manchester United
+Cristiano Ronaldo	David de Gea	1	Manchester United
+Cristiano Ronaldo	Eric Cantona	1	Manchester United
+Cristiano Ronaldo	Gary Neville	1	Manchester United
+Cristiano Ronaldo	Harry Maguire	1	Manchester United
+Cristiano Ronaldo	Lisandro Martinez	1	Manchester United
+Cristiano Ronaldo	Luke Shaw	1	Manchester United
+Cristiano Ronaldo	Nemanja Vidic	1	Manchester United
+Cristiano Ronaldo	Patrice Evra	1	Manchester United
+Cristiano Ronaldo	Paul Scholes	1	Manchester United
+Cristiano Ronaldo	Peter Schmeichel	1	Manchester United
+Cristiano Ronaldo	Rio Ferdinand	1	Manchester United
+Cristiano Ronaldo	Roy Keane	1	Manchester United
+Cristiano Ronaldo	Ruud van Nistelrooy	1	Manchester United
+Cristiano Ronaldo	Ryan Giggs	1	Manchester United
+Cristiano Ronaldo	Wayne Rooney	1	Manchester United
+David Beckham	David de Gea	1	Manchester United
+David Beckham	Eric Cantona	1	Manchester United
+David Beckham	Gary Neville	1	Manchester United
+David Beckham	Harry Maguire	1	Manchester United
+David Beckham	Lisandro Martinez	1	Manchester United
+David Beckham	Luke Shaw	1	Manchester United
+David Beckham	Nemanja Vidic	1	Manchester United
+David Beckham	Patrice Evra	1	Manchester United
+David Beckham	Paul Scholes	1	Manchester United
+David Beckham	Peter Schmeichel	1	Manchester United
+David Beckham	Rio Ferdinand	1	Manchester United
+David Beckham	Roy Keane	1	Manchester United
+David Beckham	Ruud van Nistelrooy	1	Manchester United
+David Beckham	Ryan Giggs	1	Manchester United
+David Beckham	Wayne Rooney	1	Manchester United
+David de Gea	Eric Cantona	1	Manchester United
+David de Gea	Gary Neville	1	Manchester United
+David de Gea	Harry Maguire	1	Manchester United
+David de Gea	Lisandro Martinez	1	Manchester United
+David de Gea	Luke Shaw	1	Manchester United
+David de Gea	Nemanja Vidic	1	Manchester United
+David de Gea	Patrice Evra	1	Manchester United
+David de Gea	Paul Scholes	1	Manchester United
+David de Gea	Peter Schmeichel	1	Manchester United
+David de Gea	Rio Ferdinand	1	Manchester United
+David de Gea	Roy Keane	1	Manchester United
+David de Gea	Ruud van Nistelrooy	1	Manchester United
+David de Gea	Ryan Giggs	1	Manchester United
+David de Gea	Wayne Rooney	1	Manchester United
+Eric Cantona	Gary Neville	1	Manchester United
+Eric Cantona	Harry Maguire	1	Manchester United
+Eric Cantona	Lisandro Martinez	1	Manchester United
+Eric Cantona	Luke Shaw	1	Manchester United
+Eric Cantona	Nemanja Vidic	1	Manchester United
+Eric Cantona	Patrice Evra	1	Manchester United
+Eric Cantona	Paul Scholes	1	Manchester United
+Eric Cantona	Peter Schmeichel	1	Manchester United
+Eric Cantona	Rio Ferdinand	1	Manchester United
+Eric Cantona	Roy Keane	1	Manchester United
+Eric Cantona	Ruud van Nistelrooy	1	Manchester United
+Eric Cantona	Ryan Giggs	1	Manchester United
+Eric Cantona	Wayne Rooney	1	Manchester United
+Gary Neville	Harry Maguire	1	Manchester United
+Gary Neville	Lisandro Martinez	1	Manchester United
+Gary Neville	Luke Shaw	1	Manchester United
+Gary Neville	Nemanja Vidic	1	Manchester United
+Gary Neville	Patrice Evra	1	Manchester United
+Gary Neville	Paul Scholes	1	Manchester United
+Gary Neville	Peter Schmeichel	1	Manchester United
+Gary Neville	Rio Ferdinand	1	Manchester United
+Gary Neville	Roy Keane	1	Manchester United
+Gary Neville	Ruud van Nistelrooy	1	Manchester United
+Gary Neville	Ryan Giggs	1	Manchester United
+Gary Neville	Wayne Rooney	1	Manchester United
+Harry Maguire	Lisandro Martinez	1	Manchester United
+Harry Maguire	Luke Shaw	1	Manchester United
+Harry Maguire	Nemanja Vidic	1	Manchester United
+Harry Maguire	Patrice Evra	1	Manchester United
+Harry Maguire	Paul Scholes	1	Manchester United
+Harry Maguire	Peter Schmeichel	1	Manchester United
+Harry Maguire	Rio Ferdinand	1	Manchester United
+Harry Maguire	Roy Keane	1	Manchester United
+Harry Maguire	Ruud van Nistelrooy	1	Manchester United
+Harry Maguire	Ryan Giggs	1	Manchester United
+Harry Maguire	Wayne Rooney	1	Manchester United
+Lisandro Martinez	Luke Shaw	1	Manchester United
+Lisandro Martinez	Nemanja Vidic	1	Manchester United
+Lisandro Martinez	Patrice Evra	1	Manchester United
+Lisandro Martinez	Paul Scholes	1	Manchester United
+Lisandro Martinez	Peter Schmeichel	1	Manchester United
+Lisandro Martinez	Rio Ferdinand	1	Manchester United
+Lisandro Martinez	Roy Keane	1	Manchester United
+Lisandro Martinez	Ruud van Nistelrooy	1	Manchester United
+Lisandro Martinez	Ryan Giggs	1	Manchester United
+Lisandro Martinez	Wayne Rooney	1	Manchester United
+Luke Shaw	Nemanja Vidic	1	Manchester United
+Luke Shaw	Patrice Evra	1	Manchester United
+Luke Shaw	Paul Scholes	1	Manchester United
+Luke Shaw	Peter Schmeichel	1	Manchester United
+Luke Shaw	Rio Ferdinand	1	Manchester United
+Luke Shaw	Roy Keane	1	Manchester United
+Luke Shaw	Ruud van Nistelrooy	1	Manchester United
+Luke Shaw	Ryan Giggs	1	Manchester United
+Luke Shaw	Wayne Rooney	1	Manchester United
+Nemanja Vidic	Patrice Evra	1	Manchester United
+Nemanja Vidic	Paul Scholes	1	Manchester United
+Nemanja Vidic	Peter Schmeichel	1	Manchester United
+Nemanja Vidic	Rio Ferdinand	1	Manchester United
+Nemanja Vidic	Roy Keane	1	Manchester United
+Nemanja Vidic	Ruud van Nistelrooy	1	Manchester United
+Nemanja Vidic	Ryan Giggs	1	Manchester United
+Nemanja Vidic	Wayne Rooney	1	Manchester United
+Patrice Evra	Paul Scholes	1	Manchester United
+Patrice Evra	Peter Schmeichel	1	Manchester United
+Patrice Evra	Rio Ferdinand	1	Manchester United
+Patrice Evra	Roy Keane	1	Manchester United
+Patrice Evra	Ruud van Nistelrooy	1	Manchester United
+Patrice Evra	Ryan Giggs	1	Manchester United
+Patrice Evra	Wayne Rooney	1	Manchester United
+Paul Scholes	Peter Schmeichel	1	Manchester United
+Paul Scholes	Rio Ferdinand	1	Manchester United
+Paul Scholes	Roy Keane	1	Manchester United
+Paul Scholes	Ruud van Nistelrooy	1	Manchester United
+Paul Scholes	Ryan Giggs	1	Manchester United
+Paul Scholes	Wayne Rooney	1	Manchester United
+Peter Schmeichel	Rio Ferdinand	1	Manchester United
+Peter Schmeichel	Roy Keane	1	Manchester United
+Peter Schmeichel	Ruud van Nistelrooy	1	Manchester United
+Peter Schmeichel	Ryan Giggs	1	Manchester United
+Peter Schmeichel	Wayne Rooney	1	Manchester United
+Rio Ferdinand	Roy Keane	1	Manchester United
+Rio Ferdinand	Ruud van Nistelrooy	1	Manchester United
+Rio Ferdinand	Ryan Giggs	1	Manchester United
+Rio Ferdinand	Wayne Rooney	1	Manchester United
+Roy Keane	Ruud van Nistelrooy	1	Manchester United
+Roy Keane	Ryan Giggs	1	Manchester United
+Roy Keane	Wayne Rooney	1	Manchester United
+Ruud van Nistelrooy	Ryan Giggs	1	Manchester United
+Ruud van Nistelrooy	Wayne Rooney	1	Manchester United
+Ryan Giggs	Wayne Rooney	1	Manchester United

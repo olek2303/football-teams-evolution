@@ -1,0 +1,230 @@
+{
+  "total_players": 191,
+  "total_edges": 2415,
+  "teams": {
+    "Liverpool": {
+      "unique_players": 34,
+      "seasons": 15,
+      "avg_squad_size": 25.6
+    },
+    "Bayern Munich": {
+      "unique_players": 26,
+      "seasons": 15,
+      "avg_squad_size": 24.666666666666668
+    },
+    "Legia Warszawa": {
+      "unique_players": 22,
+      "seasons": 15,
+      "avg_squad_size": 21.4
+    },
+    "AC Milan": {
+      "unique_players": 24,
+      "seasons": 15,
+      "avg_squad_size": 23.0
+    },
+    "AS Roma": {
+      "unique_players": 19,
+      "seasons": 15,
+      "avg_squad_size": 19.4
+    },
+    "Real Madrid": {
+      "unique_players": 25,
+      "seasons": 15,
+      "avg_squad_size": 23.2
+    },
+    "Barcelona": {
+      "unique_players": 24,
+      "seasons": 15,
+      "avg_squad_size": 22.666666666666668
+    },
+    "Manchester United": {
+      "unique_players": 24,
+      "seasons": 15,
+      "avg_squad_size": 22.733333333333334
+    }
+  },
+  "top_connected_players": [
+    {
+      "name": "Luis Suarez",
+      "connections": 55
+    },
+    {
+      "name": "David Alaba",
+      "connections": 48
+    },
+    {
+      "name": "Robert Lewandowski",
+      "connections": 48
+    },
+    {
+      "name": "Toni Kroos",
+      "connections": 48
+    },
+    {
+      "name": "Casemiro",
+      "connections": 46
+    },
+    {
+      "name": "Cristiano Ronaldo",
+      "connections": 46
+    },
+    {
+      "name": "Cafu",
+      "connections": 41
+    },
+    {
+      "name": "Adrian San Miguel",
+      "connections": 33
+    },
+    {
+      "name": "Alexis Mac Allister",
+      "connections": 33
+    },
+    {
+      "name": "Alisson Becker",
+      "connections": 33
+    },
+    {
+      "name": "Andrew Robertson",
+      "connections": 33
+    },
+    {
+      "name": "Daniel Sturridge",
+      "connections": 33
+    },
+    {
+      "name": "Darwin Nunez",
+      "connections": 33
+    },
+    {
+      "name": "Dominik Szoboszlai",
+      "connections": 33
+    },
+    {
+      "name": "Fabinho",
+      "connections": 33
+    },
+    {
+      "name": "Fernando Torres",
+      "connections": 33
+    },
+    {
+      "name": "Gini Wijnaldum",
+      "connections": 33
+    },
+    {
+      "name": "Ibrahima Konaté",
+      "connections": 33
+    },
+    {
+      "name": "James Milner",
+      "connections": 33
+    },
+    {
+      "name": "Jamie Carragher",
+      "connections": 33
+    }
+  ],
+  "top_partnerships": [
+    {
+      "player1": "Arjen Robben",
+      "player2": "Thomas Muller",
+      "seasons_together": 29
+    },
+    {
+      "player1": "Franck Ribery",
+      "player2": "Thomas Muller",
+      "seasons_together": 29
+    },
+    {
+      "player1": "Jamal Musiala",
+      "player2": "Thomas Muller",
+      "seasons_together": 29
+    },
+    {
+      "player1": "Leon Goretzka",
+      "player2": "Thomas Muller",
+      "seasons_together": 29
+    },
+    {
+      "player1": "Mario Mandzukic",
+      "player2": "Thomas Muller",
+      "seasons_together": 29
+    },
+    {
+      "player1": "Matthijs de Ligt",
+      "player2": "Thomas Muller",
+      "seasons_together": 29
+    },
+    {
+      "player1": "Robert Lewandowski",
+      "player2": "Thomas Muller",
+      "seasons_together": 29
+    },
+    {
+      "player1": "Serge Gnabry",
+      "player2": "Thomas Muller",
+      "seasons_together": 29
+    },
+    {
+      "player1": "David Alaba",
+      "player2": "Thomas Muller",
+      "seasons_together": 28
+    },
+    {
+      "player1": "Casemiro",
+      "player2": "Cristiano Ronaldo",
+      "seasons_together": 28
+    },
+    {
+      "player1": "Harry Kane",
+      "player2": "Thomas Muller",
+      "seasons_together": 27
+    },
+    {
+      "player1": "Jerome Boateng",
+      "player2": "Thomas Muller",
+      "seasons_together": 27
+    },
+    {
+      "player1": "Kingsley Coman",
+      "player2": "Thomas Muller",
+      "seasons_together": 27
+    },
+    {
+      "player1": "Leroy Sane",
+      "player2": "Thomas Muller",
+      "seasons_together": 27
+    },
+    {
+      "player1": "Philipp Lahm",
+      "player2": "Thomas Muller",
+      "seasons_together": 27
+    },
+    {
+      "player1": "David Alaba",
+      "player2": "Toni Kroos",
+      "seasons_together": 27
+    },
+    {
+      "player1": "Bryan Cristante",
+      "player2": "Francesco Totti",
+      "seasons_together": 26
+    },
+    {
+      "player1": "Cafu",
+      "player2": "Francesco Totti",
+      "seasons_together": 26
+    },
+    {
+      "player1": "Chris Smalling",
+      "player2": "Francesco Totti",
+      "seasons_together": 26
+    },
+    {
+      "player1": "Daniele De Rossi",
+      "player2": "Francesco Totti",
+      "seasons_together": 26
+    }
+  ]
+}

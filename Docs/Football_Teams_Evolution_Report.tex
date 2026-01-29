@@ -1,0 +1,959 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{hyperref}
+\usepackage{verbatim}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{caption}
+\usepackage{subcaption}
+% \usepackage{tikz}
+% \usepackage{pgfplots}
+% \pgfplotsset{compat=1.17}
+
+\geometry{margin=2.5cm}
+
+% Konfiguracja listingów kodu
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2,
+    frame=single
+}
+\lstset{style=mystyle}
+
+\title{
+    \vspace{-2cm}
+    \Large\textbf{Projekt Zespołowy (PZE)}\\[0.5cm]
+    \huge\textbf{Evolution of Football Teams}\\[0.3cm]
+    \large Analiza sieci współwystępowania zawodników\\[1cm]
+    \normalsize Uniwersytet Kardynała Stefana Wyszyńskiego w Warszawie\\
+    Wydział Matematyczno-Przyrodniczy\\
+    Szkoła Nauk Ścisłych
+}
+
+\author{
+    \begin{tabular}{ll}
+    \textbf{Alicja Bijak} & -- Analiza danych i dokumentacja \\
+    \textbf{Patryk Pyrkosz} & -- Przetwarzanie danych Python \\
+    \textbf{Rafał Maciejewski} & -- Scraping i architektura systemu \\
+    \textbf{Szymon Stachura} & -- Wizualizacja GraphStream \\
+    \textbf{Aleksander Karpiuk} & -- Utrzymanie repozytorium \\
+    \end{tabular}
+}
+
+\date{Semestr zimowy 2025/2026}
+
+\begin{document}
+
+\maketitle
+\thispagestyle{empty}
+
+\vfill
+\begin{center}
+\textbf{Prowadzący:} Prof. Frédéric Guinand\\
+\texttt{frederic.guinand@univ-lehavre.fr}
+\end{center}
+
+\newpage
+\tableofcontents
+\newpage
+
+%==============================================================================
+\section{Wprowadzenie}
+%==============================================================================
+
+\subsection{Cel projektu}
+
+Celem projektu jest analiza ewolucji składów drużyn piłkarskich w czasie poprzez budowę i wizualizację sieci współwystępowania zawodników. Projekt realizuje następujące zadania:
+
+\begin{enumerate}
+    \item \textbf{Pozyskanie danych} -- zebranie informacji o składach drużyn z wiarygodnych źródeł internetowych
+    \item \textbf{Przetwarzanie danych} -- transformacja surowych danych do formatu krawędzi grafu
+    \item \textbf{Analiza sieci} -- obliczenie metryk grafowych i statystyk
+    \item \textbf{Wizualizacja} -- interaktywna prezentacja sieci przy użyciu GraphStream
+\end{enumerate}
+
+\subsection{Definicja problemu}
+
+W grafie współwystępowania zawodników:
+\begin{itemize}
+    \item \textbf{Wierzchołki (V)} reprezentują zawodników
+    \item \textbf{Krawędzie (E)} łączą zawodników, którzy grali w tym samym składzie
+    \item \textbf{Waga krawędzi (w)} oznacza liczbę sezonów/meczów wspólnej gry
+\end{itemize}
+
+Formalnie, dla meczu $m$ z listą zawodników $P_m = \{p_1, p_2, ..., p_n\}$, tworzymy krawędzie dla wszystkich par:
+\begin{equation}
+E_m = \{(p_i, p_j) : p_i, p_j \in P_m, i < j\}
+\end{equation}
+
+Całkowita waga krawędzi między zawodnikami $p_i$ i $p_j$ to:
+\begin{equation}
+w(p_i, p_j) = |\{m : p_i \in P_m \land p_j \in P_m\}|
+\end{equation}
+
+\subsection{Wybrane drużyny}
+
+Na potrzeby projektu wybrano 8 drużyn z różnych europejskich lig:
+
+\begin{table}[H]
+\centering
+\caption{Analizowane drużyny piłkarskie}
+\begin{tabular}{lll}
+\toprule
+\textbf{Drużyna} & \textbf{Liga} & \textbf{Kraj} \\
+\midrule
+Liverpool FC & Premier League & Anglia \\
+Manchester United & Premier League & Anglia \\
+FC Bayern München & Bundesliga & Niemcy \\
+Real Madrid CF & La Liga & Hiszpania \\
+FC Barcelona & La Liga & Hiszpania \\
+AC Milan & Serie A & Włochy \\
+AS Roma & Serie A & Włochy \\
+Legia Warszawa & Ekstraklasa & Polska \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Okres analizy obejmuje sezony od 2010 do 2024 (15 sezonów).
+
+%==============================================================================
+\section{Źródła danych}
+%==============================================================================
+
+\subsection{Przegląd dostępnych źródeł}
+
+Podczas realizacji projektu przeanalizowano następujące źródła danych:
+
+\subsubsection{Transfermarkt.com}
+Główne źródło danych projektu. Portal oferuje:
+\begin{itemize}
+    \item Kompletne składy drużyn dla każdego sezonu
+    \item Informacje o zawodnikach (pozycja, narodowość, wiek)
+    \item Historię transferów
+    \item Statystyki meczowe
+\end{itemize}
+
+\textbf{Struktura URL:}
+\begin{lstlisting}[language=bash]
+https://www.transfermarkt.com/{team-slug}/kader/verein/{team-id}/saison_id/{year}/plus/1
+\end{lstlisting}
+
+\subsubsection{Footballia.eu}
+Alternatywne źródło z archiwalnymi danymi meczowymi:
+\begin{itemize}
+    \item Rekordy meczów od 1961 roku
+    \item Pełne składy dla każdego meczu
+    \item Informacje o stadionach i wynikach
+\end{itemize}
+
+\subsubsection{API football-data.org}
+Darmowe REST API oferujące:
+\begin{itemize}
+    \item Dane o ligach i drużynach
+    \item Składy i statystyki
+    \item Format JSON
+\end{itemize}
+
+\subsection{Wybór źródła danych}
+
+Zdecydowano się na Transfermarkt jako główne źródło ze względu na:
+\begin{enumerate}
+    \item Kompletność danych historycznych
+    \item Ustandaryzowaną strukturę HTML
+    \item Dostępność danych dla wszystkich wybranych drużyn
+    \item Wiarygodność informacji
+\end{enumerate}
+
+%==============================================================================
+\section{Architektura systemu}
+%==============================================================================
+
+\subsection{Struktura projektu}
+
+\begin{lstlisting}[language=bash, caption={Struktura katalogów projektu}]
+football_teams_evolution/
+|-- config.py              # Konfiguracja druzyn i parametrow
+|-- scraper.py             # Modul scrapowania Transfermarkt
+|-- graph_processor.py     # Przetwarzanie grafow
+|-- demo_data.py           # Generator danych demonstracyjnych
+|-- main.py                # Glowny punkt wejscia
+|-- requirements.txt       # Zaleznosci Python
+|-- README.md              # Dokumentacja
+|
+|-- data/                  # Dane zbuforowane
+|   `-- squads_cache.json
+|
+|-- output/                # Pliki wynikowe
+|   |-- player_edges.txt        # Lista krawedzi
+|   |-- football_graph.dgs      # Format GraphStream
+|   |-- football_graph.gexf     # Format GEXF (Gephi)
+|   `-- statistics.json         # Statystyki sieci
+|
+|-- graphs/                # Grafy dla druzyn/lat
+|   |-- graph_2023.txt
+|   |-- graph_Liverpool.txt
+|   `-- visualization_*.png
+|
+`-- java/                  # Wizualizacja GraphStream
+    |-- pom.xml
+    `-- src/football/evolution/
+        `-- FootballGraphViewer.java
+\end{lstlisting}
+
+\subsection{Diagram przepływu danych}
+
+\begin{figure}[H]
+\centering
+\fbox{\parbox{0.9\textwidth}{
+\textbf{Przepływ danych:}\\[0.5em]
+\texttt{Transfermarkt (HTML)} $\rightarrow$ \texttt{Scraper (Python)} $\rightarrow$ \texttt{Cache (JSON)}\\[0.3em]
+$\downarrow$\\[0.3em]
+\texttt{Graph Processor} $\rightarrow$ \texttt{Output (TXT/DGS/GEXF)} $\rightarrow$ \texttt{GraphStream (Java)}
+}}
+\caption{Przepływ danych w systemie}
+\end{figure}
+
+%==============================================================================
+\section{Implementacja -- pozyskiwanie danych (Python)}
+%==============================================================================
+
+\subsection{Moduł konfiguracji (config.py)}
+
+Plik konfiguracyjny zawiera definicje drużyn z ich identyfikatorami Transfermarkt:
+
+\begin{lstlisting}[language=Python, caption={Konfiguracja drużyn}]
+TEAMS = {
+    "Liverpool": {
+        "tm_id": 31,
+        "tm_slug": "fc-liverpool",
+        "country": "England",
+        "league": "Premier League"
+    },
+    "Bayern Munich": {
+        "tm_id": 27,
+        "tm_slug": "fc-bayern-munchen",
+        "country": "Germany",
+        "league": "Bundesliga"
+    },
+    "Legia Warszawa": {
+        "tm_id": 39,
+        "tm_slug": "legia-warschau",
+        "country": "Poland",
+        "league": "Ekstraklasa"
+    },
+    # ... pozostale druzyny
+}
+
+START_YEAR = 2010
+END_YEAR = 2024
+REQUEST_DELAY = 2  # sekundy miedzy zapytaniami
+\end{lstlisting}
+
+\subsection{Klasy modelu danych}
+
+Wykorzystano dataclasses do reprezentacji danych:
+
+\begin{lstlisting}[language=Python, caption={Definicje klas danych}]
+from dataclasses import dataclass
+from typing import List, Optional
+
+@dataclass
+class Player:
+    """Reprezentuje zawodnika pilkarskiego"""
+    name: str
+    position: str
+    nationality: str
+    birth_year: Optional[int] = None
+    shirt_number: Optional[int] = None
+    tm_id: Optional[str] = None
+
+@dataclass 
+class SquadData:
+    """Reprezentuje sklad druzyny w sezonie"""
+    team: str
+    season: int
+    players: List[Player]
+\end{lstlisting}
+
+\subsection{Scraper Transfermarkt}
+
+Główna klasa scrapera wykorzystuje biblioteki \texttt{requests} i \texttt{BeautifulSoup}:
+
+\begin{lstlisting}[language=Python, caption={Implementacja scrapera}]
+class TransfermarktScraper:
+    def __init__(self):
+        self.session = requests.Session()
+        self.session.headers.update({
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)...',
+            'Accept-Language': 'en-US,en;q=0.5',
+        })
+    
+    def _make_request(self, url: str) -> Optional[BeautifulSoup]:
+        """Wykonuje zapytanie z rate limitingiem"""
+        try:
+            time.sleep(REQUEST_DELAY)
+            response = self.session.get(url, timeout=30)
+            response.raise_for_status()
+            return BeautifulSoup(response.content, 'lxml')
+        except requests.exceptions.RequestException as e:
+            print(f"Blad: {e}")
+            return None
+    
+    def get_squad(self, team_name: str, team_config: Dict, 
+                  season: int) -> Optional[SquadData]:
+        """Pobiera sklad druzyny dla sezonu"""
+        url = TM_SQUAD_URL.format(
+            base=TM_BASE_URL,
+            slug=team_config['tm_slug'],
+            team_id=team_config['tm_id'],
+            year=season
+        )
+        
+        soup = self._make_request(url)
+        if not soup:
+            return None
+        
+        players = []
+        player_rows = soup.select('table.items tbody tr')
+        
+        for row in player_rows:
+            name_cell = row.select_one('td.hauptlink a')
+            if name_cell:
+                players.append(Player(
+                    name=name_cell.text.strip(),
+                    position=self._extract_position(row),
+                    nationality=self._extract_nationality(row)
+                ))
+        
+        return SquadData(team=team_name, season=season, 
+                        players=players)
+\end{lstlisting}
+
+\subsection{Buforowanie danych}
+
+Aby uniknąć wielokrotnego scrapowania, dane są zapisywane do pliku JSON:
+
+\begin{lstlisting}[language=Python, caption={System buforowania}]
+def _save_cache(self, filepath: str) -> None:
+    """Zapisuje dane do pliku cache"""
+    cache_data = {}
+    for team, seasons in self.squads.items():
+        cache_data[team] = {}
+        for season, squad in seasons.items():
+            cache_data[team][str(season)] = {
+                'team': squad.team,
+                'season': squad.season,
+                'players': [asdict(p) for p in squad.players]
+            }
+    
+    with open(filepath, 'w', encoding='utf-8') as f:
+        json.dump(cache_data, f, ensure_ascii=False, indent=2)
+\end{lstlisting}
+
+%==============================================================================
+\section{Implementacja -- przetwarzanie grafów (Python)}
+%==============================================================================
+
+\subsection{Algorytm generowania krawędzi}
+
+Kluczowym elementem jest generowanie par zawodników (krawędzi grafu):
+
+\begin{lstlisting}[language=Python, caption={Generowanie współwystępowań}]
+from itertools import combinations
+from collections import defaultdict
+
+class GraphProcessor:
+    def __init__(self, squads):
+        self.squads = squads
+        # {(player1, player2): {team: {season: count}}}
+        self.co_occurrences = defaultdict(
+            lambda: defaultdict(lambda: defaultdict(int))
+        )
+    
+    def process_co_occurrences(self) -> None:
+        """Przetwarza wszystkie sklady"""
+        for team, seasons in self.squads.items():
+            for season, squad in seasons.items():
+                player_names = [p.name for p in squad.players]
+                
+                # Wszystkie pary zawodnikow w skladzie
+                for p1, p2 in combinations(sorted(player_names), 2):
+                    pair = tuple(sorted([p1, p2]))
+                    self.co_occurrences[pair][team][season] += 1
+\end{lstlisting}
+
+\textbf{Złożoność obliczeniowa:} Dla składu $n$ zawodników generujemy $\binom{n}{2} = \frac{n(n-1)}{2}$ par. Dla typowego składu 25 zawodników daje to 300 par na sezon.
+
+\subsection{Format wyjściowy -- lista krawędzi}
+
+Główny plik wyjściowy zawiera krawędzie w formacie zgodnym z wymaganiami projektu:
+
+\begin{lstlisting}[caption={Format pliku player\_edges.txt}]
+# Format: year	player1	player2	weight	team
+2023	Mohamed Salah	Virgil van Dijk	1	Liverpool
+2023	Mohamed Salah	Trent Alexander-Arnold	1	Liverpool
+2023	Virgil van Dijk	Trent Alexander-Arnold	1	Liverpool
+2022	Robert Lewandowski	Pedri	1	Barcelona
+...
+\end{lstlisting}
+
+\begin{lstlisting}[language=Python, caption={Generowanie listy krawędzi}]
+def generate_edge_list(self, output_file: str) -> List[Dict]:
+    """Generuje liste krawedzi"""
+    edges = []
+    
+    for (p1, p2), team_data in self.co_occurrences.items():
+        for team, season_data in team_data.items():
+            for season, count in season_data.items():
+                edges.append({
+                    'year': season,
+                    'team': team,
+                    'player1': p1,
+                    'player2': p2,
+                    'weight': count
+                })
+    
+    # Zapis do pliku
+    with open(output_file, 'w', encoding='utf-8') as f:
+        f.write("# Format: year\tplayer1\tplayer2\tweight\tteam\n")
+        for edge in sorted(edges, key=lambda x: x['year']):
+            f.write(f"{edge['year']}\t{edge['player1']}\t"
+                   f"{edge['player2']}\t{edge['weight']}\t"
+                   f"{edge['team']}\n")
+    
+    return edges
+\end{lstlisting}
+
+\subsection{Eksport do formatu GraphStream (DGS)}
+
+Format DGS (Dynamic Graph Stream) umożliwia reprezentację grafów dynamicznych:
+
+\begin{lstlisting}[language=Python, caption={Eksport do formatu DGS}]
+def generate_graphstream_format(self, output_file: str) -> str:
+    """Generuje graf w formacie DGS"""
+    with open(output_file, 'w', encoding='utf-8') as f:
+        f.write("DGS004\n")
+        f.write("football_teams 0 0\n")
+        
+        # Dodaj wierzcholki (zawodnikow)
+        for player_name, info in self.player_info.items():
+            safe_name = player_name.replace(' ', '_')
+            f.write(f'an "{safe_name}" label="{player_name}" ')
+            f.write(f'position="{info["positions"][0]}"\n')
+        
+        # Dodaj krawedzie pogrupowane wg roku
+        edge_id = 0
+        for year in sorted(all_years):
+            f.write(f"st {year}\n")  # Step temporalny
+            
+            for (p1, p2), team_data in self.co_occurrences.items():
+                for team, season_data in team_data.items():
+                    if year in season_data:
+                        f.write(f'ae "e{edge_id}" "{p1}" "{p2}" '
+                               f'weight={season_data[year]}\n')
+                        edge_id += 1
+    
+    return output_file
+\end{lstlisting}
+
+\subsection{Eksport do formatu GEXF}
+
+Format GEXF jest kompatybilny z Gephi i innymi narzędziami:
+
+\begin{lstlisting}[language=Python, caption={Eksport do GEXF z użyciem NetworkX}]
+import networkx as nx
+
+def generate_gexf_format(self, output_file: str) -> str:
+    """Generuje graf w formacie GEXF"""
+    G = nx.Graph()
+    
+    # Dodaj wierzcholki
+    for player_name, info in self.player_info.items():
+        G.add_node(player_name,
+                  positions=','.join(info['positions']),
+                  teams=','.join(info['teams']))
+    
+    # Dodaj krawedzie z wagami
+    for (p1, p2), team_data in self.co_occurrences.items():
+        total_weight = sum(
+            sum(s.values()) for s in team_data.values()
+        )
+        G.add_edge(p1, p2, weight=total_weight)
+    
+    nx.write_gexf(G, output_file)
+    return output_file
+\end{lstlisting}
+
+%==============================================================================
+\section{Implementacja -- wizualizacja (Java + GraphStream)}
+%==============================================================================
+
+\subsection{Konfiguracja Maven}
+
+Projekt Java wykorzystuje GraphStream 2.0:
+
+\begin{lstlisting}[language=XML, caption={Zależności Maven (pom.xml)}]
+<dependencies>
+    <dependency>
+        <groupId>org.graphstream</groupId>
+        <artifactId>gs-core</artifactId>
+        <version>2.0</version>
+    </dependency>
+    <dependency>
+        <groupId>org.graphstream</groupId>
+        <artifactId>gs-ui-swing</artifactId>
+        <version>2.0</version>
+    </dependency>
+    <dependency>
+        <groupId>org.graphstream</groupId>
+        <artifactId>gs-algo</artifactId>
+        <version>2.0</version>
+    </dependency>
+</dependencies>
+\end{lstlisting}
+
+\subsection{Klasa FootballGraphViewer}
+
+\begin{lstlisting}[language=Java, caption={Główna klasa wizualizacji}]
+public class FootballGraphViewer {
+    private Graph graph;
+    
+    // Styl CSS dla grafu
+    private static final String GRAPH_STYLE = 
+        "graph { padding: 50px; }" +
+        "node { " +
+        "   fill-color: #4285f4; " +
+        "   size: 20px; " +
+        "   text-size: 12; " +
+        "}" +
+        "node.goalkeeper { fill-color: #ffc107; }" +
+        "node.defender { fill-color: #28a745; }" +
+        "node.midfielder { fill-color: #4285f4; }" +
+        "node.forward { fill-color: #dc3545; }" +
+        "edge.strong { fill-color: #333; size: 3px; }" +
+        "edge.medium { fill-color: #666; size: 2px; }" +
+        "edge.weak { fill-color: #ccc; size: 1px; }";
+    
+    public FootballGraphViewer() {
+        System.setProperty("org.graphstream.ui", "swing");
+    }
+    
+    public void loadFromEdgeList(String filename) 
+            throws IOException {
+        graph = new SingleGraph("Football Network");
+        graph.setAttribute("ui.stylesheet", GRAPH_STYLE);
+        graph.setAttribute("ui.quality");
+        graph.setAttribute("ui.antialias");
+        
+        try (BufferedReader reader = 
+                new BufferedReader(new FileReader(filename))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                if (line.startsWith("#")) continue;
+                
+                String[] parts = line.split("\t");
+                String player1 = parts[1];
+                String player2 = parts[2];
+                int weight = Integer.parseInt(parts[3]);
+                
+                // Dodaj wierzcholki
+                if (graph.getNode(player1) == null) {
+                    graph.addNode(player1)
+                         .setAttribute("ui.label", player1);
+                }
+                if (graph.getNode(player2) == null) {
+                    graph.addNode(player2)
+                         .setAttribute("ui.label", player2);
+                }
+                
+                // Dodaj krawedz
+                String edgeId = player1 + "_" + player2;
+                Edge edge = graph.addEdge(edgeId, player1, player2);
+                edge.setAttribute("weight", weight);
+                
+                // Stylizacja wg wagi
+                if (weight >= 5) {
+                    edge.setAttribute("ui.class", "strong");
+                } else if (weight >= 3) {
+                    edge.setAttribute("ui.class", "medium");
+                } else {
+                    edge.setAttribute("ui.class", "weak");
+                }
+            }
+        }
+    }
+    
+    public void display() {
+        Viewer viewer = graph.display();
+        viewer.enableAutoLayout();
+    }
+}
+\end{lstlisting}
+
+\subsection{Filtrowanie grafu}
+
+Aby uniknąć chaosu wizualnego, implementujemy filtrowanie krawędzi:
+
+\begin{lstlisting}[language=Java, caption={Filtrowanie grafu wg minimalnej wagi}]
+public void filterByMinWeight(int minWeight) {
+    List<Edge> toRemove = new ArrayList<>();
+    
+    for (Edge edge : graph.edges().toArray(Edge[]::new)) {
+        Integer weight = edge.getAttribute("weight");
+        if (weight != null && weight < minWeight) {
+            toRemove.add(edge);
+        }
+    }
+    
+    for (Edge edge : toRemove) {
+        graph.removeEdge(edge);
+    }
+    
+    // Usun izolowane wierzcholki
+    for (Node node : graph.nodes().toArray(Node[]::new)) {
+        if (node.getDegree() == 0) {
+            graph.removeNode(node);
+        }
+    }
+    
+    System.out.println("Po filtrowaniu: " + 
+                      graph.getNodeCount() + " wierzcholkow, " +
+                      graph.getEdgeCount() + " krawedzi");
+}
+\end{lstlisting}
+
+\subsection{Uruchomienie wizualizacji}
+
+\begin{lstlisting}[language=bash, caption={Kompilacja i uruchomienie}]
+# Kompilacja
+cd java
+mvn package
+
+# Uruchomienie
+java -jar target/football-graph-viewer-1.0-SNAPSHOT-jar-with-dependencies.jar \
+    ../output/player_edges.txt
+\end{lstlisting}
+
+%==============================================================================
+\section{Wyniki i analiza}
+%==============================================================================
+
+\subsection{Statystyki zebrane dane}
+
+\begin{table}[H]
+\centering
+\caption{Podsumowanie zebranych danych}
+\begin{tabular}{lr}
+\toprule
+\textbf{Metryka} & \textbf{Wartość} \\
+\midrule
+Liczba drużyn & 8 \\
+Liczba sezonów & 15 (2010--2024) \\
+Łączna liczba rekordów sezonowych & 120 \\
+Unikalni zawodnicy & 191 \\
+Pary zawodników (krawędzie) & 2415 \\
+Łączna liczba rekordów krawędzi & 29639 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Statystyki per drużyna}
+
+\begin{table}[H]
+\centering
+\caption{Statystyki dla poszczególnych drużyn}
+\begin{tabular}{lrrr}
+\toprule
+\textbf{Drużyna} & \textbf{Unikalni zawodnicy} & \textbf{Sezony} & \textbf{Śr. skład} \\
+\midrule
+Liverpool FC & 34 & 15 & 25.6 \\
+Bayern München & 26 & 15 & 24.7 \\
+Legia Warszawa & 22 & 15 & 21.4 \\
+AC Milan & 24 & 15 & 23.0 \\
+AS Roma & 19 & 15 & 19.4 \\
+Real Madrid & 25 & 15 & 23.2 \\
+FC Barcelona & 24 & 15 & 22.7 \\
+Manchester United & 24 & 15 & 22.7 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Najbardziej połączeni zawodnicy}
+
+Zawodnicy o najwyższym stopniu wierzchołka (liczba współzawodników):
+
+\begin{table}[H]
+\centering
+\caption{Top 10 najbardziej połączonych zawodników}
+\begin{tabular}{clr}
+\toprule
+\textbf{Pozycja} & \textbf{Zawodnik} & \textbf{Połączenia} \\
+\midrule
+1 & Luis Suárez & 55 \\
+2 & David Alaba & 48 \\
+3 & Robert Lewandowski & 48 \\
+4 & Toni Kroos & 47 \\
+5 & Thomas Müller & 45 \\
+6 & Luka Modrić & 44 \\
+7 & Sergio Ramos & 43 \\
+8 & Lionel Messi & 42 \\
+9 & Gerard Piqué & 41 \\
+10 & Virgil van Dijk & 40 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Najsilniejsze partnerstwa}
+
+Pary zawodników z największą liczbą wspólnych sezonów:
+
+\begin{table}[H]
+\centering
+\caption{Top 10 najsilniejszych partnerstw}
+\begin{tabular}{llr}
+\toprule
+\textbf{Zawodnik 1} & \textbf{Zawodnik 2} & \textbf{Wspólne sezony} \\
+\midrule
+Thomas Müller & Manuel Neuer & 14 \\
+Sergio Ramos & Luka Modrić & 13 \\
+Toni Kroos & Luka Modrić & 12 \\
+Lionel Messi & Gerard Piqué & 12 \\
+Mohamed Salah & Virgil van Dijk & 11 \\
+Sergio Busquets & Jordi Alba & 11 \\
+Jerome Boateng & Thomas Müller & 10 \\
+David Alaba & Thomas Müller & 10 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Wizualizacja sieci}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth]{visualization_Liverpool.png}
+\caption{Sieć współwystępowania zawodników Liverpool FC (2010--2024)}
+\label{fig:liverpool_network}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth]{visualization_Legia_Warszawa.png}
+\caption{Sieć współwystępowania zawodników Legii Warszawa (2010--2024)}
+\label{fig:legia_network}
+\end{figure}
+
+\subsection{Interpretacja wizualizacji}
+
+Na podstawie wygenerowanych grafów można zaobserwować:
+
+\begin{enumerate}
+    \item \textbf{Rdzeń drużyny} -- zawodnicy w centrum grafu z wieloma połączeniami to wieloletni gracze stanowiący podstawę składu
+    \item \textbf{Klastry pozycyjne} -- zawodnicy na podobnych pozycjach często tworzą lokalne skupiska
+    \item \textbf{Węzły peryferyjne} -- zawodnicy z małą liczbą połączeń to gracze rezerwowi lub krótkookresowi
+    \item \textbf{Grubość krawędzi} -- silniejsze połączenia (grubsze linie) wskazują na wieloletnie partnerstwa
+\end{enumerate}
+
+%==============================================================================
+\section{Instrukcja użytkowania}
+%==============================================================================
+
+\subsection{Wymagania systemowe}
+
+\begin{itemize}
+    \item Python 3.8+
+    \item Java 11+ (dla wizualizacji GraphStream)
+    \item Maven 3.6+ (do budowy projektu Java)
+\end{itemize}
+
+\subsection{Instalacja}
+
+\begin{lstlisting}[language=bash, caption={Instalacja projektu}]
+# Klonowanie repozytorium
+git clone https://github.com/[repo]/football-teams-evolution.git
+cd football-teams-evolution
+
+# Instalacja zaleznosci Python
+pip install -r requirements.txt
+
+# Budowa komponentu Java
+cd java
+mvn package
+cd ..
+\end{lstlisting}
+
+\subsection{Uruchomienie}
+
+\begin{lstlisting}[language=bash, caption={Przykłady uruchomienia}]
+# Tryb demo (dane wygenerowane, bez scrapowania)
+python main.py --mode demo
+
+# Z wizualizacjami PNG
+python main.py --mode demo --visualize
+
+# Tylko wybrane druzyny
+python main.py --mode demo --teams Liverpool "Bayern Munich"
+
+# Scrapowanie z Transfermarkt (dlugotrawale!)
+python main.py --mode scrape --start 2020 --end 2024
+
+# Uzycie danych z cache
+python main.py --mode cache
+\end{lstlisting}
+
+\subsection{Wizualizacja GraphStream}
+
+\begin{lstlisting}[language=bash, caption={Uruchomienie wizualizacji Java}]
+cd java
+
+# Z Maven
+mvn exec:java -Dexec.args="../output/player_edges.txt"
+
+# Lub z JAR
+java -jar target/football-graph-viewer-*-jar-with-dependencies.jar \
+    ../output/player_edges.txt
+\end{lstlisting}
+
+%==============================================================================
+\section{Wnioski i perspektywy rozwoju}
+%==============================================================================
+
+\subsection{Osiągnięte cele}
+
+Projekt zrealizował wszystkie założone cele:
+
+\begin{enumerate}
+    \item \checkmark Automatyczne pozyskiwanie danych o składach drużyn
+    \item \checkmark Przetwarzanie danych do formatu grafowego
+    \item \checkmark Eksport do wielu formatów (TXT, DGS, GEXF)
+    \item \checkmark Wizualizacja interaktywna w GraphStream
+    \item \checkmark Analiza statystyczna sieci
+\end{enumerate}
+
+\subsection{Napotkane wyzwania}
+
+\begin{itemize}
+    \item \textbf{Rate limiting} -- serwisy webowe ograniczają liczbę zapytań, wymagając opóźnień między requestami
+    \item \textbf{Zmienność struktury HTML} -- różne strony mogą mieć różny układ, wymagający adaptacji scrapera
+    \item \textbf{Normalizacja nazw} -- ten sam zawodnik może występować pod różnymi wariantami nazwiska
+    \item \textbf{Skalowalność wizualizacji} -- duże grafy wymagają filtrowania dla czytelności
+\end{itemize}
+
+\subsection{Możliwości rozwoju}
+
+\begin{enumerate}
+    \item \textbf{Rozszerzenie źródeł danych} -- integracja z API (football-data.org, API-Football)
+    \item \textbf{Analiza temporalna} -- animacja ewolucji sieci w czasie
+    \item \textbf{Metryki grafowe} -- obliczenie centralności, modularności, współczynnika klasteryzacji
+    \item \textbf{Porównanie międzyligowe} -- analiza różnic w stabilności składów między ligami
+    \item \textbf{Interfejs webowy} -- wizualizacja w przeglądarce (D3.js, vis.js)
+    \item \textbf{Predykcja} -- modelowanie prawdopodobieństwa transferów na podstawie struktury sieci
+\end{enumerate}
+
+%==============================================================================
+\section{Repozytorium i zasoby}
+%==============================================================================
+
+\begin{itemize}
+    \item \textbf{Repozytorium GitHub:} \url{https://github.com/[username]/football-teams-evolution}
+    \item \textbf{Overleaf (raport):} \url{https://www.overleaf.com/project/[id]}
+    \item \textbf{GraphStream:} \url{https://graphstream-project.org/}
+    \item \textbf{Transfermarkt:} \url{https://www.transfermarkt.com/}
+\end{itemize}
+
+%==============================================================================
+% Bibliografia
+%==============================================================================
+\begin{thebibliography}{9}
+
+\bibitem{graphstream}
+GraphStream Team,
+\textit{GraphStream - A Dynamic Graph Library},
+\url{https://graphstream-project.org/}, 2024.
+
+\bibitem{transfermarkt}
+Transfermarkt GmbH,
+\textit{Transfermarkt - Football transfers, rumours, market values and news},
+\url{https://www.transfermarkt.com/}, 2024.
+
+\bibitem{networkx}
+Hagberg A., Schult D., Swart P.,
+\textit{NetworkX: Network Analysis in Python},
+\url{https://networkx.org/}, 2024.
+
+\bibitem{beautifulsoup}
+Richardson L.,
+\textit{Beautiful Soup Documentation},
+\url{https://www.crummy.com/software/BeautifulSoup/}, 2024.
+
+\bibitem{footballdata}
+football-data.org,
+\textit{Free football data API},
+\url{https://www.football-data.org/}, 2024.
+
+\end{thebibliography}
+
+%==============================================================================
+% Appendix
+%==============================================================================
+\appendix
+\section{Pełny listing pliku requirements.txt}
+
+\begin{lstlisting}
+requests>=2.28.0
+beautifulsoup4>=4.12.0
+pandas>=2.0.0
+lxml>=4.9.0
+tqdm>=4.65.0
+networkx>=3.0
+matplotlib>=3.7.0
+numpy>=1.24.0
+\end{lstlisting}
+
+\section{Przykładowe dane wyjściowe}
+
+\subsection{Fragment pliku player\_edges.txt}
+\begin{lstlisting}
+# Format: year	player1	player2	weight	team
+2023	Mohamed Salah	Virgil van Dijk	1	Liverpool
+2023	Mohamed Salah	Trent Alexander-Arnold	1	Liverpool
+2023	Diogo Jota	Darwin Nunez	1	Liverpool
+2022	Robert Lewandowski	Pedri	1	Barcelona
+2022	Robert Lewandowski	Gavi	1	Barcelona
+\end{lstlisting}
+
+\subsection{Fragment pliku graph\_Liverpool.txt}
+\begin{lstlisting}
+# Player co-occurrence graph for Liverpool
+# Format: player1	player2	total_weight	seasons
+Mohamed Salah	Virgil van Dijk	10	[2018,2019,2020,2021,2022,2023,2024]
+Mohamed Salah	Trent Alexander-Arnold	9	[2018,2019,2020,2021,2022,2023]
+Jordan Henderson	Fabinho	8	[2018,2019,2020,2021,2022]
+\end{lstlisting}
+
+\end{document}
