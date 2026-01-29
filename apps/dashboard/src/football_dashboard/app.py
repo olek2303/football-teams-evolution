@@ -1,0 +1,265 @@
+import sqlite3
+import subprocess
+import sys
+import time
+from pathlib import Path
+import streamlit as st
+
+
+def _ensure_repo_packages_on_path() -> None:
+    current = Path(__file__).resolve()
+    for parent in current.parents:
+        pkg_src = parent / "packages" / "ft_graph" / "src"
+        if pkg_src.exists():
+            sys.path.insert(0, str(pkg_src))
+            return
+
+
+_ensure_repo_packages_on_path()
+
+from ft_graph.build import compute_edges
+from ft_graph.dgs import export_dgs
+
+st.set_page_config(page_title="Football Evolution", layout="wide")
+
+
+def _find_repo_root() -> Path:
+    current = Path(__file__).resolve()
+    for parent in current.parents:
+        if (parent / "scripts" / "run_graph_runner.py").exists():
+            return parent
+    return current.parents[5]
+
+db_path = st.sidebar.text_input("SQLite DB path", "data/db/football.sqlite3")
+
+if not Path(db_path).exists():
+    st.warning("DB not found yet. Run ingest first.")
+    st.stop()
+
+con = sqlite3.connect(db_path)
+
+st.title("Football teams evolution — data browser")
+
+# Filters
+teams = [r[0] for r in con.execute("SELECT name FROM team ORDER BY name").fetchall()]
+team = st.sidebar.selectbox("Team", ["(all)"] + teams)
+
+years = [r[0][:4] for r in con.execute("SELECT DISTINCT substr(match_date,1,4) FROM match ORDER BY 1").fetchall() if r[0]]
+year_from = st.sidebar.selectbox("From year", years, index=0 if years else 0)
+year_to = st.sidebar.selectbox("To year", years, index=(len(years)-1) if years else 0)
+
+# Advanced connection filters
+positions_all = [
+    r[0]
+    for r in con.execute(
+        "SELECT DISTINCT position FROM appearance WHERE position IS NOT NULL AND position != '' ORDER BY position"
+    ).fetchall()
+]
+nationalities_all = [
+    r[0]
+    for r in con.execute(
+        "SELECT DISTINCT nationality FROM player WHERE nationality IS NOT NULL AND nationality != '' ORDER BY nationality"
+    ).fetchall()
+]
+competitions_all = [
+    r[0]
+    for r in con.execute(
+        "SELECT DISTINCT competition FROM match WHERE competition IS NOT NULL AND competition != '' ORDER BY competition"
+    ).fetchall()
+]
+
+with st.sidebar.expander("Advanced connection filters", expanded=False):
+    min_edge_weight = st.number_input("Min shared matches", min_value=1, value=1, step=1)
+    min_minutes = st.number_input("Min minutes played", min_value=0, value=0, step=5)
+    starters_only = st.checkbox("Starters only", value=False)
+    same_team_only = st.checkbox("Teammates only (exclude opponents)", value=False)
+    competitions_filter = st.multiselect("Leagues", options=competitions_all, default=[])
+    positions_filter = st.multiselect("Positions", options=positions_all, default=[])
+    nationalities_filter = st.multiselect("Nationalities", options=nationalities_all, default=[])
+    name_query = st.text_input("Player name contains", value="")
+
+# Simple stats
+c1, c2, c3 = st.columns(3)
+c1.metric("Teams", con.execute("SELECT COUNT(*) FROM team").fetchone()[0])
+c2.metric("Players", con.execute("SELECT COUNT(*) FROM player").fetchone()[0])
+c3.metric("Matches", con.execute("SELECT COUNT(*) FROM match").fetchone()[0])
+
+# Matches table
+where = []
+params = []
+if team != "(all)":
+    where.append("(t1.name = ? OR t2.name = ?)")
+    params += [team, team]
+where.append("substr(m.match_date,1,4) BETWEEN ? AND ?")
+params += [year_from, year_to]
+
+if competitions_filter:
+    where.append(f"m.competition IN ({','.join(['?'] * len(competitions_filter))})")
+    params.extend(competitions_filter)
+
+appearance_where = []
+appearance_params = []
+if min_minutes > 0:
+    appearance_where.append("a.minutes >= ?")
+    appearance_params.append(int(min_minutes))
+if starters_only:
+    appearance_where.append("a.is_starter = 1")
+if positions_filter:
+    appearance_where.append(f"a.position IN ({','.join(['?'] * len(positions_filter))})")
+    appearance_params.extend(positions_filter)
+if nationalities_filter:
+    appearance_where.append(f"p.nationality IN ({','.join(['?'] * len(nationalities_filter))})")
+    appearance_params.extend(nationalities_filter)
+if name_query.strip():
+    appearance_where.append("p.name LIKE ?")
+    appearance_params.append(f"%{name_query.strip()}%")
+
+if appearance_where:
+    where.append(
+        "EXISTS ("
+        "SELECT 1 FROM appearance a "
+        "JOIN player p ON p.id = a.player_id "
+        "WHERE a.match_id = m.id AND "
+        + " AND ".join(appearance_where)
+        + ")"
+    )
+    params.extend(appearance_params)
+
+wsql = " AND ".join(where)
+q = f"""
+SELECT m.id, m.match_date, t1.name, t2.name, m.competition
+FROM match m
+LEFT JOIN team t1 ON t1.id = m.home_team_id
+LEFT JOIN team t2 ON t2.id = m.away_team_id
+WHERE {wsql}
+ORDER BY m.match_date
+LIMIT 500
+"""
+rows = con.execute(q, params).fetchall()
+st.subheader("Matches")
+
+match_ids = [r[0] for r in rows]
+
+if not rows:
+    st.info("No matches for current filters.")
+else:
+    player_filters_sql = []
+    player_filters_params: list = []
+    if min_minutes > 0:
+        player_filters_sql.append("a.minutes >= ?")
+        player_filters_params.append(int(min_minutes))
+    if starters_only:
+        player_filters_sql.append("a.is_starter = 1")
+    if positions_filter:
+        player_filters_sql.append(f"a.position IN ({','.join(['?'] * len(positions_filter))})")
+        player_filters_params.extend(positions_filter)
+    if nationalities_filter:
+        player_filters_sql.append(f"p.nationality IN ({','.join(['?'] * len(nationalities_filter))})")
+        player_filters_params.extend(nationalities_filter)
+    if name_query.strip():
+        player_filters_sql.append("p.name LIKE ?")
+        player_filters_params.append(f"%{name_query.strip()}%")
+
+    players_where_sql = " AND ".join(["a.match_id = ?"] + player_filters_sql)
+
+    for match_id, match_date, home_team, away_team, competition in rows:
+        title = f"{match_date} • {home_team} vs {away_team} • {competition}"
+        with st.expander(title, expanded=False):
+            psql = f"""
+            SELECT p.name,
+                   t.name AS team,
+                   a.position,
+                   a.minutes,
+                   a.is_starter,
+                   p.nationality
+            FROM appearance a
+            JOIN player p ON p.id = a.player_id
+            JOIN team t ON t.id = a.team_id
+            WHERE {players_where_sql}
+            ORDER BY t.name, a.is_starter DESC, a.minutes DESC, p.name
+            """
+            pparams = [match_id] + player_filters_params
+            prow = con.execute(psql, pparams).fetchall()
+
+            if not prow:
+                st.caption("No players match the current filters for this match.")
+            else:
+                st.dataframe(
+                    prow,
+                    use_container_width=True,
+                    column_config={
+                        0: "Player",
+                        1: "Team",
+                        2: "Position",
+                        3: "Minutes",
+                        4: "Starter",
+                        5: "Nationality",
+                    },
+                )
+
+st.subheader("Export selection to GraphStream DGS")
+out_name = st.text_input("Output file", f"data/exports/{team.replace(' ','_')}_{year_from}_{year_to}.dgs" if team != "(all)" else f"data/exports/all_{year_from}_{year_to}.dgs")
+
+if st.button("Build edges + Export .dgs"):
+    edges = compute_edges(
+        con,
+        match_ids=match_ids if match_ids else None,
+        competitions=competitions_filter or None,
+        min_edge_weight=int(min_edge_weight),
+        min_minutes=int(min_minutes) if min_minutes > 0 else None,
+        starters_only=starters_only,
+        positions=positions_filter or None,
+        nationalities=nationalities_filter or None,
+        name_query=name_query.strip() or None,
+        same_team_only=same_team_only,
+    )
+    export_dgs(con, edges, out_name, graph_name="players")
+    st.success(f"Exported: {out_name} (edges: {len(edges)})")
+
+if st.button("Render graph"):
+    repo_root = _find_repo_root()
+    dgs_path = Path(out_name)
+    if not dgs_path.is_absolute():
+        dgs_path = (repo_root / dgs_path).resolve()
+
+    with st.spinner("Exporting graph for selected params..."):
+        edges = compute_edges(
+            con,
+            match_ids=match_ids if match_ids else None,
+            competitions=competitions_filter or None,
+            min_edge_weight=int(min_edge_weight),
+            min_minutes=int(min_minutes) if min_minutes > 0 else None,
+            starters_only=starters_only,
+            positions=positions_filter or None,
+            nationalities=nationalities_filter or None,
+            name_query=name_query.strip() or None,
+            same_team_only=same_team_only,
+        )
+        export_dgs(con, edges, str(dgs_path), graph_name="players")
+        st.success(f"Exported: {dgs_path} (edges: {len(edges)})")
+
+    with st.spinner("Launching GraphStream viewer..."):
+        cmd = [
+            sys.executable,
+            str(repo_root / "scripts" / "run_graph_runner.py"),
+            str(dgs_path),
+        ]
+        proc = subprocess.Popen(
+            cmd,
+            cwd=str(repo_root),
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            text=True,
+        )
+        time.sleep(1)
+        if proc.poll() is not None and proc.returncode != 0:
+            out, err = proc.communicate(timeout=2)
+            st.error("Graph runner failed to start.")
+            if out:
+                st.text(out)
+            if err:
+                st.text(err)
+        else:
+            st.success("Graph runner launched. The viewer window should appear.")
+            st.caption("If nothing opens, ensure Maven/Java are installed and try again.")
+    
