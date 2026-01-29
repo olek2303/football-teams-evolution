@@ -1,0 +1,22 @@
+[ruff]
+select = [
+  "E",    # pycodestyle errors
+  "W",    # pycodestyle warnings
+  "F",    # Pyflakes
+  "I",    # isort
+  "N",    # pep8-naming
+  "UP",   # pyupgrade
+  "B",    # flake8-bugbear
+  "C4",   # flake8-comprehensions
+  "RUF",  # Ruff-specific rules
+]
+ignore = [
+  "E501",   # line too long (let formatter handle it)
+  "W503",   # line break before binary operator
+]
+
+line-length = 100
+target-version = "py311"
+
+[format]
+line-length = 100
