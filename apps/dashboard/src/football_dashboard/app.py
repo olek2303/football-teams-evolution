@@ -222,44 +222,56 @@ if st.button("Render graph"):
     if not dgs_path.is_absolute():
         dgs_path = (repo_root / dgs_path).resolve()
 
-    with st.spinner("Exporting graph for selected params..."):
-        edges = compute_edges(
-            con,
-            match_ids=match_ids if match_ids else None,
-            competitions=competitions_filter or None,
-            min_edge_weight=int(min_edge_weight),
-            min_minutes=int(min_minutes) if min_minutes > 0 else None,
-            starters_only=starters_only,
-            positions=positions_filter or None,
-            nationalities=nationalities_filter or None,
-            name_query=name_query.strip() or None,
-            same_team_only=same_team_only,
-        )
-        export_dgs(con, edges, str(dgs_path), graph_name="players")
-        st.success(f"Exported: {dgs_path} (edges: {len(edges)})")
+    try:
+        with st.spinner("Exporting graph for selected params..."):
+            edges = compute_edges(
+                con,
+                match_ids=match_ids if match_ids else None,
+                competitions=competitions_filter or None,
+                min_edge_weight=int(min_edge_weight),
+                min_minutes=int(min_minutes) if min_minutes > 0 else None,
+                starters_only=starters_only,
+                positions=positions_filter or None,
+                nationalities=nationalities_filter or None,
+                name_query=name_query.strip() or None,
+                same_team_only=same_team_only,
+            )
+            export_dgs(con, edges, str(dgs_path), graph_name="players")
+            st.success(f"Exported: {dgs_path} (edges: {len(edges)})")
 
-    with st.spinner("Launching GraphStream viewer..."):
-        cmd = [
-            sys.executable,
-            str(repo_root / "scripts" / "run_graph_runner.py"),
-            str(dgs_path),
-        ]
-        proc = subprocess.Popen(
-            cmd,
-            cwd=str(repo_root),
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE,
-            text=True,
-        )
-        time.sleep(1)
-        if proc.poll() is not None and proc.returncode != 0:
-            out, err = proc.communicate(timeout=2)
-            st.error("Graph runner failed to start.")
-            if out:
-                st.text(out)
-            if err:
-                st.text(err)
-        else:
-            st.success("Graph runner launched. The viewer window should appear.")
-            st.caption("If nothing opens, ensure Maven/Java are installed and try again.")
+        with st.spinner("Launching GraphStream viewer..."):
+            cmd = [
+                sys.executable,
+                str(repo_root / "scripts" / "run_graph_runner.py"),
+                str(dgs_path),
+            ]
+            proc = subprocess.Popen(
+                cmd,
+                cwd=str(repo_root),
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+                text=True,
+            )
+            time.sleep(1)
+            if proc.poll() is not None and proc.returncode != 0:
+                out, err = proc.communicate(timeout=2)
+                st.error("❌ Something went wrong while launching the graph viewer!")
+                st.error("Possible causes:")
+                if proc.returncode == 2:
+                    st.error("• The .dgs file doesn't exist")
+                elif proc.returncode == 3:
+                    st.error("• Maven is not installed or not in PATH")
+                else:
+                    st.error(f"• Exit code: {proc.returncode}")
+                if err:
+                    st.text_area("Error details:", err, height=150, disabled=True)
+                if out:
+                    st.text_area("Output:", out, height=100, disabled=True)
+            else:
+                st.success("Graph runner launched. The viewer window should appear.")
+                st.caption("If nothing opens, ensure Maven/Java are installed and try again.")
+    except Exception as e:
+        st.error("❌ Something went wrong!")
+        st.error(f"Error: {str(e)}")
+        st.text_area("Details:", f"{type(e).__name__}: {str(e)}", height=100, disabled=True)
     

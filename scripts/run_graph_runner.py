@@ -51,6 +51,16 @@ def main() -> int:
         )
         return 3
 
+    # Check if Maven build has been done
+    target_classes = module_dir / "target" / "classes" / "org" / "example" / "graphrunner"
+    if not target_classes.exists():
+        print("Maven build not found. Running 'mvn package -q'...", file=sys.stderr)
+        build_cmd = [mvn, "package", "-q"]
+        result = subprocess.run(build_cmd, cwd=str(module_dir))
+        if result.returncode != 0:
+            print(f"Maven build failed with return code {result.returncode}", file=sys.stderr)
+            return result.returncode
+
     env = dict(**{k: v for k, v in dict(**__import__("os").environ).items()})
     default_java_home = Path(
         r"C:\Program Files\Eclipse Adoptium\jdk-17.0.17.10-hotspot"
