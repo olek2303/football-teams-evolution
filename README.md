@@ -215,7 +215,9 @@ football-evolution/
 │   └── raw_cache/                   # Scraping cache
 │
 ├── scripts/                         # Helper scripts
-│   ├── populate_mock_data.py
+│   ├── ingest_multiple_teams.py     # Ingest data for multiple teams
+│   ├── merge_databases.py           # Merge football + statsbomb DBs
+│   ├── populate_mock_data.py        # Generate mock data
 │   └── run_graph_runner.py          # Launch Java viewer
 │
 └── docs/                            # Documentation
@@ -258,6 +260,39 @@ football-evolution/
 - `is_starter`: Boolean (1/0)
 - `minutes`: Minutes played
 - `position`: Player position
+
+### Database Management
+
+The project includes scripts for managing and optimizing the database:
+
+**Merging Databases**
+```bash
+# Merge football.sqlite3 and stats-bomb-football.sqlite3
+python scripts/merge_databases.py
+```
+
+Creates `football-merged.sqlite3` by:
+- Starting with football.sqlite3 as base
+- Adding StatsBomb data for teams/players/matches not in base
+- Enriching records with StatsBomb metadata (nationality, positions, etc.)
+
+**Consolidating and Optimizing**
+```bash
+# Fix duplicates and add comprehensive indexes
+python scripts/fix_merged_database.py
+```
+
+This script:
+- Consolidates duplicate teams (prioritizing StatsBomb source)
+- Consolidates duplicate players (prioritizing StatsBomb source)
+- Updates all foreign key references
+- Creates comprehensive database indexes for optimal query performance
+
+**Indexes Created**:
+- Team: name, source
+- Player: name, source, nationality
+- Match: date, season, competition, teams, source
+- Appearance: match, player, team, match+team
 
 ## Data Sources
 
