@@ -3,7 +3,6 @@ __pycache__/
 .venv/
 venv/
 *.egg-info/
-data/db/
 data/raw_cache/
 data/exports/*.dgs
 target/
