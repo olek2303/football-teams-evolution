@@ -258,7 +258,8 @@ if st.button("Render graph"):
                 st.error("❌ Something went wrong while launching the graph viewer!")
                 st.error("Possible causes:")
                 if proc.returncode == 2:
-                    st.error("• The .dgs file doesn't exist")
+                    st.error("• The graph runner could not load the .dgs file (path may be incorrect or inaccessible)")
+                    st.caption(f"DGS path passed to graph runner: {dgs_path}")
                 elif proc.returncode == 3:
                     st.error("• Maven is not installed or not in PATH")
                 else:
