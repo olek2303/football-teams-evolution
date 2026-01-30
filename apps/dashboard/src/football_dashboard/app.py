@@ -275,4 +275,3 @@ if st.button("Render graph"):
         st.error("❌ Something went wrong!")
         st.error(f"Error: {str(e)}")
         st.text_area("Details:", f"{type(e).__name__}: {str(e)}", height=100, disabled=True)
-    
