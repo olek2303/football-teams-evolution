@@ -269,6 +269,11 @@ if st.button("Render graph"):
                 if out:
                     st.text_area("Output:", out, height=100, disabled=True)
             else:
+                # Close unused pipes to avoid leaking stdout/stderr resources
+                if proc.stdout:
+                    proc.stdout.close()
+                if proc.stderr:
+                    proc.stderr.close()
                 st.success("Graph runner launched. The viewer window should appear.")
                 st.caption("If nothing opens, ensure Maven/Java are installed and try again.")
     except Exception as e:
