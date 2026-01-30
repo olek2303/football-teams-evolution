@@ -6,3 +6,5 @@ venv/
 data/raw_cache/
 data/exports/*.dgs
 target/
+*sqlite3-shm
+*sqlite3-wal

@@ -2,6 +2,8 @@
 
 Network analysis and visualization of football player connections through shared match appearances.
 
+> **📄 Project Report**: Full documentation available on [Overleaf](https://www.overleaf.com/read/vgmbbjdggxdj#cacd54) (includes architecture, sprints, author contributions, and detailed technical specifications)
+
 ## Overview
 
 This project analyzes how football players connect through playing together in matches, creating weighted network graphs that reveal team dynamics, player partnerships, and evolution over time. The system ingests historical match data from multiple sources, computes player-to-player connections, and provides interactive visualization tools.

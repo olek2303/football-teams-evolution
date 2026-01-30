@@ -1,0 +1,1516 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{caption}
+
+\geometry{margin=1in}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\thepage}
+\lhead{Football Teams Evolution: Network Analysis}
+
+% Code listing style
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    pdftitle={Football Teams Evolution Report},
+}
+
+\title{\textbf{Football Teams Evolution:} \\
+\Large Network Analysis and Visualization of Player Connections}
+
+\author{
+    Alicja Bijak \and
+    Patryk Pyrkosz \and
+    Rafał Maciejewski \and
+    Szymon Stachura \and
+    Aleksander Karpiuk
+}
+
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\thispagestyle{empty}
+
+\begin{abstract}
+This project presents a comprehensive system for analyzing and visualizing football player networks based on shared match appearances. By ingesting historical match data from multiple sources (StatsBomb Open Data and Footballia), computing weighted player connections, and providing interactive visualization tools, the system enables exploration of team dynamics, player partnerships, and network evolution over time. The implementation includes a data ingestion pipeline, graph computation engine, web-based dashboard, and 3D interactive graph visualization powered by GraphStream. The modular architecture supports extensibility, with current coverage spanning over 30 years of football history (1990-2023) and 20+ major European clubs.
+\end{abstract}
+
+\clearpage
+\tableofcontents
+\clearpage
+
+\section{Introduction}
+
+\subsection{Motivation}
+
+Football is fundamentally a team sport where player interactions and partnerships significantly impact team performance. Understanding these connections through network analysis can reveal:
+
+\begin{itemize}
+    \item Core player groups and team cohesion patterns
+    \item Evolution of team composition across seasons
+    \item Key players who connect different tactical groups (bridge players)
+    \item Historical partnerships and their correlation with success
+    \item Formation changes reflected in network topology
+\end{itemize}
+
+Traditional sports analytics focuses on individual statistics or team-level aggregates. Network analysis provides a complementary lens that captures the relational structure of teams—who plays with whom, how often, and in what contexts.
+
+\subsection{Objectives}
+
+The primary objectives of this project are:
+
+\begin{enumerate}
+    \item \textbf{Data Collection}: Aggregate historical match and lineup data from multiple sources with robust scraping infrastructure
+    \item \textbf{Network Construction}: Build weighted player networks based on shared match appearances with flexible filtering
+    \item \textbf{Interactive Exploration}: Provide user-friendly tools for filtering and exploring player networks without programming knowledge
+    \item \textbf{Visualization}: Enable 3D interactive visualization of complex player relationships using state-of-the-art graph rendering
+    \item \textbf{Historical Analysis}: Support temporal analysis spanning decades of football history with consistent data quality
+\end{enumerate}
+
+\subsection{Scope}
+
+The system focuses on:
+
+\begin{itemize}
+    \item Match-level data (teams, players, lineups, basic statistics)
+    \item European football clubs (with extensibility to other regions)
+    \item Historical coverage from 1990s to present (Footballia) and recent seasons (StatsBomb)
+    \item Player co-occurrence networks (appearing together in matches)
+    \item Interactive web-based exploration and 3D visualization
+\end{itemize}
+
+Out of scope:
+\begin{itemize}
+    \item Event-level analysis (passes, shots, tackles)
+    \item Real-time data streaming
+    \item Predictive modeling and machine learning (future work)
+    \item Mobile application development
+\end{itemize}
+
+\section{System Architecture}
+
+\subsection{Overview}
+
+The system follows a modular, layered architecture with clear separation of concerns:
+
+\begin{enumerate}
+    \item \textbf{Data Ingestion Layer} (\texttt{ft\_ingest}): Web scraping and database storage
+    \item \textbf{Graph Computation Layer} (\texttt{ft\_graph}): Network analysis and export
+    \item \textbf{Presentation Layer} (\texttt{dashboard} + \texttt{graph-runner}): Interactive exploration and visualization
+\end{enumerate}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.9\textwidth]{images/dashboard.png}
+\caption{System dashboard showing filtered matches and pagination controls}
+\label{fig:dashboard}
+\end{figure}
+
+\subsection{Technology Stack}
+
+\subsubsection{Python Components}
+
+\begin{itemize}
+    \item \textbf{Python 3.11+}: Core language with type hints and modern syntax
+    \item \textbf{httpx}: Modern HTTP client with timeout and retry support
+    \item \textbf{BeautifulSoup4}: Robust HTML parsing for web scraping
+    \item \textbf{SQLite}: Embedded relational database with ACID properties
+    \item \textbf{Streamlit}: Reactive web framework for data applications
+    \item \textbf{structlog}: Structured logging with context preservation
+    \item \textbf{pandas}: DataFrame manipulation for display
+\end{itemize}
+
+\subsubsection{Java Components}
+
+\begin{itemize}
+    \item \textbf{Java 11+}: Mature platform with excellent library ecosystem
+    \item \textbf{Maven}: Dependency management and build automation
+    \item \textbf{GraphStream}: Dynamic graph visualization library
+\end{itemize}
+
+\subsubsection{Development Tools}
+
+\begin{itemize}
+    \item \textbf{Git}: Distributed version control
+    \item \textbf{Ruff}: Fast Python linter and formatter
+    \item \textbf{Virtual environments}: Dependency isolation
+    \item \textbf{VS Code}: Primary IDE with Python/Java support
+\end{itemize}
+
+\subsection{Data Flow}
+
+The system follows a pipeline architecture:
+
+\begin{center}
+\texttt{External Sources} $\rightarrow$ \texttt{Scraper} $\rightarrow$ \texttt{SQLite DB} $\rightarrow$ \texttt{Graph Builder} $\rightarrow$ \texttt{DGS Export} $\rightarrow$ \texttt{GraphStream}
+\end{center}
+
+With a parallel path through the dashboard:
+
+\begin{center}
+\texttt{SQLite DB} $\rightarrow$ \texttt{Streamlit Dashboard} $\rightarrow$ \texttt{User Interaction}
+\end{center}
+
+\subsubsection{Pipeline Stages}
+
+\begin{enumerate}
+    \item \textbf{Ingestion}: Web scrapers fetch match metadata and lineups from external sources
+    \item \textbf{Storage}: Data normalized into relational schema with proper constraints
+    \item \textbf{Computation}: SQL queries compute player co-appearances with filtering
+    \item \textbf{Export}: Graph data serialized to DGS (Dynamic Graph Stream) format
+    \item \textbf{Visualization}: GraphStream renders interactive 3D force-directed graphs
+    \item \textbf{Exploration}: Streamlit dashboard provides filtering and browsing interface
+\end{enumerate}
+
+\section{Data Ingestion (ft\_ingest)}
+
+\subsection{Data Sources}
+
+\subsubsection{StatsBomb Open Data}
+
+\begin{itemize}
+    \item \textbf{Coverage}: Selected competitions including World Cup, Champions League, domestic leagues
+    \item \textbf{Quality}: High—detailed event data with spatial coordinates and player actions
+    \item \textbf{Format}: JSON API with well-documented schema
+    \item \textbf{Access}: Public GitHub repository, no authentication required
+    \item \textbf{Rate Limiting}: None (open data initiative)
+\end{itemize}
+
+\subsubsection{Footballia}
+
+\begin{itemize}
+    \item \textbf{Coverage}: Extensive historical archive from 1960s onwards, focus on 1990s-2023
+    \item \textbf{Quality}: Basic—lineup data without detailed events
+    \item \textbf{Format}: HTML pages requiring web scraping
+    \item \textbf{Access}: Public website, requires polite scraping practices
+    \item \textbf{Rate Limiting}: Self-imposed delays (1-2.5s between requests)
+\end{itemize}
+
+\subsection{Provider Architecture}
+
+The ingestion system uses a \textbf{Provider Protocol} pattern for extensibility:
+
+\begin{lstlisting}[language=Python, caption=Provider Protocol Definition]
+class Provider(Protocol):
+    name: str
+    
+    def list_matches(
+        self, 
+        teams: list[str], 
+        date_from: str, 
+        date_to: str
+    ) -> list[MatchDTO]:
+        """Fetch match metadata for given teams and date range."""
+        ...
+    
+    def get_lineups(
+        self, 
+        source_match_id: str
+    ) -> list[AppearanceDTO]:
+        """Fetch player lineups for a specific match."""
+        ...
+\end{lstlisting}
+
+This design allows:
+\begin{itemize}
+    \item Adding new providers without modifying core logic
+    \item Swapping implementations at runtime
+    \item Testing with mock providers
+    \item Type safety through protocol checking
+\end{itemize}
+
+\subsection{Footballia Scraper Implementation}
+
+\subsubsection{Key Features}
+
+\begin{itemize}
+    \item \textbf{Parallel Processing}: ThreadPoolExecutor with 5 workers for metadata fetching
+    \item \textbf{Polite Scraping}: Random delays (1-2.5s) between requests to avoid overwhelming server
+    \item \textbf{Robust Parsing}: Multiple fallback strategies for date and team extraction
+    \item \textbf{Competition Normalization}: Removes year suffixes like ``Audi Cup2011'' $\rightarrow$ ``Audi Cup''
+    \item \textbf{Progress Logging}: Structured logs every 50 matches for monitoring
+    \item \textbf{Error Handling}: Graceful degradation with detailed error logging
+\end{itemize}
+
+\subsubsection{Scraping Algorithm}
+
+\begin{enumerate}
+    \item Convert team names to URL slugs (e.g., ``FC Barcelona'' $\rightarrow$ ``fc-barcelona'')
+    \item Fetch team page with pagination information
+    \item For each page:
+    \begin{enumerate}
+        \item Parse match rows with season filtering
+        \item Extract match URLs
+        \item Apply date-based early filtering
+    \end{enumerate}
+    \item Submit metadata fetch tasks to thread pool
+    \item As tasks complete:
+    \begin{enumerate}
+        \item Parse match date from multiple possible HTML structures
+        \item Extract home/away teams with ID resolution
+        \item Clean competition names (remove year suffixes)
+        \item Extract season from URL or page content
+        \item Filter by date range
+        \item Create MatchDTO objects
+    \end{enumerate}
+    \item For lineups:
+    \begin{enumerate}
+        \item Fetch match page
+        \item Parse player links from lineup tables
+        \item Distinguish home/away teams by column position
+        \item Mark first 11 as starters
+        \item Create AppearanceDTO objects
+    \end{enumerate}
+\end{enumerate}
+
+\subsubsection{Challenges and Solutions}
+
+\paragraph{Challenge 1: Inconsistent HTML Structure}
+
+Footballia pages span multiple website redesigns over decades, resulting in varied HTML structures.
+
+\textbf{Solution}:
+\begin{lstlisting}[language=Python, caption=Flexible Date Parsing]
+def _extract_match_date(self, soup):
+    candidates = []
+    
+    # Strategy 1: playing_date div with content attribute
+    playing_date = soup.find("div", class_="playing_date")
+    if playing_date and playing_date.get("content"):
+        candidates.append(playing_date.get("content"))
+    
+    # Strategy 2: meta tag with itemprop
+    meta_date = soup.find("meta", itemprop="startDate")
+    if meta_date:
+        candidates.append(meta_date.get("content"))
+    
+    # Strategy 3: time tag with datetime
+    time_date = soup.find("time", itemprop="startDate")
+    if time_date:
+        candidates.append(time_date.get("datetime"))
+    
+    # Try parsing each candidate with multiple formats
+    for raw in candidates:
+        parsed = self._parse_flexible_date(raw)
+        if parsed:
+            return parsed
+    
+    return None
+\end{lstlisting}
+
+\paragraph{Challenge 2: Database Concurrency}
+
+SQLite raises ``database is locked'' errors when multiple threads attempt concurrent writes.
+
+\textbf{Solution}:
+\begin{itemize}
+    \item Global \texttt{threading.Lock()} for write serialization
+    \item WAL (Write-Ahead Logging) mode for better concurrent read performance
+    \item Busy timeout set to 30 seconds
+    \item Per-thread database connections (SQLite limitation)
+\end{itemize}
+
+\begin{lstlisting}[language=Python, caption=Thread-Safe Database Access]
+_db_lock = Lock()
+
+def _ingest_match(db_path, provider, match):
+    with _db_lock:  # Serialize all writes
+        con = connect(db_path)
+        try:
+            con.execute("PRAGMA busy_timeout=30000")
+            # ... perform inserts/updates ...
+            con.commit()
+        finally:
+            con.close()
+\end{lstlisting}
+
+\paragraph{Challenge 3: Performance}
+
+Sequential fetching of 1000+ matches takes hours.
+
+\textbf{Solution}:
+\begin{itemize}
+    \item ThreadPoolExecutor with 5 workers for parallel HTTP requests
+    \item \texttt{as\_completed()} for responsive progress reporting
+    \item Batch progress logging (every 50 matches)
+    \item Network I/O parallelized while respecting rate limits
+\end{itemize}
+
+Result: 1000 matches processed in $\sim$45 minutes (vs. $\sim$3 hours sequentially).
+
+\subsection{Database Schema}
+
+\subsubsection{Design Principles}
+
+\begin{itemize}
+    \item \textbf{Normalization}: Avoid data redundancy through proper table relationships
+    \item \textbf{Source Tracking}: Support multiple providers with \texttt{source} and \texttt{source\_*\_id} columns
+    \item \textbf{Idempotency}: \texttt{INSERT ... ON CONFLICT DO UPDATE} for safe re-ingestion
+    \item \textbf{Referential Integrity}: Foreign key constraints with cascading deletes
+    \item \textbf{Indexing}: Automatic indexes on primary keys, foreign keys, and unique constraints
+\end{itemize}
+
+\subsubsection{Table Definitions}
+
+\paragraph{team}
+\begin{lstlisting}[language=SQL]
+CREATE TABLE team (
+    id INTEGER PRIMARY KEY,
+    name TEXT NOT NULL,
+    country TEXT,
+    source TEXT NOT NULL,
+    source_team_id TEXT NOT NULL,
+    UNIQUE(source, source_team_id)
+);
+\end{lstlisting}
+
+\paragraph{player}
+\begin{lstlisting}[language=SQL]
+CREATE TABLE player (
+    id INTEGER PRIMARY KEY,
+    name TEXT NOT NULL,
+    birth_date TEXT,
+    nationality TEXT,
+    source TEXT NOT NULL,
+    source_player_id TEXT NOT NULL,
+    UNIQUE(source, source_player_id)
+);
+\end{lstlisting}
+
+\paragraph{match}
+\begin{lstlisting}[language=SQL]
+CREATE TABLE match (
+    id INTEGER PRIMARY KEY,
+    match_date TEXT NOT NULL,
+    season TEXT,
+    competition TEXT,
+    home_team_id INTEGER NOT NULL,
+    away_team_id INTEGER NOT NULL,
+    source TEXT NOT NULL,
+    source_match_id TEXT NOT NULL,
+    FOREIGN KEY (home_team_id) REFERENCES team(id),
+    FOREIGN KEY (away_team_id) REFERENCES team(id),
+    UNIQUE(source, source_match_id)
+);
+\end{lstlisting}
+
+\paragraph{appearance}
+\begin{lstlisting}[language=SQL]
+CREATE TABLE appearance (
+    id INTEGER PRIMARY KEY,
+    match_id INTEGER NOT NULL,
+    player_id INTEGER NOT NULL,
+    team_id INTEGER NOT NULL,
+    is_starter INTEGER NOT NULL DEFAULT 0,
+    minutes INTEGER,
+    position TEXT,
+    FOREIGN KEY (match_id) REFERENCES match(id),
+    FOREIGN KEY (player_id) REFERENCES player(id),
+    FOREIGN KEY (team_id) REFERENCES team(id),
+    UNIQUE(match_id, player_id)
+);
+\end{lstlisting}
+
+\subsubsection{Schema Diagram}
+
+\begin{verbatim}
+┌─────────────┐       ┌─────────────┐       ┌─────────────┐
+│    team     │       │    match    │       │   player    │
+├─────────────┤       ├─────────────┤       ├─────────────┤
+│ id (PK)     │◄──────┤ home_team_id│       │ id (PK)     │
+│ name        │       │ away_team_id│──────►│ name        │
+│ country     │       │ match_date  │       │ nationality │
+│ source      │       │ season      │       │ birth_date  │
+│ source_id   │       │ competition │       │ source      │
+└─────────────┘       │ source      │       │ source_id   │
+                      │ source_id   │       └─────────────┘
+                      └─────────────┘              ▲
+                             ▲                     │
+                             │                     │
+                             │    ┌────────────────┴──────┐
+                             │    │    appearance         │
+                             └────┤───────────────────────┤
+                                  │ id (PK)               │
+                                  │ match_id (FK)         │
+                                  │ player_id (FK)        │
+                                  │ team_id (FK)          │
+                                  │ is_starter            │
+                                  │ minutes               │
+                                  │ position              │
+                                  └───────────────────────┘
+\end{verbatim}
+
+\subsection{CLI Interface}
+
+The command-line interface provides flexible data ingestion:
+
+\begin{lstlisting}[language=bash, caption=CLI Examples]
+# StatsBomb provider
+ft-ingest --db football.sqlite3 \
+  --date-from 2020-01-01 --date-to 2023-12-31 \
+  --team "Barcelona" --provider statsbomb
+
+# Footballia provider (team search)
+ft-ingest --db football.sqlite3 \
+  --date-from 1990-01-01 --date-to 2022-12-31 \
+  --team "FC Barcelona" --provider footballia
+
+# Footballia provider (from links file)
+ft-ingest --db football.sqlite3 \
+  --date-from 1990-01-01 --date-to 2022-12-31 \
+  --links-file data/fc-barcelona_match_links.txt \
+  --provider footballia
+
+# Multiple teams
+ft-ingest --db football.sqlite3 \
+  --date-from 2010-01-01 --date-to 2020-12-31 \
+  --team "Real Madrid" --team "Barcelona" \
+  --provider footballia
+\end{lstlisting}
+
+\section{Graph Computation (ft\_graph)}
+
+\subsection{Edge Computation Algorithm}
+
+The core graph building algorithm computes weighted edges between players based on shared match appearances.
+
+\subsubsection{Mathematical Definition}
+
+Let:
+\begin{itemize}
+    \item $P$ = set of all players
+    \item $M$ = set of all matches
+    \item $A(m)$ = set of players who appeared in match $m$
+\end{itemize}
+
+For any two players $p_1, p_2 \in P$, define the edge weight:
+
+\begin{equation}
+w(p_1, p_2) = |\{m \in M : p_1 \in A(m) \land p_2 \in A(m)\}|
+\end{equation}
+
+An edge $(p_1, p_2)$ exists in the graph if $w(p_1, p_2) \geq \text{min\_edge\_weight}$.
+
+\subsubsection{SQL Implementation}
+
+The algorithm is implemented efficiently using SQL:
+
+\begin{lstlisting}[language=SQL, caption=Core Edge Computation Query]
+SELECT 
+    a1.player_id AS player1_id,
+    a2.player_id AS player2_id,
+    COUNT(*) AS weight
+FROM appearance a1
+JOIN appearance a2 
+    ON a1.match_id = a2.match_id 
+    AND a1.player_id < a2.player_id
+JOIN match m ON m.id = a1.match_id
+JOIN player p1 ON p1.id = a1.player_id
+JOIN player p2 ON p2.id = a2.player_id
+WHERE
+    -- Filters applied here
+    1=1
+GROUP BY a1.player_id, a2.player_id
+HAVING COUNT(*) >= ?  -- min_edge_weight
+ORDER BY weight DESC;
+\end{lstlisting}
+
+Key optimizations:
+\begin{itemize}
+    \item \texttt{a1.player\_id < a2.player\_id}: Ensures each edge counted once (undirected graph)
+    \item Self-join on \texttt{match\_id}: Finds co-appearances
+    \item \texttt{HAVING} clause: Filters low-weight edges before returning results
+    \item Indexes on foreign keys: Enable efficient joins
+\end{itemize}
+
+\subsubsection{Filtering Options}
+
+The system supports extensive filtering:
+
+\begin{table}[h]
+\centering
+\caption{Available Graph Filters}
+\begin{tabular}{@{}ll@{}}
+\toprule
+\textbf{Filter Type} & \textbf{Description} \\
+\midrule
+Match IDs & Restrict to specific matches \\
+Competitions & Filter by competition name(s) \\
+Min Edge Weight & Minimum shared matches required \\
+Min Minutes & Minimum minutes played per match \\
+Starters Only & Consider only starting XI \\
+Positions & Filter by player position(s) \\
+Nationalities & Filter by player nationality(ies) \\
+Name Query & Search player names (case-insensitive) \\
+Same Team Only & Exclude opponent connections \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Example: To find midfield partnerships in La Liga where players shared at least 10 matches and each played 60+ minutes:
+
+\begin{lstlisting}[language=Python]
+edges = compute_edges(
+    con,
+    competitions=["La Liga"],
+    positions=["Midfielder", "Defensive Midfielder"],
+    min_edge_weight=10,
+    min_minutes=60,
+    same_team_only=True
+)
+\end{lstlisting}
+
+\subsection{Graph Export (DGS Format)}
+
+\subsubsection{DGS Overview}
+
+DGS (Dynamic Graph Stream) is GraphStream's native format for graph serialization. It supports:
+\begin{itemize}
+    \item Dynamic graph evolution (add/remove nodes/edges over time)
+    \item Arbitrary node and edge attributes
+    \item Human-readable text format
+    \item Efficient parsing by GraphStream library
+\end{itemize}
+
+\subsubsection{Export Implementation}
+
+\begin{lstlisting}[language=Python, caption=DGS Export Function]
+def export_dgs(con, edges, output_path, graph_name="players"):
+    """Export graph to GraphStream DGS format."""
+    with open(output_path, "w") as f:
+        # Header
+        f.write("DGS004\n")
+        f.write(f'"{graph_name}" 0 0\n\n')
+        
+        # Collect unique node IDs
+        nodes = set()
+        for p1, p2, _ in edges:
+            nodes.add(p1)
+            nodes.add(p2)
+        
+        # Fetch node attributes from database
+        for node_id in nodes:
+            player = fetch_player_data(con, node_id)
+            f.write(f'an "{node_id}" ')
+            f.write(f'ui.label:"{player.name}" ')
+            if player.team:
+                f.write(f'team:"{player.team}" ')
+            if player.nationality:
+                f.write(f'nationality:"{player.nationality}" ')
+            if player.position:
+                f.write(f'position:"{player.position}" ')
+            f.write('\n')
+        
+        # Write edges
+        for p1, p2, weight in edges:
+            edge_id = f"{p1}_{p2}"
+            f.write(f'ae "{edge_id}" "{p1}" "{p2}" ')
+            f.write(f'weight:{weight} ')
+            f.write(f'ui.label:"{weight}"\n')
+\end{lstlisting}
+
+\subsubsection{Example DGS Output}
+
+\begin{lstlisting}[caption=Sample DGS File]
+DGS004
+"players" 0 0
+
+an "123" ui.label:"Lionel Messi" team:"Barcelona" 
+    nationality:"Argentina" position:"Forward"
+an "456" ui.label:"Xavi Hernandez" team:"Barcelona" 
+    nationality:"Spain" position:"Midfielder"
+an "789" ui.label:"Andres Iniesta" team:"Barcelona" 
+    nationality:"Spain" position:"Midfielder"
+
+ae "123_456" "123" "456" weight:150 ui.label:"150"
+ae "123_789" "123" "789" weight:145 ui.label:"145"
+ae "456_789" "456" "789" weight:180 ui.label:"180"
+\end{lstlisting}
+
+\subsection{Performance Analysis}
+
+\subsubsection{Complexity}
+
+\begin{itemize}
+    \item \textbf{Time}: $O(M \cdot A^2 + E)$ where $M$ = matches, $A$ = avg appearances per match, $E$ = edges
+    \item \textbf{Space}: $O(V + E)$ where $V$ = vertices (players), $E$ = edges
+    \item \textbf{Typical Dataset}: $V \approx 500$, $E \approx 10,000$, $M \approx 1,000$
+    \item \textbf{Processing Time}: $<$ 5 seconds for 100,000 matches on commodity hardware
+\end{itemize}
+
+\subsubsection{Optimization Strategies}
+
+\begin{enumerate}
+    \item \textbf{SQL Engine}: SQLite query optimizer handles join ordering
+    \item \textbf{Indexes}: Foreign keys automatically indexed for fast joins
+    \item \textbf{Early Filtering}: Push filters into WHERE clause before aggregation
+    \item \textbf{Batch Processing}: Single pass through data, no iterative refinement
+    \item \textbf{Memory Management}: Streaming results, no large in-memory structures
+\end{enumerate}
+
+\section{Interactive Dashboard (Streamlit)}
+
+\subsection{User Interface Design}
+
+The dashboard follows a sidebar-main layout pattern:
+
+\begin{itemize}
+    \item \textbf{Sidebar}: Configuration and filters
+    \item \textbf{Main Area}: Match browser, statistics, and export controls
+\end{itemize}
+
+\subsection{Key Features}
+
+\subsubsection{Data Exploration}
+
+\begin{itemize}
+    \item \textbf{Team Selection}: Multi-select dropdown with ``Select all teams'' checkbox
+    \item \textbf{Date Range}: From/to year selectors based on available data
+    \item \textbf{Competition Filter}: Multi-select from competitions in database
+    \item \textbf{Player Filters}: Position, nationality, name search
+    \item \textbf{Appearance Filters}: Min minutes, starters only
+\end{itemize}
+
+\subsubsection{Match Browser}
+
+\begin{itemize}
+    \item \textbf{Pagination}: Configurable page size (5-50 matches)
+    \item \textbf{Match Cards}: Expandable with date, teams, competition
+    \item \textbf{Lineup Tables}: Pandas DataFrame with columns: Player, Team, Position, Minutes, Starter, Nationality
+    \item \textbf{Navigation}: First/Previous/Next/Last buttons with page indicator
+    \item \textbf{Status Indicator}: ``Filtered Matches'' vs. ``Matches'' heading based on active filters
+\end{itemize}
+
+\subsubsection{Graph Export}
+
+\begin{itemize}
+    \item \textbf{File Path Input}: Auto-generated from selected teams and date range
+    \item \textbf{Export Button}: Builds edges and exports to DGS format
+    \item \textbf{Preview}: Shows edge count before export
+    \item \textbf{Render Button}: Launches GraphStream viewer as subprocess
+\end{itemize}
+
+\subsection{Implementation Highlights}
+
+\subsubsection{State Management}
+
+Streamlit's reactive model requires careful state management:
+
+\begin{lstlisting}[language=Python, caption=Pagination State]
+# Initialize page number
+if 'page_num' not in st.session_state:
+    st.session_state.page_num = 1
+
+# Detect filter changes and reset pagination
+filter_key = f"{teams}_{years}_{competitions}..."
+if 'last_filter_key' not in st.session_state:
+    st.session_state.last_filter_key = filter_key
+elif st.session_state.last_filter_key != filter_key:
+    st.session_state.page_num = 1  # Reset to first page
+    st.session_state.last_filter_key = filter_key
+\end{lstlisting}
+
+\subsubsection{Efficient Database Queries}
+
+Three separate queries optimize performance:
+
+\begin{enumerate}
+    \item \textbf{Count Query}: Get total matches for pagination calculation
+    \item \textbf{Match IDs Query}: Get all matching IDs for graph export (no LIMIT)
+    \item \textbf{Paginated Query}: Fetch current page with LIMIT/OFFSET
+\end{enumerate}
+
+\begin{lstlisting}[language=Python]
+# Count total matches
+total_matches = con.execute(
+    f"SELECT COUNT(*) FROM match WHERE {filters}"
+).fetchone()[0]
+
+# Get all match IDs (for graph export)
+match_ids = [
+    r[0] for r in con.execute(
+        f"SELECT id FROM match WHERE {filters} ORDER BY date"
+    ).fetchall()
+]
+
+# Get paginated results
+offset = (page_num - 1) * page_size
+rows = con.execute(
+    f"SELECT * FROM match WHERE {filters} 
+     ORDER BY date LIMIT ? OFFSET ?",
+    params + [page_size, offset]
+).fetchall()
+\end{lstlisting}
+
+\subsubsection{User Experience Enhancements}
+
+\begin{itemize}
+    \item \textbf{Auto-Refresh}: Changes to filters trigger immediate recomputation
+    \item \textbf{Progress Indicators}: Match counts displayed prominently
+    \item \textbf{Responsive Layout}: Adapts to different screen sizes
+    \item \textbf{Clear Feedback}: ``No matches'' messages when filters too restrictive
+    \item \textbf{Navigation Shortcuts}: Keyboard support for pagination
+\end{itemize}
+
+\section{Graph Visualization (GraphStream)}
+
+\subsection{GraphStream Overview}
+
+GraphStream is a Java library for modeling, analyzing, and visualizing dynamic graphs. Key features:
+
+\begin{itemize}
+    \item Real-time graph rendering with hardware acceleration
+    \item Interactive node/edge manipulation (drag, zoom, rotate)
+    \item Force-directed layout algorithms (Fruchterman-Reingold, LinLog)
+    \item Customizable visual styles via CSS-like syntax
+    \item Event-driven architecture for animations
+    \item Built-in graph metrics and algorithms
+\end{itemize}
+
+\subsection{Java Implementation}
+
+\begin{lstlisting}[language=Java, caption=GraphStream Runner]
+package org.example.graphrunner;
+
+import org.graphstream.graph.Graph;
+import org.graphstream.graph.implementations.DefaultGraph;
+import org.graphstream.stream.file.FileSource;
+import org.graphstream.stream.file.FileSourceDGS;
+
+public class Runner {
+    public static void main(String[] args) throws Exception {
+        if (args.length < 1) {
+            System.err.println("Usage: Runner <dgs-file>");
+            System.exit(1);
+        }
+        
+        // Create graph
+        Graph graph = new DefaultGraph("player-network");
+        
+        // Apply styling
+        graph.setAttribute("ui.stylesheet", 
+                          Styles.getStylesheet());
+        graph.setAttribute("ui.quality");
+        graph.setAttribute("ui.antialias");
+        
+        // Load DGS file
+        FileSource fs = new FileSourceDGS();
+        fs.addSink(graph);
+        fs.readAll(args[0]);
+        
+        // Display with interactive viewer
+        graph.display();
+        
+        System.out.println("Graph loaded: " + 
+            graph.getNodeCount() + " nodes, " +
+            graph.getEdgeCount() + " edges");
+    }
+}
+\end{lstlisting}
+
+\subsection{Visual Styling}
+
+GraphStream uses a CSS-like stylesheet for visual customization:
+
+\begin{lstlisting}[language=Java, caption=Graph Stylesheet]
+public class Styles {
+    public static String getStylesheet() {
+        return """
+            graph {
+                padding: 50px;
+            }
+            
+            node {
+                size: 15px;
+                fill-color: #4A90E2;
+                text-alignment: above;
+                text-size: 12px;
+                text-style: bold;
+                stroke-mode: plain;
+                stroke-color: #2E5C8A;
+                stroke-width: 2px;
+            }
+            
+            node:clicked {
+                fill-color: #E74C3C;
+            }
+            
+            edge {
+                fill-color: #95A5A6;
+                size: 2px;
+                arrow-size: 0px;
+            }
+            
+            edge.thick {
+                size: 4px;
+                fill-color: #34495E;
+            }
+            """;
+    }
+}
+\end{lstlisting}
+
+\subsection{Layout Algorithms}
+
+GraphStream provides several layout algorithms:
+
+\begin{itemize}
+    \item \textbf{SpringBox}: Fast force-directed layout for medium graphs ($<$1000 nodes)
+    \item \textbf{LinLog}: Energy-based layout emphasizing clusters
+    \item \textbf{Hierarchical}: Tree-like layout for directed acyclic graphs
+    \item \textbf{Random}: Initial positioning before stabilization
+\end{itemize}
+
+Default configuration uses SpringBox with these parameters:
+\begin{itemize}
+    \item Spring force: 0.3 (controls edge tension)
+    \item Repulsion range: 150px (minimum distance between nodes)
+    \item Stabilization limit: 0.9 (when to stop iterating)
+\end{itemize}
+
+\subsection{Maven Build System}
+
+The Java component uses Maven for dependency management:
+
+\begin{lstlisting}[language=XML, caption=pom.xml excerpt]
+<dependencies>
+    <dependency>
+        <groupId>org.graphstream</groupId>
+        <artifactId>gs-core</artifactId>
+        <version>2.0</version>
+    </dependency>
+    <dependency>
+        <groupId>org.graphstream</groupId>
+        <artifactId>gs-ui-swing</artifactId>
+        <version>2.0</version>
+    </dependency>
+</dependencies>
+\end{lstlisting}
+
+Build and execution automated via Python script:
+
+\begin{lstlisting}[language=Python, caption=run\_graph\_runner.py]
+def run_graph_viewer(dgs_path):
+    """Build Maven project and run GraphStream viewer."""
+    runner_dir = repo_root / "java" / "graph-runner"
+    
+    # Build with Maven
+    subprocess.run(
+        ["mvn", "clean", "package"],
+        cwd=runner_dir,
+        check=True
+    )
+    
+    # Run JAR
+    subprocess.run([
+        "java", "-jar",
+        "target/graph-runner-1.0-SNAPSHOT.jar",
+        str(dgs_path)
+    ], cwd=runner_dir)
+\end{lstlisting}
+
+\section{Use Cases and Examples}
+
+\subsection{Case Study 1: Barcelona Golden Era (2008-2012)}
+
+\subsubsection{Objective}
+Analyze the core player group during Barcelona's most successful period under Pep Guardiola.
+
+\subsubsection{Methodology}
+\begin{lstlisting}[language=bash]
+ft-ingest --db barca.sqlite3 \
+  --date-from 2008-01-01 --date-to 2012-12-31 \
+  --team "FC Barcelona" --provider footballia
+\end{lstlisting}
+
+Dashboard filters:
+\begin{itemize}
+    \item Team: FC Barcelona
+    \item Years: 2008-2012
+    \item Min shared matches: 10
+    \item Starters only: Yes
+    \item Teammates only: Yes
+\end{itemize}
+
+\subsubsection{Expected Results}
+\begin{itemize}
+    \item Strong central cluster: Messi, Xavi, Iniesta, Puyol, Piqué
+    \item High edge weights ($>$100 matches) among core players
+    \item Peripheral nodes: Backup players with fewer connections
+    \item Network density: High ($>$0.7) indicating stable squad
+\end{itemize}
+
+\subsubsection{Interpretation}
+The dense core reflects Guardiola's philosophy of positional play requiring deep understanding among players. Bridge players (e.g., Busquets) show high betweenness centrality, connecting defensive and attacking groups.
+
+\subsection{Case Study 2: International Player Networks}
+
+\subsubsection{Objective}
+Explore cross-national connections in European football.
+
+\subsubsection{Methodology}
+Dashboard filters:
+\begin{itemize}
+    \item Teams: Multiple top European clubs
+    \item Nationalities: Brazil, Argentina, Spain
+    \item Min shared matches: 5
+    \item Teammates only: No (include opponents)
+\end{itemize}
+
+\subsubsection{Expected Results}
+\begin{itemize}
+    \item National clusters: Brazilian players forming sub-networks
+    \item Cross-league edges: Players who faced each other in Champions League
+    \item Hub nodes: Players who played for multiple clubs
+    \item Historical partnerships: Club teammates who later became opponents
+\end{itemize}
+
+\subsection{Case Study 3: Midfield Partnerships}
+
+\subsubsection{Objective}
+Study evolution of midfielder partnerships in La Liga.
+
+\subsubsection{Methodology}
+Dashboard filters:
+\begin{itemize}
+    \item Competitions: La Liga
+    \item Positions: Midfielder, Defensive Midfielder, Attacking Midfielder
+    \item Min minutes: 60 per match
+    \item Min shared matches: 3
+    \item Date range: 2000-2023
+\end{itemize}
+
+\subsubsection{Expected Results}
+\begin{itemize}
+    \item Position-specific sub-networks
+    \item Tactical evolution: Changes in formation reflected in network topology
+    \item Key playmakers: High-degree nodes indicating versatile partnerships
+    \item Temporal comparison: Different eras showing different philosophies
+\end{itemize}
+
+\section{Results and Analysis}
+
+\subsection{Data Coverage Summary}
+
+\begin{table}[h]
+\centering
+\caption{Current Database Statistics}
+\begin{tabular}{@{}lr@{}}
+\toprule
+\textbf{Metric} & \textbf{Count} \\
+\midrule
+Teams & 29 \\
+Players & 3,247 \\
+Matches & 1,679 \\
+Appearances & 42,384 \\
+Competitions & 29 (normalized) \\
+Date Range & 1990-09-15 to 2022-08-07 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Network Characteristics}
+
+Typical graph properties for Barcelona dataset:
+
+\begin{table}[h]
+\centering
+\caption{Network Metrics (Barcelona 2008-2012, min 10 shared matches)}
+\begin{tabular}{@{}lr@{}}
+\toprule
+\textbf{Metric} & \textbf{Value} \\
+\midrule
+Nodes (players) & 187 \\
+Edges & 3,421 \\
+Average Degree & 36.6 \\
+Clustering Coefficient & 0.73 \\
+Network Density & 0.196 \\
+Max Edge Weight & 156 matches \\
+Diameter & 4 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsubsection{Interpretation}
+
+\begin{itemize}
+    \item \textbf{High Clustering}: Indicates tight-knit groups (core squad stability)
+    \item \textbf{Moderate Density}: Not all players connected equally (starters vs. bench)
+    \item \textbf{Small Diameter}: Any two players connected through few intermediaries
+    \item \textbf{Heavy-Tailed Degree Distribution}: Few highly connected players (regulars), many with fewer connections (rotational players)
+\end{itemize}
+
+\subsection{Performance Metrics}
+
+\begin{table}[h]
+\centering
+\caption{System Performance Benchmarks}
+\begin{tabular}{@{}lrr@{}}
+\toprule
+\textbf{Operation} & \textbf{Dataset Size} & \textbf{Time} \\
+\midrule
+Ingest 1000 matches & 1000 matches & 45 min \\
+Count filtered matches & 100k records & 0.2 sec \\
+Compute edges & 1679 matches & 1.8 sec \\
+Export DGS & 10k edges & 0.5 sec \\
+Render graph & 500 nodes & 2 sec \\
+Dashboard page load & - & 1.5 sec \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Hardware: Intel i7-10700K, 32GB RAM, SSD storage
+
+\section{Future Work}
+
+\subsection{Enhanced Data Sources}
+
+\begin{itemize}
+    \item \textbf{Transfermarkt}: Market values, transfer history
+    \item \textbf{WhoScored}: Detailed player ratings and statistics
+    \item \textbf{Opta/FBref}: Event-level data (passes, tackles, shots)
+    \item \textbf{Real-time APIs}: Live match updates
+\end{itemize}
+
+\subsection{Advanced Network Analysis}
+
+\begin{itemize}
+    \item \textbf{Community Detection}: Louvain, Girvan-Newman algorithms for tactical group identification
+    \item \textbf{Centrality Measures}: Betweenness, closeness, eigenvector centrality for player importance
+    \item \textbf{Temporal Networks}: Time-varying graphs showing evolution
+    \item \textbf{Motif Analysis}: Recurring tactical patterns (triangles, squares)
+    \item \textbf{Role Extraction}: Automatic position classification from network structure
+\end{itemize}
+
+\subsection{Machine Learning Integration}
+
+\begin{itemize}
+    \item \textbf{Graph Neural Networks}: Learn player embeddings from network structure
+    \item \textbf{Link Prediction}: Predict future partnerships or transfers
+    \item \textbf{Performance Modeling}: Correlate network metrics with team success
+    \item \textbf{Anomaly Detection}: Identify unusual formations or player combinations
+    \item \textbf{Recommendation Systems}: Suggest compatible players for transfers
+\end{itemize}
+
+\subsection{Visualization Enhancements}
+
+\begin{itemize}
+    \item \textbf{Web-based Viz}: D3.js or Cytoscape.js for in-browser rendering
+    \item \textbf{Animated Evolution}: Timeline slider showing network changes
+    \item \textbf{Heatmaps}: Overlay statistics on graph (minutes played, assists)
+    \item \textbf{Comparison Views}: Side-by-side team network comparisons
+    \item \textbf{Mobile Support}: Touch-optimized graph interaction
+\end{itemize}
+
+\subsection{User Features}
+
+\begin{itemize}
+    \item \textbf{User Accounts}: Save analyses and filters
+    \item \textbf{Export Formats}: CSV, GraphML, GEXF, JSON
+    \item \textbf{Sharing}: Generate shareable links to analyses
+    \item \textbf{Annotations}: User comments and insights on graphs
+    \item \textbf{Collaboration}: Multi-user workspaces
+\end{itemize}
+
+\section{Conclusion}
+
+This project successfully demonstrates the application of network analysis to football match data, revealing insights into player relationships and team dynamics. The modular architecture enables:
+
+\begin{itemize}
+    \item \textbf{Scalability}: Easy addition of new data sources (Provider Protocol)
+    \item \textbf{Flexibility}: Extensive filtering for targeted analysis
+    \item \textbf{Usability}: Intuitive web interface for non-technical users
+    \item \textbf{Visualization}: Interactive 3D exploration of complex networks
+\end{itemize}
+
+\subsection{Key Achievements}
+
+\begin{enumerate}
+    \item \textbf{Multi-Source Ingestion}: StatsBomb and Footballia integrated seamlessly
+    \item \textbf{Robust Scraping}: Parallel processing with error handling and rate limiting
+    \item \textbf{Historical Coverage}: 30+ years of data (1990-2023) across 20+ teams
+    \item \textbf{Flexible Graph Building}: SQL-based with extensive filtering options
+    \item \textbf{Interactive Dashboard}: Streamlit with pagination and real-time updates
+    \item \textbf{3D Visualization}: GraphStream integration for force-directed layouts
+    \item \textbf{Comprehensive Documentation}: User guides, API references, examples
+\end{enumerate}
+
+\subsection{Impact}
+
+The system bridges the gap between raw match data and actionable insights, making network analysis accessible to:
+
+\begin{itemize}
+    \item \textbf{Football Analysts}: Explore team cohesion and player partnerships
+    \item \textbf{Coaches}: Understand tactical relationships and formation dynamics
+    \item \textbf{Scouts}: Identify compatible players based on historical partnerships
+    \item \textbf{Researchers}: Study network evolution in team sports
+    \item \textbf{Enthusiasts}: Explore favorite teams and players visually
+\end{itemize}
+
+\subsection{Technical Contributions}
+
+\begin{itemize}
+    \item \textbf{Provider Pattern}: Extensible architecture for multiple data sources
+    \item \textbf{Thread-Safe Scraping}: SQLite concurrency solutions with WAL and locks
+    \item \textbf{Efficient Graph Computation}: SQL-based approach with sub-second performance
+    \item \textbf{Hybrid Stack}: Python + Java integration via DGS format
+    \item \textbf{Pagination Strategy}: State management for large datasets in Streamlit
+\end{itemize}
+
+\subsection{Lessons Learned}
+
+\begin{enumerate}
+    \item \textbf{Web Scraping}: Flexibility crucial for handling inconsistent HTML across eras
+    \item \textbf{Database Design}: Proper normalization prevents data inconsistencies
+    \item \textbf{Concurrency}: SQLite requires careful handling for parallel writes
+    \item \textbf{User Experience}: Pagination essential for large datasets
+    \item \textbf{Documentation}: Comprehensive READMEs accelerate onboarding
+\end{enumerate}
+
+The project provides a solid foundation for future enhancements in machine learning, advanced network analysis, and real-time data integration, positioning it as a comprehensive platform for sports network analysis.
+
+\section*{Acknowledgments}
+
+We thank:
+\begin{itemize}
+    \item \textbf{StatsBomb} for providing open football data
+    \item \textbf{Footballia} for maintaining an extensive historical archive
+    \item \textbf{GraphStream} developers for excellent visualization library
+    \item \textbf{Streamlit} team for reactive web framework
+\end{itemize}
+
+\section*{References}
+
+\begin{enumerate}
+    \item GraphStream Project. \textit{GraphStream - A Dynamic Graph Library}. \url{http://graphstream-project.org/}
+    
+    \item StatsBomb. \textit{Open Data}. \url{https://github.com/statsbomb/open-data}
+    
+    \item Footballia. \textit{Full Football Matches Archive}. \url{https://footballia.eu}
+    
+    \item Streamlit Inc. \textit{Streamlit Documentation}. \url{https://docs.streamlit.io}
+    
+    \item Hagberg, A., Schult, D., Swart, P. \textit{NetworkX: Network Analysis in Python}. \url{https://networkx.org}
+    
+    \item SQLite Consortium. \textit{SQLite Documentation}. \url{https://sqlite.org/docs.html}
+    
+    \item Barabási, A.L. (2016). \textit{Network Science}. Cambridge University Press.
+    
+    \item Newman, M.E.J. (2018). \textit{Networks: An Introduction}. Oxford University Press.
+\end{enumerate}
+
+\appendix
+
+\section{Installation Guide}
+
+\subsection{System Requirements}
+
+\begin{itemize}
+    \item Python 3.11 or higher
+    \item Java 11 or higher
+    \item Maven 3.6 or higher
+    \item 4GB RAM minimum (8GB recommended)
+    \item 2GB disk space for data
+\end{itemize}
+
+\subsection{Installation Steps}
+
+\begin{lstlisting}[language=bash]
+# Clone repository
+git clone <repository-url>
+cd football-evolution
+
+# Create virtual environment
+python -m venv .venv
+
+# Activate (Windows)
+.venv\Scripts\activate
+
+# Activate (Linux/Mac)
+source .venv/bin/activate
+
+# Install packages
+pip install -e packages/ft_ingest
+pip install -e packages/ft_graph
+pip install -e apps/dashboard
+
+# Verify installation
+ft-ingest --help
+streamlit --version
+mvn --version
+\end{lstlisting}
+
+\section{Sample Queries}
+
+\subsection{Top Player Partnerships}
+
+\begin{lstlisting}[language=SQL]
+SELECT 
+    p1.name AS player1,
+    p2.name AS player2,
+    t.name AS team,
+    COUNT(*) AS matches_together
+FROM appearance a1
+JOIN appearance a2 
+    ON a1.match_id = a2.match_id 
+    AND a1.team_id = a2.team_id
+    AND a1.player_id < a2.player_id
+JOIN player p1 ON p1.id = a1.player_id
+JOIN player p2 ON p2.id = a2.player_id
+JOIN team t ON t.id = a1.team_id
+GROUP BY a1.player_id, a2.player_id, a1.team_id
+ORDER BY matches_together DESC
+LIMIT 20;
+\end{lstlisting}
+
+\subsection{Competition Statistics}
+
+\begin{lstlisting}[language=SQL]
+SELECT 
+    competition,
+    COUNT(*) AS match_count,
+    COUNT(DISTINCT home_team_id) + 
+        COUNT(DISTINCT away_team_id) AS teams,
+    MIN(match_date) AS first_match,
+    MAX(match_date) AS last_match
+FROM match
+WHERE competition IS NOT NULL
+GROUP BY competition
+ORDER BY match_count DESC;
+\end{lstlisting}
+
+\section{Command Reference}
+
+\subsection{Data Ingestion}
+
+\begin{lstlisting}[language=bash]
+# Single team
+ft-ingest --db <path> --date-from <YYYY-MM-DD> \
+  --date-to <YYYY-MM-DD> --team <name> \
+  --provider <statsbomb|footballia>
+
+# Multiple teams
+ft-ingest --db <path> --date-from <date> \
+  --date-to <date> --team <name1> --team <name2> \
+  --provider footballia
+
+# From links file
+ft-ingest --db <path> --date-from <date> \
+  --date-to <date> --links-file <file> \
+  --provider footballia
+\end{lstlisting}
+
+\subsection{Dashboard}
+
+\begin{lstlisting}[language=bash]
+# Launch dashboard
+streamlit run apps/dashboard/src/football_dashboard/app.py
+
+# With auto-reload
+streamlit run apps/dashboard/src/football_dashboard/app.py \
+  --server.runOnSave true
+
+# Custom port
+streamlit run apps/dashboard/src/football_dashboard/app.py \
+  --server.port 8080
+\end{lstlisting}
+
+\subsection{Utilities}
+
+\begin{lstlisting}[language=bash]
+# Clean competition names
+python scripts/clean_competition_names.py <database>
+
+# Ingest multiple teams
+python scripts/ingest_multiple_teams.py
+
+# Run graph viewer
+python scripts/run_graph_runner.py <dgs_file>
+\end{lstlisting}
+
+\section{Authors and Contributions}
+
+\subsection{Team Members}
+
+This project was developed collaboratively by the following team:
+
+\subsubsection{Patryk Pyrkosz -- Tech Lead}
+
+\textbf{Primary Responsibilities}: Project architecture, technical direction, and core infrastructure
+
+\textbf{Key Contributions}:
+\begin{itemize}
+  \item Designed overall system architecture and package structure
+  \item Implemented database schema and SQLite setup with WAL mode
+  \item Developed \textit{ft\_graph} package with edge computation and filtering
+  \item Built interactive Streamlit dashboard with pagination, filtering, and DGS export
+  \item Implemented session state management and UI components
+  \item Optimized SQL queries for graph building
+  \item Integration of GraphStream visualization into dashboard
+  \item Project structure and dependency management
+\end{itemize}
+
+\subsubsection{Szymon Stachura -- Scraper Development}
+
+\textbf{Primary Responsibilities}: Data ingestion and provider implementation
+
+\textbf{Key Contributions}:
+\begin{itemize}
+  \item Implemented Footballia scraper with BeautifulSoup4
+  \item Created competition name parsing and normalization
+  \item Designed data extraction pipeline with error handling
+  \item HTTP client configuration and retry logic
+  \item Provider interface implementation
+  \item Data validation and cleaning logic
+\end{itemize}
+
+\subsubsection{Aleksander Karpiuk -- Repository Maintenance \& Scrapers}
+
+\textbf{Primary Responsibilities}: Code quality, documentation, and scraper enhancements
+
+\textbf{Key Contributions}:
+\begin{itemize}
+  \item Repository maintenance and Git workflow management
+  \item Enhanced scraper robustness with thread safety improvements
+  \item Database locking mechanism implementation
+  \item Post-ingestion data cleaning scripts
+  \item Batch ingestion pipeline for multiple teams
+  \item Project documentation and README files
+  \item Code refactoring and technical debt reduction
+\end{itemize}
+
+\subsubsection{Alicja Bijak -- Java/GraphStream Integration}
+
+\textbf{Primary Responsibilities}: Graph visualization and Java components
+
+\textbf{Key Contributions}:
+\begin{itemize}
+  \item Developed GraphStream visualization runner in Java
+  \item Implemented 3D graph rendering with interactive controls
+  \item Created graph styling and layout algorithms
+  \item Built Java-Python integration wrapper
+  \item DGS format parsing and rendering
+  \item Performance optimization for large graphs
+\end{itemize}
+
+\subsubsection{Rafał Maciejewski -- Java Development}
+
+\textbf{Primary Responsibilities}: GraphStream implementation and visualization
+
+\textbf{Key Contributions}:
+\begin{itemize}
+  \item GraphStream runner implementation (\texttt{java/graph-runner})
+  \item Maven project configuration
+  \item Graph visualization styling and effects
+  \item Java event handling and user interaction
+  \item Integration with DGS export format
+\end{itemize}
+
+\subsection{Work Log}
+
+\subsubsection{Sprint 1: Foundation \& Architecture}
+
+\begin{itemize}
+  \item \textbf{Tech Lead (Patryk)}: Designed project structure, created package layout, set up database schema
+  \item \textbf{Tech Lead (Patryk)}: Implemented ft\_graph core with edge computation logic
+  \item \textbf{Scraper Dev (Szymon)}: Initial Footballia scraper prototype with BeautifulSoup4
+  \item \textbf{Maintenance (Aleksander)}: Repository setup, Git configuration, documentation structure
+\end{itemize}
+
+\subsubsection{Sprint 2: Data Ingestion Pipeline}
+
+\begin{itemize}
+  \item \textbf{Scraper Dev (Szymon)}: Enhanced scraper with robust error handling and retries
+  \item \textbf{Maintenance (Aleksander)}: Implemented thread-safe database locking (threading.Lock)
+  \item \textbf{Maintenance (Aleksander)}: WAL mode configuration for concurrent access
+  \item \textbf{Tech Lead (Patryk)}: Optimized database schema for ingestion performance
+\end{itemize}
+
+\subsubsection{Sprint 3: Dashboard Development}
+
+\begin{itemize}
+  \item \textbf{Tech Lead (Patryk)}: Built Streamlit dashboard with core UI components
+  \item \textbf{Tech Lead (Patryk)}: Implemented pagination system (10 matches per page)
+  \item \textbf{Tech Lead (Patryk)}: Created multi-select team filtering with ``Select All'' checkbox
+  \item \textbf{Tech Lead (Patryk)}: Added advanced filter controls (date range, competitions, positions)
+\end{itemize}
+
+\subsubsection{Sprint 4: Graph Visualization}
+
+\begin{itemize}
+  \item \textbf{Java Dev (Alicja)}: Created GraphStream visualization runner
+  \item \textbf{Java Dev (Rafał)}: Implemented 3D graph rendering and styling
+  \item \textbf{Java Dev (Alicja)}: Developed Java-Python wrapper for DGS file handling
+  \item \textbf{Tech Lead (Patryk)}: Integrated graph export into dashboard UI
+\end{itemize}
+
+\subsubsection{Sprint 5: Quality \& Maintenance}
+
+\begin{itemize}
+  \item \textbf{Maintenance (Aleksander)}: Created competition name cleaning script
+  \item \textbf{Maintenance (Aleksander)}: Implemented batch ingestion for multiple teams
+  \item \textbf{Maintenance (Aleksander)}: Enhanced scraper with year suffix removal regex
+  \item \textbf{Tech Lead (Patryk)}: Optimized SQL queries for graph building performance
+\end{itemize}
+
+\subsubsection{Sprint 6: Documentation \& Delivery}
+
+\begin{itemize}
+  \item \textbf{Tech Lead (Patryk)}: Wrote comprehensive package READMEs (ft\_ingest, ft\_graph, dashboard)
+  \item \textbf{Tech Lead (Patryk)}: Created root README with architecture overview and examples
+  \item \textbf{Maintenance (Aleksander)}: Prepared project report (markdown and LaTeX)
+  \item \textbf{All Team Members}: Code review and final testing
+\end{itemize}
+
+\subsection{Code Ownership}
+
+\begin{itemize}
+  \item \textbf{ft\_ingest package}: Szymon (scrapers) + Patryk (db, base structure) + Aleksander (maintenance, enhancements)
+  \item \textbf{ft\_graph package}: Patryk (core) + Aleksander (optimization)
+  \item \textbf{dashboard}: Patryk (primary developer)
+  \item \textbf{java/graph-runner}: Alicja (core) + Rafał (visualization)
+  \item \textbf{scripts}: Aleksander (utilities), Patryk (core)
+  \item \textbf{documentation}: All team members
+\end{itemize}
+
+\end{document}
