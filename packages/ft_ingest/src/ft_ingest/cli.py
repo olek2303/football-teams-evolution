@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+import logging
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 from threading import Lock
@@ -15,6 +16,21 @@ _db_lock = Lock()
 
 
 def main():
+    # Configure structlog to show INFO level and above
+    logging.basicConfig(
+        format="%(message)s",
+        level=logging.INFO,
+    )
+    structlog.configure(
+        wrapper_class=structlog.make_filtering_bound_logger(logging.INFO),
+        processors=[
+            structlog.processors.add_log_level,
+            structlog.processors.TimeStamper(fmt="iso"),
+            structlog.dev.ConsoleRenderer(),
+        ],
+        logger_factory=structlog.PrintLoggerFactory(),
+    )
+    
     log = structlog.get_logger("ft-ingest")
     ap = argparse.ArgumentParser()
     ap.add_argument("--db", required=True)
@@ -23,11 +39,16 @@ def main():
     ap.add_argument(
         "--team",
         action="append",
-        help="Team name(s) to fetch (required if --links-file not provided)",
+        help="Team name(s) to fetch (optional if --all is used)",
     )
     ap.add_argument(
         "--links-file",
         help="Path to file with match links (one per line). If provided, --team is ignored.",
+    )
+    ap.add_argument(
+        "--all",
+        action="store_true",
+        help="Ingest all available data without team filtering",
     )
     ap.add_argument(
         "--provider",
@@ -37,8 +58,8 @@ def main():
     )
     args = ap.parse_args()
 
-    if not args.team and not args.links_file:
-        ap.error("Either --team or --links-file must be provided")
+    if not args.team and not args.links_file and not args.all:
+        ap.error("Either --team, --links-file, or --all must be provided")
 
     # Resolve db path to absolute path to ensure consistency across threads
     db_path = str(Path(args.db).resolve())
@@ -64,6 +85,9 @@ def main():
         matches = _fetch_matches_from_links_file(
             args.links_file, args.date_from, args.date_to, provider
         )
+    elif args.all:
+        log.info("fetch_matches.all", provider=args.provider)
+        matches = provider.list_matches([], args.date_from, args.date_to)
     else:
         log.info("fetch_matches.start", provider=args.provider, teams=args.team)
         matches = provider.list_matches(args.team, args.date_from, args.date_to)
