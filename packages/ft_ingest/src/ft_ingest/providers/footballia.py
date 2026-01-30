@@ -1,32 +1,39 @@
 from __future__ import annotations
 
+import random
 import re
 import time
-import random
-from datetime import date, datetime
-from typing import Iterable, Optional
 from concurrent.futures import ThreadPoolExecutor, as_completed
+from datetime import date, datetime
 
 import httpx
 import structlog
 from bs4 import BeautifulSoup
 
-from .base import Provider, MatchDTO, TeamDTO, AppearanceDTO, PlayerDTO
+from .base import AppearanceDTO, MatchDTO, PlayerDTO, Provider, TeamDTO
 
 
 class FootballiaProvider(Provider):
     name = "footballia"
     BASE = "https://footballia.eu"
 
-    def __init__(self, timeout: float = 30.0, sleep_range: tuple[float, float] = (1.0, 2.5), max_workers: int = 5):
+    def __init__(
+        self,
+        timeout: float = 30.0,
+        sleep_range: tuple[float, float] = (1.0, 2.5),
+        max_workers: int = 5,
+    ):
         self._log = structlog.get_logger(self.name)
-        self._http = httpx.Client(timeout=timeout, headers={
-            "User-Agent": (
-                "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-                "AppleWebKit/537.36 (KHTML, like Gecko) "
-                "Chrome/121.0.0.0 Safari/537.36"
-            )
-        })
+        self._http = httpx.Client(
+            timeout=timeout,
+            headers={
+                "User-Agent": (
+                    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+                    "AppleWebKit/537.36 (KHTML, like Gecko) "
+                    "Chrome/121.0.0.0 Safari/537.36"
+                )
+            },
+        )
         self._sleep_range = sleep_range
         self._max_workers = max_workers
 
@@ -48,7 +55,11 @@ class FootballiaProvider(Provider):
         sorted_links = sorted(links)
 
         # Fetch metadata in parallel using thread pool
-        self._log.info("list_matches.fetch_metadata.start", link_count=len(sorted_links), workers=self._max_workers)
+        self._log.info(
+            "list_matches.fetch_metadata.start",
+            link_count=len(sorted_links),
+            workers=self._max_workers,
+        )
         processed = 0
         with ThreadPoolExecutor(max_workers=self._max_workers) as executor:
             # Submit all metadata fetch tasks
@@ -107,10 +118,21 @@ class FootballiaProvider(Provider):
                 )
                 out.append(match_dto)
                 seen_matches.add(match_id)
-                
+
                 if processed % 50 == 0:
-                    self._log.info("list_matches.fetch_metadata.progress", processed=processed, total=len(future_to_link), matches_found=len(out))
-                self._log.info("list_matches.match_parsed", home=home_team.name, away=away_team.name, date=match_date, season=meta.get("season"))
+                    self._log.info(
+                        "list_matches.fetch_metadata.progress",
+                        processed=processed,
+                        total=len(future_to_link),
+                        matches_found=len(out),
+                    )
+                self._log.info(
+                    "list_matches.match_parsed",
+                    home=home_team.name,
+                    away=away_team.name,
+                    date=match_date,
+                    season=meta.get("season"),
+                )
 
         self._log.info("list_matches.done", match_count=len(out), total_processed=processed)
         return out
@@ -146,7 +168,7 @@ class FootballiaProvider(Provider):
         team_columns = players_div.find_all("td", width="45%")
         for idx, col in enumerate(team_columns):
             player_links = col.find_all("a", href=True)
-            is_home = (idx % 2 == 0)
+            is_home = idx % 2 == 0
             team = home_team if is_home else away_team
 
             players = []
@@ -164,19 +186,21 @@ class FootballiaProvider(Provider):
                     source_player_id=player_id,
                     name=player_name,
                 )
-                appearances.append(AppearanceDTO(
-                    player=player,
-                    team=team,
-                    is_starter=i < 11,
-                ))
+                appearances.append(
+                    AppearanceDTO(
+                        player=player,
+                        team=team,
+                        is_starter=i < 11,
+                    )
+                )
 
         return appearances
 
     def _list_match_links(
         self,
         team_slug: str,
-        date_from: Optional[date],
-        date_to: Optional[date],
+        date_from: date | None,
+        date_to: date | None,
     ) -> set[str]:
         list_url = f"{self.BASE}/teams/{team_slug}?page={{}}"
         n_pages = self._get_total_pages(list_url)
@@ -221,7 +245,15 @@ class FootballiaProvider(Provider):
                 links.add(self.BASE + href)
                 page_links += 1
 
-            self._log.info("list_match_links.page_done", team_slug=team_slug, page=page, page_num=page, total_pages=n_pages, links_on_page=page_links, cumulative_links=len(links))
+            self._log.info(
+                "list_match_links.page_done",
+                team_slug=team_slug,
+                page=page,
+                page_num=page,
+                total_pages=n_pages,
+                links_on_page=page_links,
+                cumulative_links=len(links),
+            )
             self._polite_sleep()
 
         self._log.info("list_match_links.done", team_slug=team_slug, total_links=len(links))
@@ -245,7 +277,7 @@ class FootballiaProvider(Provider):
 
         return max(page_numbers) if page_numbers else 1
 
-    def _scrape_match_metadata(self, url: str) -> Optional[dict[str, Optional[str]]]:
+    def _scrape_match_metadata(self, url: str) -> dict[str, str | None] | None:
         soup = self._fetch_soup(url)
         if not soup:
             self._log.warn("scrape_match_metadata.fetch_failed", url=url)
@@ -281,7 +313,7 @@ class FootballiaProvider(Provider):
             team_id = self._to_slug(team_name)
         return team_name, team_id
 
-    def _extract_match_date(self, soup: BeautifulSoup) -> Optional[str]:
+    def _extract_match_date(self, soup: BeautifulSoup) -> str | None:
         candidates: list[str] = []
 
         # Check for div with class "playing_date" and content attribute (Footballia format)
@@ -313,25 +345,25 @@ class FootballiaProvider(Provider):
 
         return None
 
-    def _extract_competition(self, soup: BeautifulSoup) -> Optional[str]:
+    def _extract_competition(self, soup: BeautifulSoup) -> str | None:
         for cls in ("competition", "tournament", "match-competition"):
             node = soup.find("div", class_=cls) or soup.find("span", class_=cls)
             if node and node.get_text(strip=True):
                 competition_text = node.get_text(strip=True)
                 # Remove season suffix (e.g., "1991-1992" or "2004-2005")
-                competition_text = re.sub(r'\s*\d{4}-\d{4}\s*$', '', competition_text)
+                competition_text = re.sub(r"\s*\d{4}-\d{4}\s*$", "", competition_text)
                 # Remove single year suffix (e.g., "Audi Cup2011" or "Audi Cup 2011")
-                competition_text = re.sub(r'\s*\d{4}\s*$', '', competition_text)
+                competition_text = re.sub(r"\s*\d{4}\s*$", "", competition_text)
                 return competition_text.strip()
         return None
 
-    def _extract_season_from_url(self, url: str) -> Optional[str]:
+    def _extract_season_from_url(self, url: str) -> str | None:
         match = re.search(r"-(\d{4}-\d{4})$", url)
         if match:
             return match.group(1)
         return None
 
-    def _extract_season_from_text(self, soup: BeautifulSoup) -> Optional[str]:
+    def _extract_season_from_text(self, soup: BeautifulSoup) -> str | None:
         season_node = soup.find("span", class_="season")
         if season_node and season_node.get_text(strip=True):
             text = season_node.get_text(strip=True)
@@ -340,13 +372,13 @@ class FootballiaProvider(Provider):
                 return match.group(0)
         return None
 
-    def _parse_iso_date(self, value: str) -> Optional[date]:
+    def _parse_iso_date(self, value: str) -> date | None:
         try:
             return date.fromisoformat(value)
         except Exception:
             return None
 
-    def _parse_flexible_date(self, value: str) -> Optional[str]:
+    def _parse_flexible_date(self, value: str) -> str | None:
         value = value.strip()
         if not value:
             return None
@@ -362,7 +394,7 @@ class FootballiaProvider(Provider):
             return match.group(1)
         return None
 
-    def _season_start_year(self, season_text: str) -> Optional[int]:
+    def _season_start_year(self, season_text: str) -> int | None:
         if not season_text:
             return None
         match = re.search(r"^(\d{4})", season_text)
@@ -373,7 +405,7 @@ class FootballiaProvider(Provider):
                 return None
         return None
 
-    def _date_in_range(self, match_date: str, date_from: Optional[date], date_to: Optional[date]) -> bool:
+    def _date_in_range(self, match_date: str, date_from: date | None, date_to: date | None) -> bool:
         parsed = self._parse_iso_date(match_date)
         if not parsed:
             return False
@@ -383,7 +415,7 @@ class FootballiaProvider(Provider):
             return False
         return True
 
-    def _fetch_soup(self, url: str) -> Optional[BeautifulSoup]:
+    def _fetch_soup(self, url: str) -> BeautifulSoup | None:
         try:
             response = self._http.get(url)
             response.raise_for_status()

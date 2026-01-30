@@ -62,9 +62,7 @@ def main() -> int:
             return result.returncode
 
     env = dict(**{k: v for k, v in dict(**__import__("os").environ).items()})
-    default_java_home = Path(
-        r"C:\Program Files\Eclipse Adoptium\jdk-17.0.17.10-hotspot"
-    )
+    default_java_home = Path(r"C:\Program Files\Eclipse Adoptium\jdk-17.0.17.10-hotspot")
     java_home = env.get("JAVA_HOME")
     if default_java_home.exists():
         java_home = str(default_java_home)

@@ -1,7 +1,9 @@
 """Populate the football database with mock data for development."""
+
 from __future__ import annotations
+
 import sqlite3
-from datetime import datetime, timedelta
+from datetime import datetime
 from pathlib import Path
 
 # Mock data
@@ -35,7 +37,7 @@ def populate_mock_data(db_path: str) -> None:
     """Populate database with mock data."""
     con = sqlite3.connect(db_path)
     cur = con.cursor()
-    
+
     # Insert teams
     team_ids = {}
     for name, country, source, source_id in TEAMS:
@@ -53,7 +55,7 @@ def populate_mock_data(db_path: str) -> None:
             (source, source_id),
         )
         team_ids[(source, source_id)] = cur.fetchone()[0]
-    
+
     # Insert players
     player_ids = {}
     for name, birth_date, nationality, source, source_id in PLAYERS:
@@ -71,29 +73,29 @@ def populate_mock_data(db_path: str) -> None:
             (source, source_id),
         )
         player_ids[(source, source_id)] = cur.fetchone()[0]
-    
+
     # Insert mock matches
     base_date = datetime(2021, 8, 1)
     match_data = [
         (0, 1, "2021-08-14", "2021/22", "Premier League"),  # Liverpool vs Man Utd
         (0, 2, "2021-08-21", "2021/22", "Premier League"),  # Liverpool vs Arsenal
-        (1, 3, "2021-08-28", "2021/22", "Serie A"),         # AS Roma vs AC Milan
+        (1, 3, "2021-08-28", "2021/22", "Serie A"),  # AS Roma vs AC Milan
         (0, 4, "2021-09-04", "2021/22", "Premier League"),  # Liverpool vs Chelsea
-        (3, 5, "2021-09-11", "2021/22", "Serie A"),         # AC Milan vs Inter Milan
-        (1, 6, "2021-09-18", "2021/22", "Serie A"),         # AS Roma vs Inter Milan
+        (3, 5, "2021-09-11", "2021/22", "Serie A"),  # AC Milan vs Inter Milan
+        (1, 6, "2021-09-18", "2021/22", "Serie A"),  # AS Roma vs Inter Milan
     ]
-    
+
     match_ids = []
     for home_idx, away_idx, match_date, season, competition in match_data:
         home_team = TEAMS[home_idx]
         away_team = TEAMS[away_idx]
-        
+
         source = "statsbomb_open_data"
         source_match_id = f"match_{len(match_ids)}"
-        
+
         home_team_db_id = team_ids[(source, home_team[3])]
         away_team_db_id = team_ids[(source, away_team[3])]
-        
+
         cur.execute(
             """
             INSERT INTO match (match_date, season, competition, home_team_id, away_team_id, source, source_match_id)
@@ -101,14 +103,22 @@ def populate_mock_data(db_path: str) -> None:
             ON CONFLICT(source, source_match_id) DO UPDATE SET
                 match_date = excluded.match_date
             """,
-            (match_date, season, competition, home_team_db_id, away_team_db_id, source, source_match_id),
+            (
+                match_date,
+                season,
+                competition,
+                home_team_db_id,
+                away_team_db_id,
+                source,
+                source_match_id,
+            ),
         )
         cur.execute(
             "SELECT id FROM match WHERE source = ? AND source_match_id = ?",
             (source, source_match_id),
         )
         match_ids.append(cur.fetchone()[0])
-    
+
     # Insert mock appearances
     appearance_data = [
         # Match 0: Liverpool vs Man Utd
@@ -131,12 +141,15 @@ def populate_mock_data(db_path: str) -> None:
         # Match 5: AS Roma vs Inter Milan
         (5, ("statsbomb_open_data", "5328"), ("statsbomb_open_data", "87"), True, 88, "Midfielder"),
     ]
-    
-    for match_idx, (player_source, player_id), (team_source, team_id), is_starter, minutes, position in appearance_data:
+
+    for match_idx, (player_source, player_id), (
+        team_source,
+        team_id,
+    ), is_starter, minutes, position in appearance_data:
         match_db_id = match_ids[match_idx]
         player_db_id = player_ids[(player_source, player_id)]
         team_db_id = team_ids[(team_source, team_id)]
-        
+
         cur.execute(
             """
             INSERT INTO appearance (match_id, player_id, team_id, is_starter, minutes, position)
@@ -148,7 +161,7 @@ def populate_mock_data(db_path: str) -> None:
             """,
             (match_db_id, player_db_id, team_db_id, int(is_starter), minutes, position),
         )
-    
+
     con.commit()
     con.close()
     print(f"✓ Mock data populated in {db_path}")
@@ -163,7 +176,7 @@ if __name__ == "__main__":
     project_root = script_dir.parent
     db_path = project_root / "data" / "db" / "football.sqlite3"
     schema_path = project_root / "packages" / "ft_ingest" / "src" / "ft_ingest" / "schema.sql"
-    
+
     # Initialize schema first
     db_path.parent.mkdir(parents=True, exist_ok=True)
     con = sqlite3.connect(str(db_path))
@@ -172,5 +185,5 @@ if __name__ == "__main__":
     con.executescript(sql)
     con.commit()
     con.close()
-    
+
     populate_mock_data(str(db_path))

@@ -1,17 +1,18 @@
 from __future__ import annotations
+
 import sqlite3
 from pathlib import Path
+
 from .build import Edge
+
 
 def _player_label(con: sqlite3.Connection, pid: int) -> str:
     row = con.execute("SELECT name FROM player WHERE id = ?", (pid,)).fetchone()
     return row[0] if row else f"player_{pid}"
 
+
 def export_dgs(
-    con: sqlite3.Connection,
-    edges: list[Edge],
-    out_path: str,
-    graph_name: str = "players"
+    con: sqlite3.Connection, edges: list[Edge], out_path: str, graph_name: str = "players"
 ) -> None:
     out = Path(out_path)
     out.parent.mkdir(parents=True, exist_ok=True)
