@@ -1,0 +1,4 @@
+-e ./packages/ft_ingest
+-e ./packages/ft_graph
+-e ./apps/dashboard
+ruff>=0.1.0
