@@ -9,7 +9,12 @@ Strategy:
 2. Add any new teams/players/matches from stats-bomb that don't exist in football
 3. Update existing records with better StatsBomb data (nationality for players, 
    position/minutes for appearances)
-4. Create a new merged database: football-merged.sqlite3
+4. Consolidate duplicate teams/players, keeping StatsBomb version when available
+5. Add comprehensive indexes for better performance
+6. Create a new merged database: football-merged.sqlite3
+
+Note: After running this script, run fix_merged_database.py to consolidate
+duplicates and add comprehensive indexes.
 """
 import sqlite3
 import shutil
