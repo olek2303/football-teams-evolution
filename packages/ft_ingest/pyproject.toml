@@ -12,6 +12,8 @@ license = { text = "MIT" }
 authors = [{ name = "Your Name" }]
 dependencies = [
   "httpx>=0.27.0",
+  "beautifulsoup4>=4.12.3",
+  "structlog>=24.4.0",
 ]
 
 [project.optional-dependencies]

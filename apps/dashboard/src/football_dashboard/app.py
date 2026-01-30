@@ -42,7 +42,8 @@ st.title("Football teams evolution — data browser")
 
 # Filters
 teams = [r[0] for r in con.execute("SELECT name FROM team ORDER BY name").fetchall()]
-team = st.sidebar.selectbox("Team", ["(all)"] + teams)
+select_all_teams = st.sidebar.checkbox("Select all teams", value=False)
+selected_teams = st.sidebar.multiselect("Teams", teams, default=teams if select_all_teams else [])
 
 years = [r[0][:4] for r in con.execute("SELECT DISTINCT substr(match_date,1,4) FROM match ORDER BY 1").fetchall() if r[0]]
 year_from = st.sidebar.selectbox("From year", years, index=0 if years else 0)
@@ -87,9 +88,10 @@ c3.metric("Matches", con.execute("SELECT COUNT(*) FROM match").fetchone()[0])
 # Matches table
 where = []
 params = []
-if team != "(all)":
-    where.append("(t1.name = ? OR t2.name = ?)")
-    params += [team, team]
+if selected_teams:
+    team_placeholders = ','.join(['?'] * len(selected_teams))
+    where.append(f"(t1.name IN ({team_placeholders}) OR t2.name IN ({team_placeholders}))")
+    params += selected_teams + selected_teams
 where.append("substr(m.match_date,1,4) BETWEEN ? AND ?")
 params += [year_from, year_to]
 
@@ -126,23 +128,75 @@ if appearance_where:
     params.extend(appearance_params)
 
 wsql = " AND ".join(where)
-q = f"""
-SELECT m.id, m.match_date, t1.name, t2.name, m.competition
+
+# Count total matches for pagination
+count_q = f"""
+SELECT COUNT(*)
+FROM match m
+LEFT JOIN team t1 ON t1.id = m.home_team_id
+LEFT JOIN team t2 ON t2.id = m.away_team_id
+WHERE {wsql}
+"""
+total_matches = con.execute(count_q, params).fetchone()[0]
+
+# Get all match IDs for graph export (without pagination)
+match_ids_q = f"""
+SELECT m.id
 FROM match m
 LEFT JOIN team t1 ON t1.id = m.home_team_id
 LEFT JOIN team t2 ON t2.id = m.away_team_id
 WHERE {wsql}
 ORDER BY m.match_date
-LIMIT 500
 """
-rows = con.execute(q, params).fetchall()
-st.subheader("Matches")
+match_ids = [r[0] for r in con.execute(match_ids_q, params).fetchall()]
 
-match_ids = [r[0] for r in rows]
+# Determine if filters are active
+filters_active = (
+    selected_teams 
+    or competitions_filter 
+    or min_minutes > 0 
+    or starters_only 
+    or positions_filter 
+    or nationalities_filter 
+    or name_query.strip()
+)
 
-if not rows:
+# Reset pagination when filters change
+filter_key = f"{selected_teams}_{year_from}_{year_to}_{competitions_filter}_{min_minutes}_{starters_only}_{positions_filter}_{nationalities_filter}_{name_query}"
+if 'last_filter_key' not in st.session_state:
+    st.session_state.last_filter_key = filter_key
+elif st.session_state.last_filter_key != filter_key:
+    st.session_state.page_num = 1
+    st.session_state.last_filter_key = filter_key
+
+# Pagination controls
+heading = "Filtered Matches" if filters_active else "Matches"
+st.subheader(f"{heading} ({total_matches} total)")
+
+if total_matches == 0:
     st.info("No matches for current filters.")
 else:
+    # Pagination settings
+    matches_per_page = st.sidebar.number_input("Matches per page", min_value=5, max_value=50, value=10, step=5)
+    total_pages = (total_matches + matches_per_page - 1) // matches_per_page
+    
+    # Initialize page number in session state
+    if 'page_num' not in st.session_state:
+        st.session_state.page_num = 1
+    
+    # Fetch paginated matches
+    offset = (st.session_state.page_num - 1) * matches_per_page
+    q = f"""
+    SELECT m.id, m.match_date, t1.name, t2.name, m.competition
+    FROM match m
+    LEFT JOIN team t1 ON t1.id = m.home_team_id
+    LEFT JOIN team t2 ON t2.id = m.away_team_id
+    WHERE {wsql}
+    ORDER BY m.match_date
+    LIMIT ? OFFSET ?
+    """
+    rows = con.execute(q, params + [matches_per_page, offset]).fetchall()
+    
     player_filters_sql = []
     player_filters_params: list = []
     if min_minutes > 0:
@@ -184,21 +238,57 @@ else:
             if not prow:
                 st.caption("No players match the current filters for this match.")
             else:
-                st.dataframe(
+                import pandas as pd
+                df = pd.DataFrame(
                     prow,
-                    use_container_width=True,
-                    column_config={
-                        0: "Player",
-                        1: "Team",
-                        2: "Position",
-                        3: "Minutes",
-                        4: "Starter",
-                        5: "Nationality",
-                    },
+                    columns=["Player", "Team", "Position", "Minutes", "Starter", "Nationality"]
                 )
+                st.dataframe(df, use_container_width=True)
+    
+    # Pagination controls at the bottom
+    st.divider()
+    
+    col1, col2, col3 = st.columns([1, 3, 1])
+    
+    with col1:
+        st.caption(f"Showing {offset + 1}-{min(offset + matches_per_page, total_matches)} of {total_matches}")
+    
+    with col2:
+        # Center navigation buttons
+        nav_col1, nav_col2, nav_col3, nav_col4, nav_col5 = st.columns([1, 1, 2, 1, 1])
+        
+        with nav_col1:
+            if st.button("⏮️", key="first", help="First page", disabled=st.session_state.page_num == 1, use_container_width=True):
+                st.session_state.page_num = 1
+                st.rerun()
+        
+        with nav_col2:
+            if st.button("◀️", key="prev", help="Previous page", disabled=st.session_state.page_num == 1, use_container_width=True):
+                st.session_state.page_num -= 1
+                st.rerun()
+        
+        with nav_col3:
+            st.markdown(f"<div style='text-align: center; padding: 8px;'><b>Page {st.session_state.page_num} of {total_pages}</b></div>", unsafe_allow_html=True)
+        
+        with nav_col4:
+            if st.button("▶️", key="next", help="Next page", disabled=st.session_state.page_num == total_pages, use_container_width=True):
+                st.session_state.page_num += 1
+                st.rerun()
+        
+        with nav_col5:
+            if st.button("⏭️", key="last", help="Last page", disabled=st.session_state.page_num == total_pages, use_container_width=True):
+                st.session_state.page_num = total_pages
+                st.rerun()
 
 st.subheader("Export selection to GraphStream DGS")
-out_name = st.text_input("Output file", f"data/exports/{team.replace(' ','_')}_{year_from}_{year_to}.dgs" if team != "(all)" else f"data/exports/all_{year_from}_{year_to}.dgs")
+if selected_teams:
+    team_name = '_'.join([t.replace(' ', '_') for t in selected_teams[:3]])  # Use up to 3 team names
+    if len(selected_teams) > 3:
+        team_name += f"_plus{len(selected_teams)-3}"
+    default_name = f"data/exports/{team_name}_{year_from}_{year_to}.dgs"
+else:
+    default_name = f"data/exports/all_{year_from}_{year_to}.dgs"
+out_name = st.text_input("Output file", default_name)
 
 if st.button("Build edges + Export .dgs"):
     edges = compute_edges(
