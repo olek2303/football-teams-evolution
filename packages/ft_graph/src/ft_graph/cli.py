@@ -1,8 +1,11 @@
 from __future__ import annotations
+
 import argparse
 import sqlite3
+
 from ft_graph.build import compute_edges
 from ft_graph.dgs import export_dgs
+
 
 def main():
     ap = argparse.ArgumentParser()
@@ -15,6 +18,7 @@ def main():
     edges = compute_edges(con)
     export_dgs(con, edges, args.out, graph_name=args.graph_name)
     print(f"Wrote {args.out} with {len(edges)} edges")
+
 
 if __name__ == "__main__":
     main()
