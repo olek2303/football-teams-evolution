@@ -174,7 +174,7 @@ def populate_mock_data(db_path: str) -> None:
 if __name__ == "__main__":
     script_dir = Path(__file__).parent
     project_root = script_dir.parent
-    db_path = project_root / "data" / "db" / "football.sqlite3"
+    db_path = project_root / "data" / "db" / "mock_football.sqlite3"
     schema_path = project_root / "packages" / "ft_ingest" / "src" / "ft_ingest" / "schema.sql"
 
     # Initialize schema first
